@@ -30,19 +30,43 @@ thebigclean <- function(spectra_path, metadata_path){
   spectra_cut = meta.spectra[, 400:2400]
   spec1 <- spectra_cut[!rowSums(spectra_cut > 1),]
   metadata = meta(spec1)
-  ag.spec = spectrolab:::aggregate.spectra(spec1,
+  ag.spec = aggregate(spec1,
                                                  metadata$Name, mean,
                                                  try_keep_txt(mean))
   clean_spectra = smooth(ag.spec)
   return(clean_spectra)
 }
 
-
 ################################################################################
 #Set working directory to folder containing downloaded spectral data
 ################################################################################
 
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
+
+################################################################################
+#New function
+###############################################################################
+
+spec1 = add_meta(tm_path, tm_meta)
+metadata = meta(spec1)
+
+center_scale = function(x){
+  scale(x, scale = FALSE)
+}
+
+keep1 = function(x){
+  a = rank(rowSums(abs(center_scale(x))))
+  x1 = x[!a > 3,]
+}
+
+
+
+spec3 = spec1[metadata$Name == "DryalaTM1",]
+spec2 = keep1(spec3)
+spec2
+
+spec2 = aggregate(spec1, by = metadata$Name, keep1, try_keep_txt(keep1))
+
 
 ################################################################################
 #Twelve Mile

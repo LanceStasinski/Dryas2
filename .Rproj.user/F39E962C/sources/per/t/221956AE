@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591040953594.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3809196029",
+    "id" : "221956AE",
+    "lastKnownWriteTime" : 1591053723,
+    "last_content_update" : 1591053723158,
+    "path" : "~/GitHub/Dryas2/Unfinished Analysis code/PLS_DA.R",
+    "project_path" : "Unfinished Analysis code/PLS_DA.R",
+    "properties" : {
+        "cursorPosition" : "62,36",
+        "scrollLine" : "32"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

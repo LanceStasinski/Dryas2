@@ -10,9 +10,9 @@
 library("spectrolab")
 
 ################################################################################
-#Load Functions
+#Prerequisite functions
 ################################################################################
-
+#add metadata to raw spectra
 add_meta <- function(spectra_path, metadata_path){
   spectra_raw = read_spectra(path = spectra_path, format = "sed")
   metadata = read.csv(file = metadata_path, header = TRUE, stringsAsFactors = FALSE)
@@ -20,52 +20,65 @@ add_meta <- function(spectra_path, metadata_path){
   return(spectra_raw)
 }
 
+#The goal of the following functions is to keep the 3 spectral measurements that
+#are closest to the mean reflectance values for each individual plant. The 
+#sample design involved stacking leaves 3 times and taking 2 reflectance 
+#measurements per stack interval. Therefore, the first stack tended to have much
+#of the black background showing, and the third stack probably had more light
+#reflected from the leaves than observed in nature (think about how stacking a
+#leaf would simulate scanning a thicker leaf). The idea here is that restricting
+#measurements to the 3 closest to the mean should provide more data to work with
+#compared to just taking the mean while also removing high and low reflectance 
+#measurements caused by sample design. 
 
+#subtract the mean reflectance from measured reflectance (i.e. calculate 
+#distance from the mean)
+center_scale = function(spectra){
+  scale(spectra, scale = FALSE)
+}
+
+#rank spectra by distance from the mean
+dist.rank = function(spectra){
+  rank(rowSums(abs(center_scale(spectra))))
+}  
+
+#keep the three spectra per individual plant that are closest to the mean
+keep = function(spectra){
+  a = dist.rank(spectra)
+  x1 = subset(spectra, a < 4)
+}
+
+#split the spectra objects to individual plants, apply above funtions, and 
+#recombine them.
+trim.spectra = function(spectra){
+  spec.list = lapply(split(spectra, meta(spectra)$Name), keep)
+  clean_spec = Reduce(combine, spec.list)
+  return(clean_spec)
+}
+
+
+################################################################################
+#Primary function
+################################################################################
 #This function adds the metadata, cuts spectra to wavelength 400:2400, removes
-#reflectance values greater than 1, reduces the data to the mean reflectance
-# of each individual plant, and smooths the spectra
+#reflectance values greater than 1, reduces the data to the three measurements
+#that are closest to the mean for each individual, and smooths the spectra.
 
 thebigclean <- function(spectra_path, metadata_path){
   meta.spectra = add_meta(spectra_path, metadata_path)
   spectra_cut = meta.spectra[, 400:2400]
-  spec1 <- spectra_cut[!rowSums(spectra_cut > 1),]
-  metadata = meta(spec1)
-  ag.spec = aggregate(spec1,
-                                                 metadata$Name, mean,
-                                                 try_keep_txt(mean))
-  clean_spectra = smooth(ag.spec)
+  spec1 = spectra_cut[!rowSums(spectra_cut > 1),]
+  spec2 = trim.spectra(spec1)
+  clean_spectra = smooth(spec2)
   return(clean_spectra)
 }
+
 
 ################################################################################
 #Set working directory to folder containing downloaded spectral data
 ################################################################################
 
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
-
-################################################################################
-#New function
-###############################################################################
-
-spec1 = add_meta(tm_path, tm_meta)
-metadata = meta(spec1)
-
-center_scale = function(x){
-  scale(x, scale = FALSE)
-}
-
-keep1 = function(x){
-  a = rank(rowSums(abs(center_scale(x))))
-  x1 = x[!a > 3,]
-}
-
-
-
-spec3 = spec1[metadata$Name == "DryalaTM1",]
-spec2 = keep1(spec3)
-spec2
-
-spec2 = aggregate(spec1, by = metadata$Name, keep1, try_keep_txt(keep1))
 
 
 ################################################################################

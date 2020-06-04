@@ -1,0 +1,79 @@
+remove_outliers <- function(spectra, total_prob){
+  spectra1 = spectra[!apply(apply(spectra, 2, function(x) x > 
+                                    quantile(x, .5 + total_prob/2)), 1, any), ]
+  spectra2 = spectra1[!apply(apply(spectra1, 2, function(x) x < 
+                                     quantile(x, .5-total_prob/2)), 1, any), ]
+}
+
+combine_species <- function(spectra1, spectra2, spectra3){
+  spectra4 = combine(spectra1, spectra2)
+  combinedspectra = combine(spectra4, spectra3)
+}
+clean_reflectance <- function(spectra) {
+  spectra_cut <- spectra[,400:2400]
+  clean_spectra <- spectra_cut[!rowSums(spectra_cut > 1),]
+  return(clean_spectra)
+}
+
+#This function is a lesser version of thebigclean and is used for sites where 
+#only one speces was collected.
+the_less_bigclean <- function(spectra_path, metadata_path, total_prob){
+  meta.spectra = add_meta(spectra_path, metadata_path)
+  clean_ref.spectra = clean_reflectance(meta.spectra)
+  metadata = meta(clean_ref.spectra)
+  clean_oct = spectrolab:::aggregate.spectra(clean_ref.spectra, by = meta$Name,
+                                             mean)
+  clean_spectra = smooth(clean_oct)
+  return(clean_spectra)
+}
+#the big clean mean
+thebigclean <- function(spectra_path, metadata_path){
+  meta.spectra = add_meta(spectra_path, metadata_path)
+  spectra_cut = meta.spectra[, 400:2400]
+  spec1 <- spectra_cut[!rowSums(spectra_cut > 1),]
+  metadata = meta(spec1)
+  ag.spec = aggregate(spec1,
+                      metadata$Name, mean,
+                      try_keep_txt(mean))
+  clean_spectra = smooth(ag.spec)
+  return(clean_spectra)
+}
+
+thebigclean1 <- function(spectra_path, metadata_path){
+  meta.spectra = add_meta(spectra_path, metadata_path)
+  spectra_cut = meta.spectra[, 400:2400]
+  spec1 = spectra_cut[!rowSums(spectra_cut > 1),]
+  spec2 = trim.spectra(spec1)
+  
+  clean_spectra = smooth(spec2)
+  return(clean_spectra)
+}
+
+
+#remove any spectra that are above the .975 quantile and below the .025 quantile
+remove_outliers <- function(spectra, total_prob){
+  spectra1 = spectra[!apply(apply(spectra, 2, function(x) x > 
+                                    quantile(x, .5 + total_prob/2)), 1, any) &
+                       !apply(apply(spectra, 2, function(x) x < 
+                                      quantile(x, .5-total_prob/2)), 1, any),]
+  
+}
+
+#apply the above funtion (remove_outliers) to spectra that are subset by species
+remove.species_outliers = function(spectra, total_prob){
+  species = split(spectra, meta(spectra)$Species)
+  oct = remove_outliers(species$octopetala, total_prob = total_prob)
+  ala = remove_outliers(species$alaskensis, total_prob = total_prob)
+  hyb = remove_outliers(species$hybrid, total_prob = total_prob)
+  recomb = Reduce(combine, list(oct, ala, hyb))
+  return(recomb)
+}
+
+remove.species_outliers2 = function(spectra, total_prob){
+  species = split(spectra, meta(spectra)$Species)
+  oct = remove_outliers(species$octopetala, total_prob = total_prob)
+  ala = remove_outliers(species$alaskensis, total_prob = total_prob)
+  hyb = species$hybrid
+  recomb = Reduce(combine, list(oct, ala, hyb))
+  return(recomb)
+}

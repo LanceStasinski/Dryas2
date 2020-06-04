@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3809196029",
+    "hash" : "2592150647",
     "id" : "221956AE",
-    "lastKnownWriteTime" : 1591053723,
-    "last_content_update" : 1591053723158,
+    "lastKnownWriteTime" : 1591213843,
+    "last_content_update" : 1591213843,
     "path" : "~/GitHub/Dryas2/Unfinished Analysis code/PLS_DA.R",
     "project_path" : "Unfinished Analysis code/PLS_DA.R",
     "properties" : {
-        "cursorPosition" : "62,36",
-        "scrollLine" : "32"
+        "cursorPosition" : "539,0",
+        "scrollLine" : "508"
     },
     "read_only" : false,
     "read_only_alternatives" : [

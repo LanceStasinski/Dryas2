@@ -20,7 +20,7 @@ add_meta <- function(spectra_path, metadata_path){
   return(spectra_raw)
 }
 
-#The goal of the following functions is to keep the 3 spectral measurements that
+#The goal of the following functions is to keep the 4 spectral measurements that
 #are closest to the mean reflectance values for each individual plant. The 
 #sample design involved stacking leaves 3 times and taking 2 reflectance 
 #measurements per stack interval. Therefore, the first stack tended to have much

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591644847040.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "953D9337",
+    "lastKnownWriteTime" : 4198236834519020645,
+    "last_content_update" : 1591644847040,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "4565a5848b764fc597d8b813f84723df",
+        "name" : "o_tm_bg",
+        "title" : "o_tm_bg"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

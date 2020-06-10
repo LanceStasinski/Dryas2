@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1591807393764.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2020848371",
+    "id" : "A69E626C",
+    "lastKnownWriteTime" : 1591818155,
+    "last_content_update" : 1591818155591,
+    "path" : "~/GitHub/Dryas2/Unfinished Analysis code/dry_spec_examination.R",
+    "project_path" : "Unfinished Analysis code/dry_spec_examination.R",
+    "properties" : {
+        "cursorPosition" : "94,0",
+        "scrollLine" : "63",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,4 +1,4 @@
-#PCA
+#PLSDA
 #RDS files for cleaned data can be downloaded from:
 #FM_Polar_Studies > Dryas_Spectral_Analyses > Clean-up 
 #or generated via 01_clean_up.R
@@ -20,7 +20,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 # Fit PLS_DA model all
 ################################################################################
 #data
-spec_all = readRDS("Clean-up/Vector_normalized/all_vn.rds")
+spec_all = readRDS("Clean-up/Vector_normalized/vn_all.rds")
 names(spec_all) = meta(spec_all)$Species
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
@@ -33,14 +33,14 @@ resp = rownames(spec_mat)
 rownames(spec_mat) = seq(nrow(spec_mat))
 
 #determine number of components to use
-plsda.fit = plsda(spec_mat, resp, ncomp = 20)
+plsda.fit = plsda(spec_mat, resp, ncomp = 30)
 
 perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 5,
                   progressBar = TRUE, auc = TRUE, nrepeat = 10)
 
 plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
      legend.position = "horizontal")
-###ncomp = 19
+###ncomp = 21
 plotIndiv(plsda.fit, title = "", comp = c(1,2), legend = TRUE, 
           style = "graphics", ind.names = F, ellipse = TRUE)
 
@@ -53,11 +53,11 @@ test <- which(samp == 1)
 train <- setdiff(1:nrow(spec_mat), test)
 
 ## For PLS-DA, train the model
-plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 19)
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 21)
 # then predict
 test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
-prediction <- test.predict$class$max.dist[,19] 
+prediction <- test.predict$class$max.dist[,21] 
 # calculate the error rate of the model
 confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
 cm1 = as.data.frame(confusion.mat)

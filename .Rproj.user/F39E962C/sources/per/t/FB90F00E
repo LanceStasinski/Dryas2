@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1592236151920.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1684410706",
+    "id" : "FB90F00E",
+    "lastKnownWriteTime" : 1592236881,
+    "last_content_update" : 1592236881679,
+    "path" : "~/GitHub/Dryas2/oct_wet_comparison.R",
+    "project_path" : "oct_wet_comparison.R",
+    "properties" : {
+        "cursorPosition" : "66,0",
+        "scrollLine" : "36",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

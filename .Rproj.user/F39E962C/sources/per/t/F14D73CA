@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1592236896831.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1633402762",
+    "id" : "F14D73CA",
+    "lastKnownWriteTime" : 1592241059,
+    "last_content_update" : 1592241059702,
+    "path" : "~/GitHub/Dryas2/ala_wet_comparison.R",
+    "project_path" : "ala_wet_comparison.R",
+    "properties" : {
+        "cursorPosition" : "51,78",
+        "scrollLine" : "7",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 11,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

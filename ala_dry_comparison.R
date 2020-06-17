@@ -6,7 +6,7 @@ library("spectrolab")
 library("ggplot2")
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
-spec1 = readRDS("Clean-up/Vector_normalized/all_vn.rds")
+spec1 = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 spec = spec1[meta(spec1)$Species == "alaskensis",]
 
 ################################################################################
@@ -39,13 +39,12 @@ all.df_a = Reduce(rbind, list(tm, es, wdb))
 
 p <- ggplot(all.df_a, aes(x=Location, y=Reflectance)) + 
   geom_boxplot(fill='#A4A4A4', color="black")+
-  labs(title="Vector Normalized Reflectance at 1940nm - Alaskensis",
-       x="Location", y = "Vector Normalized Reflectance") +
+  labs(title="Reflectance at 1940nm - Alaskensis",
+       x="Location", y = "Reflectance") +
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_x_discrete(limits=c("Eagle Summit", "Wickersham Dome B",
-                              "Twelve Mile"))
+                              "Twelve Mile")) 
 
-  theme_classic()
 
 p
 ################################################################################

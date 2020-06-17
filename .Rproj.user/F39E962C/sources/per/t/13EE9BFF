@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3165773041",
+    "hash" : "1007288677",
     "id" : "13EE9BFF",
-    "lastKnownWriteTime" : 1591904375,
-    "last_content_update" : 1591904375021,
+    "lastKnownWriteTime" : 1592404131,
+    "last_content_update" : 1592404131569,
     "path" : "~/GitHub/Dryas2/01_clean_up.R",
     "project_path" : "01_clean_up.R",
     "properties" : {
-        "cursorPosition" : "28,64",
-        "scrollLine" : "8"
+        "cursorPosition" : "206,18",
+        "scrollLine" : "187"
     },
     "read_only" : false,
     "read_only_alternatives" : [

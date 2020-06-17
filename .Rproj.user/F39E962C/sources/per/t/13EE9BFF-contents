@@ -84,8 +84,9 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 
 tm_path = "Scans_raw/Dry Scans/Twelve_Mile/12mile-dryas-08082019"
-tm_meta = "Scans_raw/Dry Scans/Twelve_Mile/twelvemile.csv"
-tm_clean = thebigclean(tm_path, tm_meta)
+tm_meta = "Scans_raw/Dry Scans/Twelve_Mile/tm_pops.csv"
+tm_clean1 = thebigclean(tm_path, tm_meta)
+tm_clean = tm_clean1[!meta(tm_clean1)$Clone == "Yes",]
 tm_vn = normalize(tm_clean)
 
 ################################################################################
@@ -93,7 +94,7 @@ tm_vn = normalize(tm_clean)
 ################################################################################
 
 bg_path = "Scans_raw/Dry Scans/Bison_Gulch/bisonGulch_dry"
-bg_meta = "Scans_raw/Dry Scans/Bison_Gulch/bisongulch2.csv"
+bg_meta = "Scans_raw/Dry Scans/Bison_Gulch/bg_pops.csv"
 bg_clean = thebigclean(bg_path, bg_meta)
 bg_vn = normalize(bg_clean)
 
@@ -102,8 +103,10 @@ bg_vn = normalize(bg_clean)
 ################################################################################    
 
 es_path = "Scans_raw/Dry Scans/Eagle_Summit/es-dry"
-es_meta = "Scans_raw/Dry Scans/Eagle_Summit/eaglesummit1.csv"
-es_clean = thebigclean(es_path, es_meta)
+es_meta = "Scans_raw/Dry Scans/Eagle_Summit/es_pops.csv"
+es_clean1 = thebigclean(es_path, es_meta)
+es_clean2 = es_clean1[!meta(es_clean1)$Clone == "Yes",]
+es_clean = es_clean2[!meta(es_clean2)$Notes == "not sequenced",]
 es_vn = normalize(es_clean)
 
 ################################################################################
@@ -111,7 +114,7 @@ es_vn = normalize(es_clean)
 ################################################################################
 
 mdb_path = "Scans_raw/Dry Scans/Murphy_Dome_B/murphyB-dry"
-mdb_meta = "Scans_raw/Dry Scans/Murphy_Dome_B/murphydomeb1.csv"
+mdb_meta = "Scans_raw/Dry Scans/Murphy_Dome_B/mdb_pops.csv"
 mdb_clean = thebigclean(mdb_path, mdb_meta)
 mdb_vn = normalize(mdb_clean)
 
@@ -120,7 +123,7 @@ mdb_vn = normalize(mdb_clean)
 ################################################################################    
 
 wda_path = "Scans_raw/Dry Scans/Wickersham_A/wickershamdome-dry"
-wda_meta = "Scans_raw/Dry Scans/Wickersham_A/wickershama1.csv"
+wda_meta = "Scans_raw/Dry Scans/Wickersham_A/wda_pops.csv"
 wda_clean = thebigclean(wda_path, wda_meta)
 wda_vn = normalize(wda_clean)
 
@@ -129,8 +132,9 @@ wda_vn = normalize(wda_clean)
 ################################################################################    
 
 wdb_path = "Scans_raw/Dry Scans/Wickersham_B/wdb-dry"
-wdb_meta = "Scans_raw/Dry Scans/Wickersham_B/wdb_revised.csv"
+wdb_meta = "Scans_raw/Dry Scans/Wickersham_B/wdb_pops.csv"
 wdb_clean = thebigclean(wdb_path, wdb_meta)
+
 wdb_vn = normalize(wdb_clean)
 
 ################################################################################
@@ -188,19 +192,21 @@ saveRDS(vn_big3.no_hybrids, "Clean-up/Vector_normalized/vn_big3.no_hybrids.rds")
 ################################################################################
 #Eagle Summit
 es_w_path = "Scans_raw/Wet Scans/es_wet"
-es_w_meta = "Scans_raw/Wet Scans/es_wet/es_wet_meta.csv"
-es_w_clean = thebigclean(es_w_path, es_w_meta)
+es_w_meta = "Scans_raw/Wet Scans/es_wet/es_pops_wet.csv"
+es_w_clean1 = thebigclean(es_w_path, es_w_meta)
+es_w_clean2 = es_w_clean1[!meta(es_w_clean1)$Clone == "Yes",]
+es_w_clean = es_w_clean2[!meta(es_w_clean2)$Notes == "not sequenced",]
 vn_es_w = normalize(es_w_clean)
 
 #Wickersham Dome A
 wda_w_path = "Scans_raw/Wet Scans/wda_wet"
-wda_w_meta = "Scans_raw/Wet Scans/wda_wet/wda_wet_meta.csv"
+wda_w_meta = "Scans_raw/Wet Scans/wda_wet/wda_pops_wet.csv"
 wda_w_clean = thebigclean(wda_w_path, wda_w_meta)
 vn_wda_w = normalize(wda_w_clean)
 
 #Wickerhamd Dome B
 wdb_w_path = "Scans_raw/Wet Scans/wdb_wet"
-wdb_w_meta = "Scans_raw/Wet Scans/wdb_wet/wdb_wet_meta.csv"
+wdb_w_meta = "Scans_raw/Wet Scans/wdb_wet/wdb_pops_wet.csv"
 wdb_w_clean = thebigclean(wdb_w_path, wdb_w_meta)
 vn_wdb_w = normalize(wdb_w_clean)
 

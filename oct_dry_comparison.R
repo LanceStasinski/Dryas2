@@ -36,7 +36,7 @@ wda = f(spec, location = "Wickersham Dome A")
 wdb = f(spec, location = "Wickersham Dome B")
 
 all.df = Reduce(rbind, list(tm, es, bg, mdb, wda, wdb))
-
+estm = rbind(es,tm)
 ################################################################################
 #Box Plot
 ################################################################################
@@ -64,8 +64,9 @@ shapiro.test(wda$Reflectance) #normal
 shapiro.test(wdb$Reflectance) #normal
 shapiro.test(all.df$Reflectance) #normal
 
-oct.aov = aov(Reflectance ~ Location, data = all.df)
+oct.aov = aov(Reflectance ~ Location, data = estm)
 summary.aov(oct.aov)
 
-pwt = pairwise.t.test(all.df$Reflectance, all.df$Location, p.adjust.method = "BH")
+pwt = pairwise.t.test(all.df$Reflectance, all.df$Location, p.adjust.method = "bonf")
+pwt
 

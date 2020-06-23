@@ -20,7 +20,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 spec_wet = readRDS("Clean-up/Vector_normalized/vn_all_w.rds")
 spec_es = spec_wet[meta(spec_wet)$Location == "Eagle Summit",]
 spec_all = spec_es
-names(spec_all) = meta(spec_all)$Species
+names(spec_all) = meta(spec_all)$Species_ID
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
@@ -32,10 +32,10 @@ resp = rownames(spec_mat)
 rownames(spec_mat) = seq(nrow(spec_mat))
 
 #determine number of components to use
-plsda.fit = plsda(spec_mat, resp, ncomp = 40)
+plsda.fit = plsda(spec_mat, resp, ncomp = 30)
 
 perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 5,
-                  progressBar = TRUE, auc = TRUE, nrepeat = 10)
+                  progressBar = TRUE, auc = TRUE, nrepeat = 50)
 
 plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
      legend.position = "horizontal")
@@ -164,14 +164,14 @@ resp = rownames(spec_mat)
 rownames(spec_mat) = seq(nrow(spec_mat))
 
 #determine number of components to use
-plsda.fit = plsda(spec_mat, resp, ncomp = 40)
+plsda.fit = plsda(spec_mat, resp, ncomp = 30)
 
 perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 5,
-                  progressBar = TRUE, auc = TRUE, nrepeat = 10)
+                  progressBar = TRUE, auc = TRUE, nrepeat = 50)
 
 plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
      legend.position = "horizontal")
-###ncomp = 24
+###ncomp = 23
 plotIndiv(plsda.fit, title = "", comp = c(1,2), legend = TRUE, 
           style = "graphics", ind.names = F, ellipse = TRUE)
 
@@ -184,11 +184,11 @@ test <- which(samp == 1)
 train <- setdiff(1:nrow(spec_mat), test)
 
 ## For PLS-DA, train the model
-plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 24)
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 23)
 # then predict
 test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
-prediction <- test.predict$class$max.dist[,24] 
+prediction <- test.predict$class$max.dist[,23] 
 # calculate the error rate of the model
 confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
 cm1 = as.data.frame(confusion.mat)

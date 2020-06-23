@@ -82,6 +82,13 @@ axis(3, at = seq_len(ncol(cm1)) - 0.5,
 axis(2, at = seq_len(nrow(cm1)) -0.5,
      labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
 
+plotLoadings(plsda.fit, contrib = "max", method = "mean", comp = 1,
+             plot = TRUE, show.ties = TRUE, col.ties="white", ndisplay = NULL, size.name = 0.7,
+             size.legend = 0.8, name.var=NULL, name.var.complete=FALSE, title = NULL,
+             size.title = rel(1.8), size.subtitle = rel(1.4),
+             legend = TRUE, legend.color = NULL, legend.title = 'Outcome',
+             layout = NULL, border = NA, xlim = NULL)
+
 ################################################################################
 # Fit PLS_DA model all wet
 ################################################################################
@@ -105,11 +112,12 @@ plsda.fit = plsda(spec_mat, resp, ncomp = 30)
 perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 5,
                   progressBar = TRUE, auc = TRUE, nrepeat = 50)
 
-plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
+perf.plot_pops_wet = plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
      legend.position = "horizontal")
+saveRDS(perf.plot_pops_wet, "Figures/perf plots/perf.plot_pops_wet.rds")
 ###ncomp = 19
-plotIndiv(plsda.fit, title = "", comp = c(1,2), legend = TRUE, 
-          style = "graphics", ind.names = F, ellipse = TRUE)
+plotIndiv(plsda.fit, title = "", comp = c(4,2,3), legend = TRUE, 
+          style = "3d", ind.names = F, ellipse = TRUE)
 
 #Run PLSDA
 set.seed(25) 
@@ -120,11 +128,11 @@ test <- which(samp == 1)
 train <- setdiff(1:nrow(spec_mat), test)
 
 ## For PLS-DA, train the model
-plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 19)
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 18)
 # then predict
 test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
-prediction <- test.predict$class$max.dist[,19] 
+prediction <- test.predict$class$max.dist[,18] 
 # calculate the error rate of the model
 confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
 cm1 = as.data.frame(confusion.mat)

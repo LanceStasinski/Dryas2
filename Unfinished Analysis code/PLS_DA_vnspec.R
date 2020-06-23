@@ -10,7 +10,7 @@ library(mixOmics)
 library(spectrolab)
 library(plotrix)
 library(rgl)
-
+library(grDevices)
 ################################################################################
 #Set working directory to folder containing downloaded rds files
 ################################################################################
@@ -84,20 +84,7 @@ axis(2, at = seq_len(nrow(cm1)) -0.5,
 ################################################################################
 #Ala and Oct - no hyb
 ################################################################################
-library(mixOmics)
-library(spectrolab)
-library(plotrix)
-library(rgl)
 
-################################################################################
-#Set working directory to folder containing downloaded rds files
-################################################################################
-
-setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
-
-################################################################################
-# Fit PLS_DA model all
-################################################################################
 #data
 spec_all1 = readRDS("Clean-up/Vector_normalized/all_vn.rds")
 spec_all = spec_all1[!meta(spec_all1)$Species_ID == "DX",]
@@ -167,6 +154,27 @@ plotLoadings(plsda.fit, contrib = "max", method = "mean", comp = 1,
              size.title = rel(1.8), size.subtitle = rel(1.4),
              legend = TRUE, legend.color = NULL, legend.title = 'Outcome',
              layout = NULL, border = NA, xlim = c(-.15,.15))
+
+x = plsda.fit$loadings$X
+Comp1 = x[,1]
+Comp2 = x[,2]
+Comp3 = x[,3]
+
+par(mar = c(5,5,5,1), mgp = c(3, 1, 0))
+plot(Comp1, main = "PLSDA Loadings for Species - Dry, No Hybrids", xaxt = 'n', type = "l", lwd = 3,
+     col = "red", xlab = "Wavelength", ylab = "Loading Value", ylim = c(-0.25, 0.20),
+     panel.first = c(rect(1,-.3,31, .25, col = "gray95", border = NA),
+                     rect(41,-.3,91, .25, col = "gray95", border = NA),
+                     rect(116, -.3, 141, .25, col = "gray95", border = NA),
+                     rect(161,-.3, 201, .25, col = "gray95", border = NA)))
+axis(1, at=c(11, 61, 111, 161), labels=rownames(x)[c(11, 61, 111, 161)])
+axis(3, at=c(16,66,128.5,181), tick = FALSE, labels = c("VIS", "NIR", "SWIR 1", "SWIR 2"),
+     line = -1)
+lines(Comp2, col="turquoise2",lty=1, lwd = 3)
+lines(Comp3, col="purple", lty = 1, lwd = 3)
+abline(h = 0, lty = 2, lwd = 2)
+legend("bottomright", inset=.02, title="Components",
+       c("1","2","3"), fill= c("red", "turquoise2", "purple"), horiz=TRUE, cex=0.8)
 
 ################################################################################
 # Fit PLS_DA model: predict location

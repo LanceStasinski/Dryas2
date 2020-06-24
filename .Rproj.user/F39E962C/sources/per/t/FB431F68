@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593020329624.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4174606815",
+    "id" : "FB431F68",
+    "lastKnownWriteTime" : 1593024457,
+    "last_content_update" : 1593024457577,
+    "path" : "~/Dryas Research/Dryas 2.0/PLSDA_wdbtrain.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "98,29",
+        "scrollLine" : "72",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

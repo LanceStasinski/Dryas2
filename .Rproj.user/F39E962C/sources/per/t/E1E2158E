@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593020810643.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1195634771",
+    "id" : "E1E2158E",
+    "lastKnownWriteTime" : 1593024310,
+    "last_content_update" : 1593024310499,
+    "path" : "~/Dryas Research/Dryas 2.0/PLSDA_tmtrain.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "141,53",
+        "scrollLine" : "113",
+        "tempName" : "Untitled2"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

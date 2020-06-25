@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593091848943.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "609898065",
+    "id" : "238A2EA4",
+    "lastKnownWriteTime" : 1592856565,
+    "last_content_update" : 1592856565,
+    "path" : "~/GitHub/Dryas2/oct_dry_comparison.R",
+    "project_path" : "oct_dry_comparison.R",
+    "properties" : {
+        "cursorPosition" : "49,73",
+        "scrollLine" : "28",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

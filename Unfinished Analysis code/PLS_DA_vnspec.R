@@ -406,8 +406,12 @@ axis(2, at = seq_len(nrow(cm1)) -0.5,
 ################################################################################
 
 #data
-big3 = readRDS("Clean-up/Vector_normalized/vn_big3.rds")
-names(big3) = meta(big3)$Species
+spec = readRDS("Clean-up/Vector_normalized/all_vn.rds")
+spec1 = spec[meta(spec)$Location == "Wickersham Dome B",]
+spec2 = spec[meta(spec)$Location == "Wickersham Dome A",]
+spec3 = spec[meta(spec)$Location == "Eagle Summit",]
+big3 = Reduce(combine, list(spec1, spec2, spec3))
+names(big3) = meta(big3)$Species_ID
 big3.m = as.matrix(big3)
 big3.df = as.data.frame(big3)
 
@@ -441,11 +445,11 @@ test <- which(samp == 1)
 train <- setdiff(1:nrow(spec_mat), test)
 
 ## For PLS-DA, train the model
-plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 25)
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 30)
 # then predict
 test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
-prediction <- test.predict$class$max.dist[,25] 
+prediction <- test.predict$class$max.dist[,24] 
 # calculate the error rate of the model
 confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
 cm1 = as.data.frame(confusion.mat)
@@ -467,6 +471,70 @@ axis(2, at = seq_len(nrow(cm1)) -0.5,
      labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
 
 
+################################################################################
+# Fit PLS_DA model 3 sites, 3 species wet
+################################################################################
+
+#data
+big3 = readRDS("Clean-up/Vector_normalized/vn_all_w.rds")
+names(big3) = meta(big3)$Species_ID
+big3.m = as.matrix(big3)
+big3.df = as.data.frame(big3)
+
+#Resample by 10 nm
+spec_small = resample(big3, seq(400, 2400, by = 10))
+spec_mat_s = as.matrix(spec_small)
+spec_mat = spec_mat_s
+resp = rownames(spec_mat)
+rownames(spec_mat) = seq(nrow(spec_mat))
+
+#determine number of components to use
+plsda.fit = plsda(spec_mat, resp, ncomp = 30)
+
+perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 5,
+                  progressBar = TRUE, auc = TRUE, nrepeat = 10)
+
+plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
+     legend.position = "horizontal")
+
+###Ncomp = 25
+plotIndiv(plsda.fit, title = "", comp = c(1,2), legend = TRUE, 
+          style = "graphics", ind.names = F, ellipse = TRUE)
+
+#Run PLSDA
+set.seed(27) 
+samp <- sample(1:3, nrow(spec_mat), replace = TRUE) 
+
+# 1/3 of the data will compose the test set
+test <- which(samp == 1) 
+# rest will compose the training set
+train <- setdiff(1:nrow(spec_mat), test)
+
+## For PLS-DA, train the model
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 30)
+# then predict
+test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
+# store prediction for the 4th component
+prediction <- test.predict$class$max.dist[,20] 
+# calculate the error rate of the model
+confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
+cm1 = as.data.frame(confusion.mat)
+get.BER(confusion.mat)
+
+#plot
+par(mar = c(2, 4, 3, 4), oma = c(2, 4, 3, 2))
+color2D.matplot(cm1, 
+                show.values = TRUE,
+                axes = FALSE,
+                xlab = "",
+                ylab = "",
+                vcex = 2,
+                vcol = "black",
+                extremes = c("white", "deepskyblue3"))
+axis(3, at = seq_len(ncol(cm1)) - 0.5,
+     labels = names(cm1), tick = FALSE, cex.axis = 1)
+axis(2, at = seq_len(nrow(cm1)) -0.5,
+     labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
 ################################################################################
 # Fit PLS_DA model 3 sites, 3 species plus location
 ################################################################################

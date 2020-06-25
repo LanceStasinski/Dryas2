@@ -137,6 +137,17 @@ wdb_clean = thebigclean(wdb_path, wdb_meta)
 
 wdb_vn = normalize(wdb_clean)
 
+par(mfrow=c(1,1), mar=c(4,4,4,2), oma = c(4,3,2,2))
+plot(wdb_raw, lwd = 0.5, lty = 1, col = "grey50", main="WDB Raw Scans", 
+     cex.lab = 1.2, ylab = "Reflectance", xlab = "Wavelength")
+plot_regions(wdb_raw, regions = default_spec_regions(), add = TRUE)
+
+plot(mean(wdb_raw), lwd = 0.5, lty = 1, col = "grey50", main="80% spectral quantile", 
+     cex.lab = 1.2,  xlab = "Wavelength (nm)", ylab = NA, ylim = c(0, 2.5))
+plot_quantile(wdb_raw, total_prob = 0.8, col = rgb(1, 0, 0, 0.25), border = FALSE, add = TRUE)
+plot_regions(wdb_raw, regions = default_spec_regions(), add = TRUE)
+
+
 ################################################################################
 #combine
 ################################################################################

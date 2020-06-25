@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593088295911.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3600869670",
+    "id" : "73DEA1DD",
+    "lastKnownWriteTime" : 1593129183,
+    "last_content_update" : 1593129183478,
+    "path" : "~/GitHub/Dryas2/boxplots_PROSPECT.R",
+    "project_path" : "boxplots_PROSPECT.R",
+    "properties" : {
+        "cursorPosition" : "42,0",
+        "scrollLine" : "16",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

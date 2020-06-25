@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1593109680649.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1220595688",
+    "id" : "7BE74CA",
+    "lastKnownWriteTime" : 1592940736,
+    "last_content_update" : 1592940736,
+    "path" : "~/GitHub/Dryas2/PLSDA dry vs wet.R",
+    "project_path" : "PLSDA dry vs wet.R",
+    "properties" : {
+        "cursorPosition" : "278,68",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

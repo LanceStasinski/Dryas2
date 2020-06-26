@@ -155,6 +155,27 @@ plotLoadings(plsda.fit, contrib = "max", method = "mean", comp = 1,
              legend = TRUE, legend.color = NULL, legend.title = 'Outcome',
              layout = NULL, border = NA, xlim = c(-.15,.15))
 
+
+plsda.load = plotLoadings(plsda.fit, contrib = "max", comp = 1, plot = FALSE)
+plsda.load = plsda.load[ sort(rownames(plsda.load)), ]
+barplot(plsda.load$importance, main = "Loadings for Species", col = plsda.load$color, border = FALSE, 
+        lwd = 0.01, space = 0, ylab = "Importance", xlab = "Wavelength (nm)", 
+        ylim = c(-.10, .15))
+rect(1,-.3,31, .15)
+rect(41,-.3,91, .15)
+rect(116, -.3, 141, .15)
+rect(161,-.3, 201, .15)
+
+axis(2)
+axis(1,  at = c(1,11, 61, 111, 161,200), labels = c(400,500, 1000, 1500, 2000,2400))
+axis(3, at=c(16,66,128.5,181), tick = FALSE, labels = c("VIS", "NIR", "SWIR 1", "SWIR 2"),
+     line = -1)
+legend(180, .14, title="Species",
+       c("DO", "DA"), fill= c("#F68B33", "#388ECC"), horiz=F, cex=0.8)
+
+
+
+
 x = plsda.fit$loadings$X
 Comp1 = x[,1]
 Comp2 = x[,2]

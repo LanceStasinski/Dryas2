@@ -22,6 +22,11 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 #data
 spec_all = readRDS("Clean-up/Vector_normalized/all_vn.rds")
+spec_es = spec_all[meta(spec_all)$Location == "Eagle Summit",]
+spec_wdb = spec_all[meta(spec_all)$Location == "Wickersham Dome B",]
+spec_tm = spec_all[meta(spec_all)$Location == "Twelve Mile",]
+spec_all = Reduce(combine, list(spec_es, spec_wdb, spec_tm))
+
 names(spec_all) = meta(spec_all)$Species_ID
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
@@ -55,11 +60,113 @@ test <- which(samp == 1)
 train <- setdiff(1:nrow(spec_mat), test)
 
 ## For PLS-DA, train the model
-plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 20)
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 30)
 # then predict
 test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
-prediction <- test.predict$class$max.dist[,20] 
+prediction <- test.predict$class$max.dist[,26] 
+# calculate the error rate of the model
+confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
+cm1 = as.data.frame(confusion.mat)
+get.BER(confusion.mat)
+
+library(stringr)
+
+str_locate_all(pattern ='DX', prediction)
+h = c(76,77,78,84,85)
+prediction[h]
+hspec = c(217,221,223,252,253)
+
+
+r = resp[test]
+str_locate_all(pattern ='DX', r)
+a = c(33,34,35,76,77,78,79,83,84,85,132,133,134)
+prediction[a]
+aspec = c(81,225,251,377)
+ospec = c(83,84,373,380)
+
+pred.as.hyb = spec_all[hspec,]
+pred.hyb.DA = meta(pred.as.hyb)$DA
+
+pred.as.ala = spec_all[aspec,]
+pred.ala.DA = meta(pred.as.ala)$DA
+
+pred.as.oct = spec_all[ospec,]
+pred.oct.DA = meta(pred.as.oct)$DA
+
+par(mar = c(4, 4, 3, 1), oma = c(2, 4, 3, 2))
+plot(y = c(1:5), x = pred.hyb.DA, type = 'p', pch = 16, col = 'black', cex = 1.2,
+     ylab = "Sample", xlab = "Proportion of DA ancestry", xlim = c(.3,.7),
+     main = "Ancestry from Alaskensis - samples predicted as hybrids")
+points(y = c(1:4), x = pred.oct.DA, type = 'p', pch = 15, cex = 1.5, col = "blue")
+points(y = c(1:4), x = pred.ala.DA, type = 'p', pch = 17, cex = 1.0, col = "orange")
+abline(v = .5, lty = 2, lwd = 1)
+legend("topright", legend = c("Predicted DX", "Predicted DO", "Predicted DA"),
+       pch = c(16,15,17), col = c("black", "blue", "orange"))
+
+#plot
+par(mar = c(2, 4, 3, 4), oma = c(2, 4, 3, 2))
+color2D.matplot(cm1, 
+                show.values = TRUE,
+                axes = FALSE,
+                xlab = "",
+                ylab = "",
+                vcex = 2,
+                vcol = "black",
+                extremes = c("white", "deepskyblue3"))
+axis(3, at = seq_len(ncol(cm1)) - 0.5,
+     labels = names(cm1), tick = FALSE, cex.axis = 1)
+axis(2, at = seq_len(nrow(cm1)) -0.5,
+     labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
+
+
+
+
+################################################################################
+# Fit PLS_DA model all
+################################################################################
+
+
+spec_all = readRDS("Clean-up/Vector_normalized/all_vn.rds")
+spec_all = spec_all[meta(spec_all)$Species_ID == "DX",]
+names(spec_all) = meta(spec_all)$Location
+spec_all.m = as.matrix(spec_all)
+spec_all.df = as.data.frame(spec_all)
+
+#Resample by every 10 nm
+spec_small = resample(spec_all, seq(400, 2400, by = 10))
+spec_mat_s = as.matrix(spec_small)
+spec_mat = spec_mat_s
+resp = rownames(spec_mat)
+rownames(spec_mat) = seq(nrow(spec_mat))
+
+#determine number of components to use
+plsda.fit = plsda(spec_mat, resp, ncomp = 20)
+
+perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 5,
+                  progressBar = TRUE, auc = TRUE, nrepeat = 50)
+
+perf.plot_species = plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
+                         legend.position = "horizontal")
+saveRDS(perf.plot_species, "Figures/perf plots/perf.plot_species.rds")
+###ncomp = 16
+plotIndiv(plsda.fit, title = "", comp = c(1,2,5), legend = TRUE, 
+          style = "3d", ind.names = F, ellipse = TRUE)
+
+#Run PLSDA
+set.seed(25) 
+samp <- sample(1:3, nrow(spec_mat), replace = TRUE) 
+# 1/3 of the data will compose the test set
+test <- which(samp == 1) 
+# rest will compose the training set
+train <- setdiff(1:nrow(spec_mat), test)
+
+## For PLS-DA, train the model
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 10)
+# then predict
+test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
+# store prediction for the 4th component
+prediction <- test.predict$class$max.dist[,7] 
 # calculate the error rate of the model
 confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
 cm1 = as.data.frame(confusion.mat)
@@ -80,8 +187,6 @@ axis(3, at = seq_len(ncol(cm1)) - 0.5,
      labels = names(cm1), tick = FALSE, cex.axis = 1)
 axis(2, at = seq_len(nrow(cm1)) -0.5,
      labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
-
-
 
 ################################################################################
 # PLSDA predict species and location

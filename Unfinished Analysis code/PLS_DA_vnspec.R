@@ -25,7 +25,7 @@ spec_all = readRDS("Clean-up/Vector_normalized/all_vn.rds")
 spec_es = spec_all[meta(spec_all)$Location == "Eagle Summit",]
 spec_wdb = spec_all[meta(spec_all)$Location == "Wickersham Dome B",]
 spec_tm = spec_all[meta(spec_all)$Location == "Twelve Mile",]
-spec_all = Reduce(combine, list(spec_es, spec_wdb, spec_tm))
+spec_all = Reduce(spectrolab::combine, list(spec_es, spec_wdb, spec_tm))
 
 names(spec_all) = meta(spec_all)$Species_ID
 spec_all.m = as.matrix(spec_all)
@@ -60,7 +60,7 @@ test <- which(samp == 1)
 train <- setdiff(1:nrow(spec_mat), test)
 
 ## For PLS-DA, train the model
-plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 30)
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 40)
 # then predict
 test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
@@ -69,6 +69,21 @@ prediction <- test.predict$class$max.dist[,26]
 confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
 cm1 = as.data.frame(confusion.mat)
 get.BER(confusion.mat)
+
+par(mar = c(2, 5, 3, 4), oma = c(2, 4, 3, 2))
+color2D.matplot(cm1, 
+                show.values = TRUE,
+                axes = FALSE,
+                xlab = "",
+                ylab = "",
+                vcex = 2,
+                vcol = "black",
+                extremes = c("white", "deepskyblue3"))
+axis(3, at = seq_len(ncol(cm1)) - 0.5,
+     labels = names(cm1), tick = FALSE, cex.axis = 1, line = -1)
+axis(2, at = seq_len(nrow(cm1)) -0.5,
+     labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
+mtext("Predict Species, 3 sites, 26 comps, 0.2051 BER", side = 3, line = 1.5)
 
 library(stringr)
 
@@ -104,20 +119,7 @@ abline(v = .5, lty = 2, lwd = 1)
 legend("topright", legend = c("Predicted DX", "Predicted DO", "Predicted DA"),
        pch = c(16,15,17), col = c("black", "blue", "orange"))
 
-#plot
-par(mar = c(2, 4, 3, 4), oma = c(2, 4, 3, 2))
-color2D.matplot(cm1, 
-                show.values = TRUE,
-                axes = FALSE,
-                xlab = "",
-                ylab = "",
-                vcex = 2,
-                vcol = "black",
-                extremes = c("white", "deepskyblue3"))
-axis(3, at = seq_len(ncol(cm1)) - 0.5,
-     labels = names(cm1), tick = FALSE, cex.axis = 1)
-axis(2, at = seq_len(nrow(cm1)) -0.5,
-     labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
+
 
 
 

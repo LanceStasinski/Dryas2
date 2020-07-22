@@ -20,7 +20,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 # Fit PLS_DA model all dry
 ################################################################################
 #data
-spec_all1 = readRDS("Clean-up/Vector_normalized/all_vn.rds")
+spec_all1 = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 spec_all = spec_all1[!meta(spec_all1)$GenePop_ID == "NaN",]
 names(spec_all) = meta(spec_all)$GenePop_ID
 spec_all.m = as.matrix(spec_all)
@@ -42,13 +42,13 @@ perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 5,
 perf.plot_pops = plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
      legend.position = "horizontal")
 
-saveRDS(perf.plot_pops, "Figures/perf plots/perf.plot_pops.rds")
+
 ###ncomp = 23
 plotIndiv(plsda.fit, title = "", comp = c(1,2), legend = TRUE, 
           style = "graphics", ind.names = F, ellipse = TRUE)
 
 #Run PLSDA
-set.seed(25) 
+set.seed(10) 
 samp <- sample(1:3, nrow(spec_mat), replace = TRUE) 
 # 1/3 of the data will compose the test set
 test <- which(samp == 1) 
@@ -62,14 +62,19 @@ test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
 prediction <- test.predict$class$max.dist[,26] 
 # calculate the error rate of the model
-confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
-cm1 = as.data.frame(confusion.mat)
-get.BER(confusion.mat)
+mat10 = get.confusion_matrix(truth = resp[test], predicted = prediction)
+
+mat.total = (mat1 + mat2 + mat3 + mat4 + mat5 + mat6 + mat7 + mat8 + mat9 + mat10)/10
+saveRDS(mat.total, "pops_mat.rds")
+pops.cm = as.data.frame(mat.total)
+get.BER(mat.total)
+
+names(pops.cm)
 
 
 #plot
-par(mar = c(2, 4, 3, 1), oma = c(2, 4, 3, 2))
-color2D.matplot(cm1, 
+par(mar = c(2, 4, 4, 1), oma = c(2, 4, 3, 2))
+color2D.matplot(pops.cm, 
                 show.values = TRUE,
                 axes = FALSE,
                 xlab = "",
@@ -77,10 +82,14 @@ color2D.matplot(cm1,
                 vcex = 2,
                 vcol = "black",
                 extremes = c("white", "deepskyblue3"))
-axis(3, at = seq_len(ncol(cm1)) - 0.5,
-     labels = names(cm1), tick = FALSE, cex.axis = 1)
-axis(2, at = seq_len(nrow(cm1)) -0.5,
-     labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
+axis(3, at = seq_len(ncol(pops.cm)) - 0.5,
+     labels = c("DA", "DO_bgc", "DO_et", "DO_mdb", "DO_wda", "DO_wdb"), tick = FALSE, cex.axis = 1, line = -.5)
+axis(2, at = seq_len(nrow(pops.cm)) -0.5,
+     labels = rev(rownames(pops.cm)), tick = FALSE, las = 1, cex.axis = 1, line = -.5)
+mtext("Ncomps:26    BER:0.033644    Iterations:10", side = 1,
+      line = 1)
+mtext("Actual Population", side = 2, line = 5, cex = 1.5)
+mtext("Predicted Population", side = 3, line = 3, cex =1.5)
 
 plotLoadings(plsda.fit, contrib = "max", method = "mean", comp = 1,
              plot = TRUE, show.ties = TRUE, col.ties="white", ndisplay = NULL, size.name = 0.7,

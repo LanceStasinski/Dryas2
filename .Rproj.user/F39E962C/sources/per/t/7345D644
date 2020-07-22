@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1595423559453.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2508289824",
+    "id" : "7345D644",
+    "lastKnownWriteTime" : 1595289082,
+    "last_content_update" : 1595289082,
+    "path" : "~/GitHub/Dryas2/PLSDA_sp_loc_cs.R",
+    "project_path" : "PLSDA_sp_loc_cs.R",
+    "properties" : {
+        "cursorPosition" : "62,0",
+        "scrollLine" : "58"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

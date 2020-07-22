@@ -16,8 +16,9 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/spec_iS50.rds")
-
-names(spec_all) = meta(spec_all)$Location
+spec_all = spec_all[!meta(spec_all)$sp_loc == "NaN",]
+spec_all = spec_all[!meta(spec_all)$Species_ID == "DX",]
+names(spec_all) = meta(spec_all)$sp_loc
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
@@ -30,10 +31,10 @@ resp = rownames(spec_mat)
 rownames(spec_mat) = seq(nrow(spec_mat))
 
 #determine number of components to use
-plsda.fit = plsda(spec_mat, resp, ncomp = 30)
+plsda.fit = plsda(spec_mat, resp, ncomp = 40)
 
 perf.plsda = perf(plsda.fit, validation = "Mfold", folds = 3,
-                  progressBar = TRUE, auc = TRUE, nrepeat = 10)
+                  progressBar = TRUE, auc = TRUE, nrepeat = 30)
 
 perf.plot_species = plot(perf.plsda, col = color.mixo(1:3), sd = TRUE, 
                          legend.position = "horizontal")
@@ -51,11 +52,11 @@ test <- which(samp == 1)
 train <- setdiff(1:nrow(spec_mat), test)
 
 ## For PLS-DA, train the model
-plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 30)
+plsda.train <- plsda(spec_mat[train, ], resp[train], ncomp = 40)
 # then predict
 test.predict <- predict(plsda.train, spec_mat[test, ], dist = "max.dist")
 # store prediction for the 4th component
-prediction <- test.predict$class$max.dist[,23] 
+prediction <- test.predict$class$max.dist[,28] 
 # calculate the error rate of the model
 confusion.mat = get.confusion_matrix(truth = resp[test], predicted = prediction)
 cm1 = as.data.frame(confusion.mat)
@@ -76,6 +77,7 @@ axis(3, at = seq_len(ncol(cm1)) - 0.5,
      labels = names(cm1), tick = FALSE, cex.axis = 1, line = -1)
 axis(2, at = seq_len(nrow(cm1)) -0.5,
      labels = rev(rownames(cm1)), tick = FALSE, las = 1, cex.axis = 1)
-mtext("Predict Location iS50 scans, 23 comps, 0.03243 BER", side = 3, line = 1.5)
+mtext("Predict Species plus Location iS50 scans (no hybrids), 
+      28 comps, 0.1402 BER", side = 3, line = 1.5)
 
 

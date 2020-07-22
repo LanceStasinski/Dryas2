@@ -9,6 +9,7 @@ spec = readRDS("Clean-up/Vector_normalized/all_vn.rds")
 log = read.csv("log.csv")
 
 meta(spec) <- log
+spec = spec[!meta(spec)$Species_ID == "DX",]
 data = meta(spec)
 
 par(mar = c(4,4,2,1))

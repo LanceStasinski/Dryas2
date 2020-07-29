@@ -5,21 +5,21 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "4063903768",
+    "hash" : "497391454",
     "id" : "3FEEBA3B",
-    "lastKnownWriteTime" : 1595964083,
-    "last_content_update" : 1595964083786,
+    "lastKnownWriteTime" : 1596052725,
+    "last_content_update" : 1596052725152,
     "path" : "~/GitHub/Dryas2/caret_plsda.R",
     "project_path" : "caret_plsda.R",
     "properties" : {
-        "cursorPosition" : "106,0",
-        "scrollLine" : "88",
+        "cursorPosition" : "105,0",
+        "scrollLine" : "91",
         "tempName" : "Untitled1"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 12,
+    "relative_order" : 4,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

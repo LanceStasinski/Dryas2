@@ -5,20 +5,20 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1349648334",
+    "hash" : "1097774023",
     "id" : "B7A08F38",
-    "lastKnownWriteTime" : 1595964400,
-    "last_content_update" : 1595964400403,
+    "lastKnownWriteTime" : 1596048695,
+    "last_content_update" : 1596048695092,
     "path" : "~/GitHub/Dryas2/spectra_plots.R",
     "project_path" : "spectra_plots.R",
     "properties" : {
-        "cursorPosition" : "95,0",
-        "scrollLine" : "64"
+        "cursorPosition" : "105,0",
+        "scrollLine" : "81"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 5,
+    "relative_order" : 3,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

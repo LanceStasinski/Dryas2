@@ -89,10 +89,26 @@ plot_regions(hyb, regions = default_spec_regions(), add = TRUE)
 
 mtext("Mean spectra and 95% spectral quantile", outer=TRUE,  cex=1, line=-0.5)
 
+
+
+
+
 par(mfrow = c(1,1))
-plot(mean(ala), lwd = 0.5, lty = 1, col = 'blue')
+plot(mean(ala), lwd = 0.5, lty = 1, col = 'blue', 
+     cex.lab = 1.2, ylim = c(0, .85), ylab = "Reflectance", xlab = "Wavelength (nm)")
 plot(mean(hyb), lwd = 0.5, lty = 1, col = 'black', add = T)
 plot(mean(oct), lwd = 0.5, lty = 1, col = 'red', add = T)
+plot_regions(ala, regions = default_spec_regions(), add = TRUE)
+legend('bottomright',inset = .02, legend=c("D. alaskensis", "Hybrid", "D. octopetala"),
+col=c('blue', 'gray50', 'red'), text.font = c(3,1,3), lty=1, cex=0.8)
+
+
+
+
+
+plot_quantile(ala, total_prob = 0.6, col = rgb(0, 0, 1, 0.25), border = FALSE, add = TRUE)
+plot_quantile(hyb, total_prob = 0.6, col = 'gray95', border = FALSE, add = TRUE)
+plot_quantile(ala, total_prob = 0.6, col = rgb(1, 0, 0, 0.25), border = FALSE, add = TRUE)
 
 #oct wet vs dry
 spec_wet = readRDS("Clean-up/Clean_spectra/clean_all_w.rds")

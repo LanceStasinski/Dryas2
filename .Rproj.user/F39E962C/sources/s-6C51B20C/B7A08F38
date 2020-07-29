@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1595964097550.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1349648334",
+    "id" : "B7A08F38",
+    "lastKnownWriteTime" : 1595964400,
+    "last_content_update" : 1595964400403,
+    "path" : "~/GitHub/Dryas2/spectra_plots.R",
+    "project_path" : "spectra_plots.R",
+    "properties" : {
+        "cursorPosition" : "95,0",
+        "scrollLine" : "64"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

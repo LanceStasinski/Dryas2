@@ -19,8 +19,11 @@ spectra = spectra[!meta(spectra)$DA == "NaN",]
 
 spectra.df = as.data.frame(spectra)
 spectra.m = as.matrix(spectra)
-spectra.m = cbind(DA = spectra.df$DA, spectra.m)
-spectra.m = cbind(Location = as.factor(spectra.df$Location), spectra.m)
+spec_df = as.data.frame(spectra.m)
+spec_df = cbind(spec_df, spectra.df$DA)
+colnames(spec_df)[colnames(spec_df) == "spectra.df$DA"] <- "DA"
+spec_df2 = cbind(spec_df, spectra.df$Species_ID)
+colnames(spec_df2)[colnames(spec_df2) == "spectra.df$Species_ID"] <- "Species_ID"
 
 ################################################################################
 #Training and testing sets - all
@@ -28,10 +31,16 @@ spectra.m = cbind(Location = as.factor(spectra.df$Location), spectra.m)
 
 set.seed(12)
 training.samples <- 
-  createDataPartition(spectra.m[,"DA"], p = 0.6, list = FALSE)
+  createDataPartition(spec_df$DA, p = 0.8, list = FALSE)
 
-train.data  <- spectra.m[training.samples, ]
-test.data <- spectra.m[-training.samples, ]
+train.data  <- spec_df[training.samples, ]
+test.data <- spec_df[-training.samples, ]
+
+train.plot <-spec_df2[training.samples, ]
+test.plot <- spec_df2[-training.samples, ]
+test.plot$color = "black"
+test.plot$color[test.plot$Species_ID == "DO"]="red"
+test.plot$color[test.plot$Species_ID == "DA"]="blue"
 
 ################################################################################
 #PLS R - all
@@ -60,4 +69,30 @@ results = data.frame(
   Rsquare = caret::R2(predictions, test.data[,"DA"])
 )
 
-write.csv(results, "Figures/DA_plsr.csv")
+write.csv(results, "Figures/PLSR/DA_plsr20.csv")
+
+
+################################################################################
+#Plot
+################################################################################
+y = test.plot$DA
+x = predictions
+lm.out = lm(y ~ x)
+new = seq(min(x), max(x), by = 0.05)
+CI = predict(lm.out, newdata = data.frame(x = new), interval = "confidence",
+             level = .95)
+
+
+par(mfrow = c(1,1))
+plot(test.plot$DA, predictions, xlab = "Actual", ylab = "Predicted",
+     main = expression("Predicting Proportion of "*italic("Dryas alaskensis")*" ancestry"))
+abline(lm.out)
+matlines(new, CI[,2:3], col = "black", lty = 2)
+points(test.plot$DA, predictions, col = test.plot$color, pch = 16)
+legend("bottomright", inset = 0.01,
+       legend=c("D. octopetala", "Hybrid", "D. alaskensis"), 
+       text.font = c(3,1,3),
+       col=c("red", "black", "blue"), pch = 16)
+
+
+

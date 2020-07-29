@@ -89,10 +89,6 @@ plot_regions(hyb, regions = default_spec_regions(), add = TRUE)
 
 mtext("Mean spectra and 95% spectral quantile", outer=TRUE,  cex=1, line=-0.5)
 
-par(mfrow = c(1,1))
-plot(mean(ala), lwd = 0.5, lty = 1, col = 'blue')
-plot(mean(hyb), lwd = 0.5, lty = 1, col = 'black', add = T)
-plot(mean(oct), lwd = 0.5, lty = 1, col = 'red', add = T)
 
 #oct wet vs dry
 spec_wet = readRDS("Clean-up/Clean_spectra/clean_all_w.rds")

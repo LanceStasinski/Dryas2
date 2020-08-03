@@ -7,7 +7,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 #data
 data1 = read.csv("log.csv")
-spec_all = readRDS("Clean-up/Vector_normalized/all_vn.rds")
+spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 
 meta(spec_all) <- data1
 
@@ -33,4 +33,18 @@ legend("topright", c("LMA", "Cw.mu"),
 cw = mean(data$Cw.mu)
 lma = mean(data$LMA)
 
+
+
+
+tm = subset(data, Location == "Twelve Mile")
+boxplot(Cw.mu~Species_ID, data = tm, main = "Twelve Mile")
+
+es = subset(data, Location == "Eagle Summit")
+boxplot(Cw.mu ~ Species_ID, data = es, main = "Eagle Summit")
+
+wdb = subset(data, Location == "Wickersham Dome B")
+boxplot(Cw.mu ~ Species_ID, data = wdb, main = "Wickersham Dome B")
+
+sites3 = Reduce(rbind, list(tm, es, wdb))
+boxplot(Cw.mu ~ Species_ID, data = sites3, main = "Co-occuring Sites")
 

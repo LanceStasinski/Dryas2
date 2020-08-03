@@ -8,6 +8,8 @@ library(caret)
 library(mlbench)
 library(corrplot)
 library(matrixStats)
+library(naniar)
+
 
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
@@ -18,7 +20,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
-spec_all = spec_all[!meta(spec_all)$GenePop_ID == "NaN",]
+spec_all = spec_all[!meta(spec_all)$sp_loc == "NaN",]
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
@@ -29,8 +31,8 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$GenePop_ID)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
+spec_df = cbind(spec_df, spec_all.df$sp_loc)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$sp_loc"] <- "sp_loc"
 
 
 #Partition Data
@@ -40,7 +42,7 @@ for(i in 1:10){
 set.seed(i)
 
 inTrain <- caret::createDataPartition(
-  y = spec_df$GenePop_ID,
+  y = spec_df$sp_loc,
   p = .8,
   list = FALSE
 )
@@ -56,7 +58,7 @@ ctrl <- trainControl(
 
 
 plsFit <- train(
-  GenePop_ID ~ .,
+  sp_loc ~ .,
   data = training,
   method = "pls",
   preProc = c("center", "scale"),
@@ -84,7 +86,7 @@ plsClasses <- predict(plsFit, newdata = testing)
 
 
 #Confusion matrices
-cm = confusionMatrix(data = plsClasses, testing$GenePop_ID)
+cm = confusionMatrix(data = plsClasses, testing$sp_loc)
 
 
 
@@ -98,16 +100,27 @@ assign(paste0("cm", i), cm.m)
 
 cm.total = (cm1 + cm2 + cm3 + cm4 + cm5 + cm6 + cm7 + cm8+ cm9 + cm10)/10
 cm.total = t(cm.total)
-write.csv(cm.total, "Figures/raw confusion matrices/pop_10it_20")
+write.csv(cm.total, "Figures/raw confusion matrices/sp_loc_10it_20")
+cm.total = as.data.frame(cm.total)
+cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-cm.prop = cm.total/rowSums(cm.total)
+rownames(cm.total) <- c('DA_es', 'DA_tm', 'DA_wdb', 'DO_bg', 'DO_es', 'DO_mdb', 
+                        'DO_tm', 'DO_wda', 'DO_wdb', 'DX_es', 'DX_tm', 'DX_wdb')
 
+write.csv(cm.total, "Figures/raw confusion matrices/sp_loc_test.csv")
 
-par(mar = c(2, 4, 9, 1), oma = c(1,1,5,1))
-corrplot(cm.prop, method = 'square', addCoef.col = 'darkorange2', cl.lim = c(0.0,1.0),
-         tl.srt = 90, tl.offset = 1.5, number.digits = 3, tl.col = 'black')
-mtext("Reference", side = 2, line = -4, cex = 1.5)
-mtext("Prediction", side = 3, line = 10, cex = 1.5, at = 3.5)
+cm.total = read.csv("Figures/raw confusion matrices/sp_loc_test.csv", stringsAsFactors = F)
+row.names(cm.total) <- cm.total[,1]
+cm.total = cm.total[,-1]
+cm.total = as.matrix(cm.total)
+
+par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
+corrplot(cm.total, is.corr = F, method = 'color', addCoef.col = 'darkorange2',
+         tl.srt = 90, tl.offset = 1.5, number.digits = 2, tl.cex = .75,
+         tl.col = 'black', cl.pos = 'n', na.label = 'square', 
+         na.label.col = 'white', addgrid.col = 'grey')
+mtext("Reference", side = 2, line = -1, cex = 1.5)
+mtext("Prediction", side = 3, cex = 1.5, at = 6, line = 6)
 
 
 

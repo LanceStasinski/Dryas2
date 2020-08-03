@@ -9,19 +9,24 @@ library(spectrolab)
 
 
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
+spectra = readRDS("Clean-up/Clean_spectra/clean_all.rds")
+spectra = spectra[!meta(spectra)$DA == "NaN",]
 
-spectra = readRDS("Clean-up/Vector_normalized/all_vn.rds")
 es = spectra[meta(spectra)$Location == "Eagle Summit",]
 tm = spectra[meta(spectra)$Location == "Twelve Mile",]
 wdb = spectra[meta(spectra)$Location == "Wickersham Dome B",]
 spectra = Reduce(spectrolab::combine, list(es, tm, wdb))
-spectra = spectra[!meta(spectra)$DA == "NaN",]
+
 
 spectra.df = as.data.frame(spectra)
 spectra.m = as.matrix(spectra)
 spec_df = as.data.frame(spectra.m)
 spec_df = cbind(spec_df, spectra.df$DA)
+spec_df = cbind(spec_df, spectra.df$Location)
 colnames(spec_df)[colnames(spec_df) == "spectra.df$DA"] <- "DA"
+colnames(spec_df)[colnames(spec_df) == "spectra.df$Location"] <- "Location"
+spec_df$Location <- as.factor(spec_df$Location)
+
 spec_df2 = cbind(spec_df, spectra.df$Species_ID)
 colnames(spec_df2)[colnames(spec_df2) == "spectra.df$Species_ID"] <- "Species_ID"
 
@@ -69,25 +74,16 @@ results = data.frame(
   Rsquare = caret::R2(predictions, test.data[,"DA"])
 )
 
-write.csv(results, "Figures/PLSR/DA_plsr20.csv")
-
+write.csv(results, "Figures/PLSR/DA_plsr20_3sites_location.csv")
 
 ################################################################################
 #Plot
 ################################################################################
-y = test.plot$DA
-x = predictions
-lm.out = lm(y ~ x)
-new = seq(min(x), max(x), by = 0.05)
-CI = predict(lm.out, newdata = data.frame(x = new), interval = "confidence",
-             level = .95)
-
 
 par(mfrow = c(1,1))
-plot(test.plot$DA, predictions, xlab = "Actual", ylab = "Predicted",
+plot(test.plot$DA, predictions, xlab = "Actual", ylab = "Predicted", xlim = c(-.3,1.3), ylim = c(-.3, 1.3),
      main = expression("Predicting Proportion of "*italic("Dryas alaskensis")*" ancestry"))
-abline(lm.out)
-matlines(new, CI[,2:3], col = "black", lty = 2)
+lines(x = c(-2, 2), y = c(-2, 2))
 points(test.plot$DA, predictions, col = test.plot$color, pch = 16)
 legend("bottomright", inset = 0.01,
        legend=c("D. octopetala", "Hybrid", "D. alaskensis"), 

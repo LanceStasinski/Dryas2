@@ -13,14 +13,20 @@ library(naniar)
 
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
-
+oct = spec_all[meta(spec_all)$Species_ID == "DO"]
+ala = spec_all[meta(spec_all)$Species_ID == "DA"]
+hby = spec_all[meta(spec_all)$Species_ID == "DX"]
 ################################################################################
 # Fit PLS_DA model all dry
 ################################################################################
 
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
-spec_all = spec_all[!meta(spec_all)$sp_loc == "NaN",]
+hybrid.spec = spec_all[meta(spec_all)$Species_ID == "DX",]
+hybrids = as.matrix(hybrid.spec)
+hyb.meta = meta(hybrid.spec)
+
+spec_all = spec_all[!meta(spec_all)$GenePop_ID == "NaN",]
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
@@ -31,8 +37,8 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$sp_loc)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$sp_loc"] <- "sp_loc"
+spec_df = cbind(spec_df, spec_all.df$GenePop_ID)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
 
 
 #Partition Data
@@ -42,7 +48,7 @@ for(i in 1:10){
 set.seed(i)
 
 inTrain <- caret::createDataPartition(
-  y = spec_df$sp_loc,
+  y = spec_df$GenePop_ID,
   p = .8,
   list = FALSE
 )
@@ -58,7 +64,7 @@ ctrl <- trainControl(
 
 
 plsFit <- train(
-  sp_loc ~ .,
+  GenePop_ID ~ .,
   data = training,
   method = "pls",
   preProc = c("center", "scale"),
@@ -86,7 +92,7 @@ plsClasses <- predict(plsFit, newdata = testing)
 
 
 #Confusion matrices
-cm = confusionMatrix(data = plsClasses, testing$sp_loc)
+cm = confusionMatrix(data = plsClasses, testing$GenePop_ID)
 
 
 
@@ -95,21 +101,43 @@ cm.m = as.matrix(cm)
 assign(paste0("cm", i), cm.m)
 }
 
+#hybrid stuff
+set.seed(7)
+pred_hyb = predict(plsFit, newdata = hybrids)
+hyb.df = as.data.frame(pred_hyb)
+View(hyb.df)
+hyb.df = cbind(hyb.df, hyb.meta)
+write.csv(hyb.df, "Figures/hybrid_cms/hybrid_pop_predictions_all.csv")
+hyb_cm = read.csv('Figures/hybrid_cms/hybrid matrices/hybrid_cm_all.csv', 
+                  stringsAsFactors = F)
+rownames(hyb_cm) <- hyb_cm$X
+hyb_cm = hyb_cm[,-1]
+hyb_cm = hyb_cm %>% replace_with_na_all(condition = ~.x == 0)
+hyb_cm = as.matrix(hyb_cm)
+rownames(hyb_cm) <- c('es', 'tm', 'wdb')
+
+par(mar = c(0,0,0,0), oma = c(0,0,3,0))
+corrplot(hyb_cm, is.corr = F, method = 'color', addCoef.col = 'darkorange2',
+         tl.srt = 0, tl.offset = 1.5, number.digits = 2, tl.cex = 1,
+         tl.col = 'black', cl.pos = 'n', na.label = 'square', 
+         na.label.col = 'white', addgrid.col = 'grey')
+mtext("Collection Location", side = 2, line = -10, cex = 1.5)
+mtext("Predicted Population", side = 3, cex = 1.5, at = 2, line = 1)
 
 #plot confusion matrix
 
 cm.total = (cm1 + cm2 + cm3 + cm4 + cm5 + cm6 + cm7 + cm8+ cm9 + cm10)/10
 cm.total = t(cm.total)
-write.csv(cm.total, "Figures/raw confusion matrices/sp_loc_10it_20")
+write.csv(cm.total, "Figures/raw confusion matrices/GenePop_ID_10it_20")
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
 rownames(cm.total) <- c('DA_es', 'DA_tm', 'DA_wdb', 'DO_bg', 'DO_es', 'DO_mdb', 
                         'DO_tm', 'DO_wda', 'DO_wdb', 'DX_es', 'DX_tm', 'DX_wdb')
 
-write.csv(cm.total, "Figures/raw confusion matrices/sp_loc_test.csv")
+write.csv(cm.total, "Figures/raw confusion matrices/GenePop_ID_test.csv")
 
-cm.total = read.csv("Figures/raw confusion matrices/sp_loc_test.csv", stringsAsFactors = F)
+cm.total = read.csv("Figures/raw confusion matrices/GenePop_ID_test.csv", stringsAsFactors = F)
 row.names(cm.total) <- cm.total[,1]
 cm.total = cm.total[,-1]
 cm.total = as.matrix(cm.total)

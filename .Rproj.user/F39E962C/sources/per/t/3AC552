@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596545056346.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3AC552",
+    "lastKnownWriteTime" : 8242266180789299299,
+    "last_content_update" : 1596545056346,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "1C6C6AC3",
+        "caption" : "hyb.df",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=hyb.df&cache_key=1C6C6AC3",
+        "displayedObservations" : "32",
+        "environment" : "",
+        "expression" : "hyb.df",
+        "object" : "hyb.df",
+        "preview" : "0",
+        "totalObservations" : "32",
+        "variables" : "1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

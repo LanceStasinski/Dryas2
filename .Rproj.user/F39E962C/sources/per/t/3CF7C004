@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1596544824872.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "3CF7C004",
+    "lastKnownWriteTime" : 1596465458,
+    "last_content_update" : 1596544824872,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C1E552C4",
+        "caption" : "hybrids",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=hybrids&cache_key=C1E552C4",
+        "displayedObservations" : 32,
+        "environment" : "",
+        "expression" : "hybrids",
+        "object" : "hybrids",
+        "preview" : 0,
+        "totalObservations" : 32,
+        "variables" : 2001
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

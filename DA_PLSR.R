@@ -29,7 +29,8 @@ spec_df$Location <- as.factor(spec_df$Location)
 
 spec_df2 = cbind(spec_df, spectra.df$Species_ID)
 colnames(spec_df2)[colnames(spec_df2) == "spectra.df$Species_ID"] <- "Species_ID"
-
+spec_df2 = cbind(spec_df2, spectra.df$Name)
+colnames(spec_df2)[colnames(spec_df2) == "spectra.df$Name"] <- 'Name'
 ################################################################################
 #Training and testing sets - all
 ################################################################################
@@ -81,8 +82,8 @@ write.csv(results, "Figures/PLSR/DA_plsr20_3sites_location.csv")
 ################################################################################
 
 par(mfrow = c(1,1))
-plot(test.plot$DA, predictions, xlab = "Actual", ylab = "Predicted", xlim = c(-.3,1.3), ylim = c(-.3, 1.3),
-     main = expression("Predicting Proportion of "*italic("Dryas alaskensis")*" ancestry"))
+plot(test.plot$DA, predictions, cex.lab = 1.5, xlab = "Actual DA ancestry", ylab = "Predicted DA ancestry", 
+     xlim = c(-.3,1.3), ylim = c(-.3, 1.3))
 lines(x = c(-2, 2), y = c(-2, 2))
 points(test.plot$DA, predictions, col = test.plot$color, pch = 16)
 legend("bottomright", inset = 0.01,

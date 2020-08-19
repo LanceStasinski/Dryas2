@@ -26,7 +26,7 @@ hybrid.spec = spec_all[meta(spec_all)$Species_ID == "DX",]
 hybrids = as.matrix(hybrid.spec)
 hyb.meta = meta(hybrid.spec)
 
-spec_all = spec_all[!meta(spec_all)$GenePop_ID == "NaN",]
+spec_all = spec_all[!meta(spec_all)$Species_ID == "NaN",]
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
@@ -37,8 +37,8 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$GenePop_ID)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
+spec_df = cbind(spec_df, spec_all.df$Species_ID)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$Species_ID"] <- "Species_ID"
 
 
 #Partition Data
@@ -48,7 +48,7 @@ for(i in 1:10){
 set.seed(i)
 
 inTrain <- caret::createDataPartition(
-  y = spec_df$GenePop_ID,
+  y = spec_df$Species_ID,
   p = .8,
   list = FALSE
 )
@@ -64,7 +64,7 @@ ctrl <- trainControl(
 
 
 plsFit <- train(
-  GenePop_ID ~ .,
+  Species_ID ~ .,
   data = training,
   method = "pls",
   preProc = c("center", "scale"),
@@ -92,7 +92,7 @@ plsClasses <- predict(plsFit, newdata = testing)
 
 
 #Confusion matrices
-cm = confusionMatrix(data = plsClasses, testing$GenePop_ID)
+cm = confusionMatrix(data = plsClasses, testing$Species_ID)
 
 
 
@@ -128,27 +128,26 @@ mtext("Predicted Population", side = 3, cex = 1.5, at = 2, line = 1)
 
 cm.total = (cm1 + cm2 + cm3 + cm4 + cm5 + cm6 + cm7 + cm8+ cm9 + cm10)/10
 cm.total = t(cm.total)
-write.csv(cm.total, "Figures/raw confusion matrices/GenePop_ID_10it_20")
+write.csv(cm.total, "Figures/raw confusion matrices/Species_ID_10it_20")
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('DA_es', 'DA_tm', 'DA_wdb', 'DO_bg', 'DO_es', 'DO_mdb', 
-                        'DO_tm', 'DO_wda', 'DO_wdb', 'DX_es', 'DX_tm', 'DX_wdb')
+rownames(cm.total) <- c('DA', 'DO', 'DX')
 
-write.csv(cm.total, "Figures/raw confusion matrices/GenePop_ID_test.csv")
+write.csv(cm.total, "Figures/raw confusion matrices/Species_ID_test.csv")
 
-cm.total = read.csv("Figures/raw confusion matrices/GenePop_ID_test.csv", stringsAsFactors = F)
+cm.total = read.csv("Figures/raw confusion matrices/Species_ID_test.csv", stringsAsFactors = F)
 row.names(cm.total) <- cm.total[,1]
 cm.total = cm.total[,-1]
 cm.total = as.matrix(cm.total)
 
 par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 corrplot(cm.total, is.corr = F, method = 'color', addCoef.col = 'darkorange2',
-         tl.srt = 90, tl.offset = 1.5, number.digits = 2, tl.cex = .75,
+         tl.srt = 0, tl.offset = 1.5, number.digits = 2, tl.cex = .75,
          tl.col = 'black', cl.pos = 'n', na.label = 'square', 
          na.label.col = 'white', addgrid.col = 'grey')
-mtext("Reference", side = 2, line = -1, cex = 1.5)
-mtext("Prediction", side = 3, cex = 1.5, at = 6, line = 6)
+mtext("Reference", side = 2, line = -5, cex = 1.5)
+mtext("Prediction", side = 3, cex = 1.5, at = 2, line = 2)
 
 
 
@@ -192,4 +191,13 @@ plot_quantile(component3, total_prob = 0.95, col = rgb(0, .5, 0, 0.25), border =
 abline(h = 0, lty = 2, lwd = 1.5)
 legend('bottomright',inset = .02, legend=c("Component 1", "Component 2", "Component 3"),
               col=c(rgb(1,0,0,1), rgb(0,0,1,1), "darkgreen"), lty=1, cex=0.8)
+
+
+
+
+
+
+
+
+
 

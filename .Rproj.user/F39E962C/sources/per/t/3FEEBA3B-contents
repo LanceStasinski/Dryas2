@@ -101,6 +101,61 @@ cm.m = as.matrix(cm)
 assign(paste0("cm", i), cm.m)
 }
 
+
+
+
+#kappa
+
+k1 = as.matrix(plsFit1$results$Kappa)
+k2 = as.matrix(plsFit2$results$Kappa)
+k3 = as.matrix(plsFit3$results$Kappa)
+k4 = as.matrix(plsFit4$results$Kappa)
+k5 = as.matrix(plsFit5$results$Kappa)
+k6 = as.matrix(plsFit6$results$Kappa)
+k7 = as.matrix(plsFit7$results$Kappa)
+k8 = as.matrix(plsFit8$results$Kappa)
+k9 = as.matrix(plsFit9$results$Kappa)
+k10 = as.matrix(plsFit10$results$Kappa)
+k.total = Reduce(cbind, list(k1,k2,k3,k4,k5,k6,k7,k8,k9,k10))
+
+kavg = as.matrix(rowMeans(k.total))
+ksd = as.matrix(rowSds(k.total))
+klower = kavg - ksd
+khigher = kavg + ksd
+
+plot(kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', xlab = 'Component', 
+     xlim = c(0,40), main = 'Kappa for Species_ID')
+lines(klower, lty = 2, col = 'red')
+lines(khigher, lty = 2, col = 'red')
+abline(v = 22, col = 'blue')
+legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
+       pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
+#accuracy
+a1 = as.matrix(plsFit1$results$Accuracy)
+a2 = as.matrix(plsFit2$results$Accuracy)
+a3 = as.matrix(plsFit3$results$Accuracy)
+a4 = as.matrix(plsFit4$results$Accuracy)
+a5 = as.matrix(plsFit5$results$Accuracy)
+a6 = as.matrix(plsFit6$results$Accuracy)
+a7 = as.matrix(plsFit7$results$Accuracy)
+a8 = as.matrix(plsFit8$results$Accuracy)
+a9 = as.matrix(plsFit9$results$Accuracy)
+a10 = as.matrix(plsFit10$results$Accuracy)
+a.total = Reduce(cbind, list(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10))
+
+a.avg = as.matrix(rowMeans(a.total))
+a.sd = as.matrix(rowSds(a.total))
+alower = a.avg - a.sd
+ahigher = a.avg + a.sd
+
+plot(a.avg, type = 'p', pch = 16, cex = .75, ylab = 'Accuracy', xlab = 'Component', 
+     xlim = c(1,40), main = 'Accuracy for Species_ID')
+lines(alower, lty = 2, col = 'red')
+lines(ahigher, lty = 2, col = 'red')
+abline(v = 22, col = 'blue')
+legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
+       pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
+
 #hybrid stuff
 set.seed(7)
 pred_hyb = predict(plsFit, newdata = hybrids)

@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1598556897387.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "46F3EF1B",
+    "lastKnownWriteTime" : 1598549453,
+    "last_content_update" : 1598556897387,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "id" : "01b3a31bfade4df79c9e4819affd16b7",
+        "name" : "spectra",
+        "title" : "spectra"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "object_explorer"
+}

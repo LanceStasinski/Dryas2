@@ -89,10 +89,34 @@ plot_regions(hyb, regions = default_spec_regions(), add = TRUE)
 
 mtext("Mean spectra and 95% spectral quantile", outer=TRUE,  cex=1, line=-0.5)
 
+#Populations
+da = spec_all[meta(spec_all)$GenePop_ID == "DA",]
+et = spec_all[meta(spec_all)$GenePop_ID == "DO_et",]
+wdb = spec_all[meta(spec_all)$GenePop_ID == "DO_wdb",]
+mdb = spec_all[meta(spec_all)$GenePop_ID == "DO_mdb",]
+wda = spec_all[meta(spec_all)$GenePop_ID == "DO_wda",]
+bg = spec_all[meta(spec_all)$GenePop_ID == "DO_bgc",]
+
+dev.new(width = 6, height = 6, unit = 'in')
+par(mar=c(5,5,2,2))
+plot(mean(da), lwd = 2, lty = 1, col = "red", 
+     cex.lab = 1.5, ylim = c(0, .85), ylab = "Reflectance", xlab = 'Wavelength (nm)')
+plot_regions(da, regions = default_spec_regions(), add = TRUE)
+plot(mean(et), lwd = 2, lty = 1, col = "green3", add = T)
+plot(mean(wdb), lwd = 2, lty = 1, col = "darkviolet", add = T)
+plot(mean(mdb), lwd = 2, lty = 1, col = "cyan2", add = T)
+plot(mean(wda), lwd = 2, lty = 1, col = "brown", add = T)
+plot(mean(bg), lwd = 2, lty = 1, col = "orange", add = T)
+legend('bottomright',inset = .02, 
+       legend=c('DA', 'DO_bg', 'DO_et', 'DO_mdb', 'DO_wda', 'DO_wdb'),
+       col=c('red', 'orange', 'green3', 'cyan2', 'brown', 'darkviolet'), 
+       lty=1, lwd = 2, cex=0.8, bg = 'white')
 
 
 
 
+
+#?
 par(mfrow = c(1,1))
 plot(mean(ala), lwd = 0.5, lty = 1, col = 'blue', 
      cex.lab = 1.2, ylim = c(0, .85), ylab = "Reflectance", xlab = "Wavelength (nm)")

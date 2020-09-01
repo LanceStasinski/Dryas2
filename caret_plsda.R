@@ -18,10 +18,11 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 
 #data
-spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
-
-
-spec_all = spec_all[!meta(spec_all)$Location == "NaN",]
+spec_all = readRDS("Clean-up/Clean_spectra/clean_all_w.rds")
+spec_all = spec_all[!meta(spec_all)$Species_ID == "NaN",]
+hyb = spec_all[meta(spec_all)$Species_ID == "DX",]
+hyb.df = as.data.frame(hyb)
+spec_all = spec_all[!meta(spec_all)$Species_ID == "DX",]
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
@@ -32,8 +33,8 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$Location)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$Location"] <- "Location"
+spec_df = cbind(spec_df, spec_all.df$Species_ID)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$Species_ID"] <- "Species_ID"
 
 
 #Partition Data
@@ -43,7 +44,7 @@ for(i in 1:10){
 set.seed(i)
 
 inTrain <- caret::createDataPartition(
-  y = spec_df$Location,
+  y = spec_df$Species_ID,
   p = .8,
   list = FALSE
 )
@@ -60,12 +61,12 @@ ctrl <- trainControl(
 
 
 plsFit <- train(
-  Location ~ .,
-  data = training,
+  Species_ID ~ .,
+  data = spec_df,
   method = "pls",
   preProc = c("center", "scale"),
   trControl = ctrl,
-  tuneLength = 35)
+  tuneLength = 16)
 
 assign(paste0('plsFit', i), plsFit)
 
@@ -87,7 +88,7 @@ assign(paste0('comp3_',i), comp3)
 plsClasses <- predict(plsFit, newdata = testing)
 
 #Confusion matrices
-cm = confusionMatrix(data = plsClasses, testing$Location)
+cm = confusionMatrix(data = plsClasses, testing$Species_ID)
 acc = cm$overall[1]
 assign(paste0('acc',i), acc)
 
@@ -125,10 +126,10 @@ klower = kavg - ksd
 khigher = kavg + ksd
 
 plot(kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', xlab = 'Component', 
-     xlim = c(0,40), main = 'Kappa for Location')
+     xlim = c(0,40), main = 'Kappa for Species_ID')
 lines(klower, lty = 2, col = 'red')
 lines(khigher, lty = 2, col = 'red')
-abline(v = 35, col = 'blue')
+abline(v = 16, col = 'blue')
 legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
        pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
 #accuracy
@@ -150,10 +151,10 @@ alower = a.avg - a.sd
 ahigher = a.avg + a.sd
 
 plot(a.avg, type = 'p', pch = 16, cex = .75, ylab = 'Accuracy', xlab = 'Component', 
-     xlim = c(0,40), main = 'Accuracy for Location')
+     xlim = c(0,40), main = 'Accuracy for Species_ID')
 lines(alower, lty = 2, col = 'red')
 lines(ahigher, lty = 2, col = 'red')
-abline(v = 35, col = 'blue')
+abline(v = 16, col = 'blue')
 legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
        pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
 
@@ -161,31 +162,30 @@ legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component')
 
 cm.total = (cm1 + cm2 + cm3 + cm4 + cm5 + cm6 + cm7 + cm8+ cm9 + cm10)/10
 cm.total = t(cm.total)
-write.csv(cm.total, "Figures/raw confusion matrices/Location_10it_20_35c")
+
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('BG', 'ES', 'MDB', 'TM', 'WDA', 'WDB')
-colnames(cm.total) <- c('BG', 'ES', 'MDB', 'TM', 'WDA', 'WDB')
-write.csv(cm.total, "Figures/raw confusion matrices/Location_test.csv")
+rownames(cm.total) <- c('DA', 'DO_bg', 'DO_et', 'DO_mdb', 'DO_wda', 'DO_wdb')
+colnames(cm.total) <- c('DA', 'DO_bg', 'DO_et', 'DO_mdb', 'DO_wda', 'DO_wdb')
+write.csv(cm.total, "Figures/Updated confusion matrices/Caret cms/Wet/cm_Species_ID_11c.csv")
 
 #sp loc special code
-cm.total = read.csv("Figures/raw confusion matrices/Location_test.csv", stringsAsFactors = T)
+cm.total = read.csv("Figures/raw confusion matrices/Species_ID_test.csv", stringsAsFactors = T)
 cm.total = as.matrix(cm.total)
 rownames(cm.total) <- cm.total[,1]
 cm.total = cm.total[,-1]
 cm.total = mapply(cm.total, FUN = as.numeric)
 cm.total = matrix(data = cm.total, ncol = 12, nrow = 12)
-rownames(cm.total) <- c('DA_es', 'DA_tm', 'DA_wdb', 'DO_bg', 'DO_es', 'DO_tm',
-                        'DO_mdb', 'DO_wda', 'DO_wdb', 'DX_es', 'DX_tm', 'DX_wdb')
-colnames(cm.total) <- c('DA_es', 'DA_tm', 'DA_wdb', 'DO_bg', 'DO_es', 'DO_tm',
-                        'DO_mdb', 'DO_wda', 'DO_wdb', 'DX_es', 'DX_tm', 'DX_wdb')
+rownames(cm.total) <- c('DA_es', 'DA_wdb', 'DO_es',
+                        'DO_wda', 'DO_wdb', 'DX_es', 'DX_wdb')
+
 
 
 #plot
 par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 corrplot(cm.total, is.corr = F, method = 'color', addCoef.col = 'darkorange2',
-         tl.srt = 0, tl.offset = 1.5, number.digits = 2, tl.cex = .75,
+         tl.srt = 0, tl.offset = 1.5, number.digits = 1, tl.cex = .75,
          tl.col = 'black', cl.pos = 'n', na.label = 'square', 
          na.label.col = 'white', addgrid.col = 'grey')
 mtext("Reference", side = 2, line = 0, cex = 1.5)
@@ -220,25 +220,27 @@ component1 = comp_to_spec(component1)
 component2 = comp_to_spec(component2)
 component3 = comp_to_spec(component3)
 
-par(mar = c(4,4,1,1), oma = c(1,1,1,1))
+dev.new(width = 6, height = 6, unit = 'in')
+
+par(mar = c(5,4,1,1), oma = c(1,1,1,1))
 plot(mean(component1), lwd = 2, lty = 1, col = rgb(1,0,0,1), 
-     cex.lab = 1.2, ylim = c(-.2, .15), ylab = "Loading Values", 
-     xlab = "Wavelength")
+     cex.lab = 1.5, ylim = c(-.2, .15), ylab = "Loading Values", 
+     xlab = "Wavelength (nm)")
 plot_quantile(component1, total_prob = 0.95, col = rgb(1, 0, 0, 0.25), border = FALSE, add = TRUE)
 plot_regions(component1, regions = default_spec_regions(), add = TRUE)
 plot(mean(component2), lwd = 1.5, lty = 1, col = rgb(0,0,1,1), add = TRUE)
 plot_quantile(component2, total_prob = 0.95, col = rgb(0, 0, 1, 0.25), border = FALSE, add = TRUE)
+
+abline(h = 0, lty = 2, lwd = 1.5)
+legend('bottomright',inset = .02, legend=c("Component 1", "Component 2"),
+              col=c(rgb(1,0,0,1), rgb(0,0,1,1)), lty=1, cex=0.8, bg ='white')
+
+
 plot(mean(component3), lwd = 1.5, lty = 1, col = "darkgreen", add = TRUE)
 plot_quantile(component3, total_prob = 0.95, col = rgb(0, .5, 0, 0.25), border = FALSE, add = TRUE)
-abline(h = 0, lty = 2, lwd = 1.5)
-legend('bottomright',inset = .02, legend=c("Component 1", "Component 2", "Component 3"),
-              col=c(rgb(1,0,0,1), rgb(0,0,1,1), "darkgreen"), lty=1, cex=0.8)
-
-
-
 
 #hybrid stuff
-hybrid.spec = spec_all[meta(spec_all)$Location == "DX",]
+hybrid.spec = spec_all[meta(spec_all)$Species_ID == "DX",]
 hybrids = as.matrix(hybrid.spec)
 hyb.meta = meta(hybrid.spec)
 
@@ -261,7 +263,7 @@ corrplot(hyb_cm, is.corr = F, method = 'color', addCoef.col = 'darkorange2',
          tl.srt = 0, tl.offset = 1.5, number.digits = 2, tl.cex = 1,
          tl.col = 'black', cl.pos = 'n', na.label = 'square', 
          na.label.col = 'white', addgrid.col = 'grey')
-mtext("Collection Location", side = 2, line = -10, cex = 1.5)
+mtext("Collection Species_ID", side = 2, line = -10, cex = 1.5)
 mtext("Predicted Population", side = 3, cex = 1.5, at = 2, line = 1)
 
 

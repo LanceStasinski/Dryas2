@@ -10,7 +10,6 @@ library(corrplot)
 library(matrixStats)
 library(naniar)
 
-
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 ################################################################################
@@ -18,23 +17,21 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 
 #data
-spec_all = readRDS("Clean-up/Clean_spectra/clean_all_w.rds")
-spec_all = spec_all[!meta(spec_all)$Species_ID == "NaN",]
-hyb = spec_all[meta(spec_all)$Species_ID == "DX",]
-hyb.df = as.data.frame(hyb)
-spec_all = spec_all[!meta(spec_all)$Species_ID == "DX",]
+spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
+spec_all = spec_all[!meta(spec_all)$Location == "NaN",]
+spec_all = spec_all[,2000:2400]
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
 #Resample by every 10 nm
-spec_small = resample(spec_all, seq(400, 2400, by = 10))
+spec_small = resample(spec_all, seq(2000, 2400, by = 10))
 spec_mat_s = as.matrix(spec_small)
 spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$Species_ID)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$Species_ID"] <- "Species_ID"
+spec_df = cbind(spec_df, spec_all.df$Location)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$Location"] <- "Location"
 
 
 #Partition Data
@@ -44,7 +41,7 @@ for(i in 1:10){
 set.seed(i)
 
 inTrain <- caret::createDataPartition(
-  y = spec_df$Species_ID,
+  y = spec_df$Location,
   p = .8,
   list = FALSE
 )
@@ -61,10 +58,10 @@ ctrl <- trainControl(
 
 
 plsFit <- train(
-  Species_ID ~ .,
+  Location ~ .,
   data = spec_df,
+  maxit = 8000,
   method = "pls",
-  preProc = c("center", "scale"),
   trControl = ctrl,
   tuneLength = 16)
 
@@ -88,10 +85,12 @@ assign(paste0('comp3_',i), comp3)
 plsClasses <- predict(plsFit, newdata = testing)
 
 #Confusion matrices
-cm = confusionMatrix(data = plsClasses, testing$Species_ID)
+cm = confusionMatrix(data = plsClasses, testing$Location)
 acc = cm$overall[1]
 assign(paste0('acc',i), acc)
 
+kap = cm$overall[2]
+assign(paste0("kap",i), kap)
 
 cm.m = as.matrix(cm)
 assign(paste0("cm", i), cm.m)
@@ -100,11 +99,15 @@ assign(paste0("cm", i), cm.m)
 acc = c(acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10)
 mean.acc = mean(acc)
 sd.acc = sd(acc)
+kap = c(kap1, kap2, kap3, kap4, kap5, kap6, kap7, kap8, kap9, kap10)
+mean.kap = mean(kap)
+sd.kap = sd(kap)
 
 mean.acc
 sd.acc
 
-
+mean.kap
+sd.kap
 
 #kappa
 
@@ -125,13 +128,15 @@ ksd = as.matrix(rowSds(k.total))
 klower = kavg - ksd
 khigher = kavg + ksd
 
+par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 plot(kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', xlab = 'Component', 
-     xlim = c(0,40), main = 'Kappa for Species_ID')
+     xlim = c(0,40), main = 'Kappa for Location')
 lines(klower, lty = 2, col = 'red')
 lines(khigher, lty = 2, col = 'red')
-abline(v = 16, col = 'blue')
+abline(v = 20, col = 'blue')
 legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
        pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
+
 #accuracy
 a1 = as.matrix(plsFit1$results$Accuracy)
 a2 = as.matrix(plsFit2$results$Accuracy)
@@ -151,10 +156,10 @@ alower = a.avg - a.sd
 ahigher = a.avg + a.sd
 
 plot(a.avg, type = 'p', pch = 16, cex = .75, ylab = 'Accuracy', xlab = 'Component', 
-     xlim = c(0,40), main = 'Accuracy for Species_ID')
+     xlim = c(0,40), main = 'Accuracy for Location')
 lines(alower, lty = 2, col = 'red')
 lines(ahigher, lty = 2, col = 'red')
-abline(v = 16, col = 'blue')
+abline(v = 18, col = 'blue')
 legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
        pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
 
@@ -162,36 +167,38 @@ legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component')
 
 cm.total = (cm1 + cm2 + cm3 + cm4 + cm5 + cm6 + cm7 + cm8+ cm9 + cm10)/10
 cm.total = t(cm.total)
+cm.total = cm.total/rowSums(cm.total)
 
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('DA', 'DO_bg', 'DO_et', 'DO_mdb', 'DO_wda', 'DO_wdb')
-colnames(cm.total) <- c('DA', 'DO_bg', 'DO_et', 'DO_mdb', 'DO_wda', 'DO_wdb')
-write.csv(cm.total, "Figures/Updated confusion matrices/Caret cms/Wet/cm_Species_ID_11c.csv")
+rownames(cm.total) <- c('DA', 'DO', 'DX')
+colnames(cm.total) <- c('DA', 'DO', 'DX')
+
+
+write.csv(cm.total, "Figures/cm_final/cm_Location.csv")
 
 #sp loc special code
-cm.total = read.csv("Figures/raw confusion matrices/Species_ID_test.csv", stringsAsFactors = T)
+cm.total = read.csv("Figures/cm_final/cm_Location.csv", stringsAsFactors = T)
 cm.total = as.matrix(cm.total)
 rownames(cm.total) <- cm.total[,1]
 cm.total = cm.total[,-1]
 cm.total = mapply(cm.total, FUN = as.numeric)
 cm.total = matrix(data = cm.total, ncol = 12, nrow = 12)
-rownames(cm.total) <- c('DA_es', 'DA_wdb', 'DO_es',
-                        'DO_wda', 'DO_wdb', 'DX_es', 'DX_wdb')
-
-
-
+rownames(cm.total) <- c('DA ES', 'DA TM', 'DA WDB','DO BG', 'DO ES', 'DO TM', 
+                        'DO MD', 'DO WDA', 'DO WDB', 'DX ES', 'DX TM', 'DX WDB')
+colnames(cm.total) <- c('DA ES', 'DA TM', 'DA WDB','DO BG', 'DO ES', 'DO TM', 
+                        'DO MD', 'DO WDA', 'DO WDB', 'DX ES', 'DX TM', 'DX WDB')
 #plot
-par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
-corrplot(cm.total, is.corr = F, method = 'color', addCoef.col = 'darkorange2',
-         tl.srt = 0, tl.offset = 1.5, number.digits = 1, tl.cex = .75,
+pdf(file= "Figures/cm_final/dry/test.pdf", width = 6, height = 6)
+par(mar = c(5.1, 4.1, 10, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
+corrplot(cm.total, is.corr = T, method = 'square', addCoef.col = 'darkorange2',
+         tl.srt = 90, tl.offset = 1.5, number.digits = 3, tl.cex = .75,
          tl.col = 'black', cl.pos = 'n', na.label = 'square', 
          na.label.col = 'white', addgrid.col = 'grey')
-mtext("Reference", side = 2, line = 0, cex = 1.5)
-mtext("Prediction", side = 3, cex = 1.5, at = 3.5, line = 4)
-
-
+mtext("Reference", side = 2, line = -5, cex = 1.5)
+mtext("Prediction", side = 3, cex = 1.5, at = 1.5, line = 4)
+dev.off()
 
 #loadings
 
@@ -240,7 +247,7 @@ plot(mean(component3), lwd = 1.5, lty = 1, col = "darkgreen", add = TRUE)
 plot_quantile(component3, total_prob = 0.95, col = rgb(0, .5, 0, 0.25), border = FALSE, add = TRUE)
 
 #hybrid stuff
-hybrid.spec = spec_all[meta(spec_all)$Species_ID == "DX",]
+hybrid.spec = spec_all[meta(spec_all)$Location == "DX",]
 hybrids = as.matrix(hybrid.spec)
 hyb.meta = meta(hybrid.spec)
 
@@ -263,7 +270,7 @@ corrplot(hyb_cm, is.corr = F, method = 'color', addCoef.col = 'darkorange2',
          tl.srt = 0, tl.offset = 1.5, number.digits = 2, tl.cex = 1,
          tl.col = 'black', cl.pos = 'n', na.label = 'square', 
          na.label.col = 'white', addgrid.col = 'grey')
-mtext("Collection Species_ID", side = 2, line = -10, cex = 1.5)
+mtext("Collection Location", side = 2, line = -10, cex = 1.5)
 mtext("Predicted Population", side = 3, cex = 1.5, at = 2, line = 1)
 
 

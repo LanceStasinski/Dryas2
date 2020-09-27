@@ -18,6 +18,7 @@ st_crs(sites) <- crs
 
 labels = read.csv('labels.csv')
 
+dev.new(width = 6, height = 6, unit = 'in')
 ggplot() + 
   geom_sf(data = alaska) + 
   geom_sf(data = sites, shape =19) +

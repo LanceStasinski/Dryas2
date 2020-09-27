@@ -1,24 +1,24 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1591273123195.000,
+    "created" : 1600298229023.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "332900926",
-    "id" : "13EE9BFF",
-    "lastKnownWriteTime" : 1596204032,
-    "last_content_update" : 1596204032844,
+    "hash" : "4265411820",
+    "id" : "D60F0236",
+    "lastKnownWriteTime" : 1601064979,
+    "last_content_update" : 1601064979924,
     "path" : "~/GitHub/Dryas2/01_clean_up.R",
     "project_path" : "01_clean_up.R",
     "properties" : {
-        "cursorPosition" : "68,29",
-        "scrollLine" : "0"
+        "cursorPosition" : "174,52",
+        "scrollLine" : "148"
     },
     "read_only" : false,
     "read_only_alternatives" : [
     ],
-    "relative_order" : 1,
+    "relative_order" : 2,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"

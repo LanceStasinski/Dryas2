@@ -89,7 +89,27 @@ plot_regions(hyb, regions = default_spec_regions(), add = TRUE)
 
 mtext("Mean spectra and 95% spectral quantile", outer=TRUE,  cex=1, line=-0.5)
 
+#Just mean reflectance
+setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
+spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
+ala = spec_all[meta(spec_all)$Species_ID == "DA",]
+oct = spec_all[meta(spec_all)$Species_ID == "DO",]
+hyb = spec_all[meta(spec_all)$Species_ID == "DX",]
+
+dev.new(width = 6, height = 6, unit = 'in')
+plot(mean(ala), lwd = 2, lty = 1, col = "#00B0F6", 
+     main = "Mean reflectance per species", cex.lab = 1.5, ylim = c(0, .85),
+     ylab = "Reflectance", xlab = "Wavelength (nm)")
+plot(mean(oct), lwd = 2, lty = 1, col = "#F8766D", add = T)
+plot(mean(hyb), lwd = 2, lty = 1, col = "black", add = T)
+plot_regions(ala, regions = default_spec_regions(), add = TRUE)
+legend('bottomright', inset = .02, legend = c("DA", "DO", "DX"),
+       col = c("#00B0F6", "#F8766D", "black"), lty = 1, lwd = 2, cex =.8,
+       bg = "white")
+
 #Populations
+setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
+spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 da = spec_all[meta(spec_all)$GenePop_ID == "DA",]
 et = spec_all[meta(spec_all)$GenePop_ID == "DO_et",]
 wdb = spec_all[meta(spec_all)$GenePop_ID == "DO_wdb",]
@@ -98,18 +118,18 @@ wda = spec_all[meta(spec_all)$GenePop_ID == "DO_wda",]
 bg = spec_all[meta(spec_all)$GenePop_ID == "DO_bgc",]
 
 dev.new(width = 6, height = 6, unit = 'in')
-par(mar=c(5,5,2,2))
-plot(mean(da), lwd = 2, lty = 1, col = "red", 
-     cex.lab = 1.5, ylim = c(0, .85), ylab = "Reflectance", xlab = 'Wavelength (nm)')
+plot(mean(da), lwd = 2, lty = 1, col = "#00B0F6", 
+     cex.lab = 1.5, ylim = c(0, .85), ylab = "Reflectance", 
+     xlab = 'Wavelength (nm)', main = "Mean reflecatnce per population")
 plot_regions(da, regions = default_spec_regions(), add = TRUE)
-plot(mean(et), lwd = 2, lty = 1, col = "green3", add = T)
-plot(mean(wdb), lwd = 2, lty = 1, col = "darkviolet", add = T)
-plot(mean(mdb), lwd = 2, lty = 1, col = "cyan2", add = T)
-plot(mean(wda), lwd = 2, lty = 1, col = "brown", add = T)
-plot(mean(bg), lwd = 2, lty = 1, col = "orange", add = T)
+plot(mean(et), lwd = 2, lty = 1, col = "#F8766D", add = T)
+plot(mean(wdb), lwd = 2, lty = 1, col = "#00BF7D", add = T)
+plot(mean(mdb), lwd = 2, lty = 1, col = "#A3A500", add = T)
+plot(mean(wda), lwd = 2, lty = 1, col = "springgreen", add = T)
+plot(mean(bg), lwd = 2, lty = 1, col = "#E76BF3", add = T)
 legend('bottomright',inset = .02, 
-       legend=c('DA', 'DO_bg', 'DO_et', 'DO_mdb', 'DO_wda', 'DO_wdb'),
-       col=c('red', 'orange', 'green3', 'cyan2', 'brown', 'darkviolet'), 
+       legend=c('DA', 'DO BG', 'DO ESTM', 'DO MD', 'DO WDA', 'DO WDB'),
+       col=c("#00B0F6", "#E76BF3", "#F8766D", "#A3A500", "springgreen", "#00BF7D"), 
        lty=1, lwd = 2, cex=0.8, bg = 'white')
 
 

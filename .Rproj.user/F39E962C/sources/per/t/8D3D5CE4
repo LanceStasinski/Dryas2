@@ -1,0 +1,25 @@
+{
+    "id": "8D3D5CE4",
+    "path": null,
+    "project_path": null,
+    "type": "object_explorer",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1604605820448.0,
+    "source_on_save": false,
+    "relative_order": 13,
+    "properties": {
+        "id": "c5f34cb105034dada89bb085e74e2b1b",
+        "name": "cm.list",
+        "title": "cm.list"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7307491043415436322,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1604605820448,
+    "read_only": false,
+    "read_only_alternatives": []
+}

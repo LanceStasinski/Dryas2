@@ -1,26 +1,25 @@
 {
-    "collab_server" : "",
-    "contents" : "",
-    "created" : 1600369872008.000,
-    "dirty" : true,
-    "encoding" : "UTF-8",
-    "folds" : "",
-    "hash" : "108702419",
-    "id" : "F326597D",
-    "lastKnownWriteTime" : 1600978006,
-    "last_content_update" : 1601043673369,
-    "path" : "~/GitHub/Dryas2/caret_plsda.R",
-    "project_path" : "caret_plsda.R",
-    "properties" : {
-        "cursorPosition" : "19,58",
-        "scrollLine" : "0",
-        "tempName" : "Untitled1"
+    "id": "F326597D",
+    "path": "~/GitHub/Dryas2/caret_plsda.R",
+    "project_path": "caret_plsda.R",
+    "type": "r_source",
+    "hash": "3103385930",
+    "contents": "",
+    "dirty": false,
+    "created": 1600369872008.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "116,0",
+        "scrollLine": "100",
+        "tempName": "Untitled1"
     },
-    "read_only" : false,
-    "read_only_alternatives" : [
-    ],
-    "relative_order" : 2,
-    "source_on_save" : false,
-    "source_window" : "",
-    "type" : "r_source"
+    "folds": "",
+    "lastKnownWriteTime": 1604783313,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1604783313832,
+    "read_only": false,
+    "read_only_alternatives": []
 }

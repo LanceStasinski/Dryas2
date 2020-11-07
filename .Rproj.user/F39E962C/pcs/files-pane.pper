@@ -1,9 +1,9 @@
 {
-    "path" : "~/GitHub/Dryas2",
-    "sortOrder" : [
+    "path": "~/GitHub/Dryas2",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }

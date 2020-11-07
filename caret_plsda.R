@@ -9,7 +9,7 @@ library(mlbench)
 library(corrplot)
 library(matrixStats)
 library(naniar)
-
+library(rlist)
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 ################################################################################
@@ -19,12 +19,13 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 spec_all = spec_all[!meta(spec_all)$Location == "NaN",]
-spec_all = spec_all[,2000:2400]
+
+
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
 #Resample by every 10 nm
-spec_small = resample(spec_all, seq(2000, 2400, by = 10))
+spec_small = resample(spec_all, seq(400, 2400, by = 10))
 spec_mat_s = as.matrix(spec_small)
 spec_mat = spec_mat_s
 
@@ -33,16 +34,20 @@ spec_df = as.data.frame(spec_mat)
 spec_df = cbind(spec_df, spec_all.df$Location)
 colnames(spec_df)[colnames(spec_df) == "spec_all.df$Location"] <- "Location"
 
+#Set number of components to be used
+ncomp = 60
 
 #Partition Data
+accuracy <- c()
+kappa <- c()
+k.fit <- matrix(nrow = ncomp)
+cm.list <- list()
 
-for(i in 1:10){
-
-set.seed(i)
+for(i in 1:100){
 
 inTrain <- caret::createDataPartition(
   y = spec_df$Location,
-  p = .8,
+  p = .7,
   list = FALSE
 )
 
@@ -59,49 +64,40 @@ ctrl <- trainControl(
 
 plsFit <- train(
   Location ~ .,
-  data = spec_df,
-  maxit = 8000,
+  data = training,
+  maxit = 10000,
   method = "pls",
   trControl = ctrl,
-  tuneLength = 16)
-
-assign(paste0('plsFit', i), plsFit)
-
-loadings = plsFit$finalModel$loadings
-loadings.m = as.matrix(loadings)
-class(loadings.m) <- 'matrix'
-assign(paste0('lm',i), loadings.m)
-
-comp1 = loadings.m[,1]
-assign(paste0('comp1_',i), comp1)
-comp2 = loadings.m[,2]
-assign(paste0('comp2_',i), comp2)
-comp3 = loadings.m[,3]
-assign(paste0('comp3_',i), comp3)
+  tuneLength = ncomp)
 
 
+
+#objects for determining n components
+k = assign(paste0('k', i), as.matrix(plsFit$results$Kappa))
+k.fit <- cbind(k.fit, get('k'))
 
 #test model
 plsClasses <- predict(plsFit, newdata = testing)
 
-#Confusion matrices
-cm = confusionMatrix(data = plsClasses, testing$Location)
-acc = cm$overall[1]
-assign(paste0('acc',i), acc)
+#objects to assess accuracy 
+cm = confusionMatrix(data = plsClasses, as.factor(testing$Location))
+cm.m = assign(paste0("cm", i), as.matrix(cm))
+cm.list <- list.append(cm.list, get('cm.m'))
 
-kap = cm$overall[2]
-assign(paste0("kap",i), kap)
+ac <- assign(paste0('acc',i), cm$overall[1])
+accuracy <- append(accuracy, get('ac'))
 
-cm.m = as.matrix(cm)
-assign(paste0("cm", i), cm.m)
+kap = assign(paste0("kap",i), cm$overall[2])
+kappa <- append(kappa, get('kap'))
+
 }
 
-acc = c(acc1, acc2, acc3, acc4, acc5, acc6, acc7, acc8, acc9, acc10)
-mean.acc = mean(acc)
-sd.acc = sd(acc)
-kap = c(kap1, kap2, kap3, kap4, kap5, kap6, kap7, kap8, kap9, kap10)
-mean.kap = mean(kap)
-sd.kap = sd(kap)
+#accuracy and kappa
+mean.acc = mean(accuracy)
+sd.acc = sd(accuracy)
+
+mean.kap = mean(kappa)
+sd.kap = sd(kappa)
 
 mean.acc
 sd.acc
@@ -109,74 +105,38 @@ sd.acc
 mean.kap
 sd.kap
 
-#kappa
+#kappa (for choosing components)
 
-k1 = as.matrix(plsFit1$results$Kappa)
-k2 = as.matrix(plsFit2$results$Kappa)
-k3 = as.matrix(plsFit3$results$Kappa)
-k4 = as.matrix(plsFit4$results$Kappa)
-k5 = as.matrix(plsFit5$results$Kappa)
-k6 = as.matrix(plsFit6$results$Kappa)
-k7 = as.matrix(plsFit7$results$Kappa)
-k8 = as.matrix(plsFit8$results$Kappa)
-k9 = as.matrix(plsFit9$results$Kappa)
-k10 = as.matrix(plsFit10$results$Kappa)
-k.total = Reduce(cbind, list(k1,k2,k3,k4,k5,k6,k7,k8,k9,k10))
-
+k.total = k.fit[,-1]
 kavg = as.matrix(rowMeans(k.total))
 ksd = as.matrix(rowSds(k.total))
+
 klower = kavg - ksd
 khigher = kavg + ksd
-
+x = 1:60
 par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
-plot(kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', xlab = 'Component', 
-     xlim = c(0,40), main = 'Kappa for Location')
-lines(klower, lty = 2, col = 'red')
-lines(khigher, lty = 2, col = 'red')
-abline(v = 20, col = 'blue')
-legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
-       pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
+plot(x, kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', xlab = 'Component', 
+     xlim = c(1,60), main = 'Kappa for Location')
+arrows(x, klower, x, khigher,length=0.05, angle=90, code=3)
+abline(v = 32, col = 'blue')
+abline(h = max(klower), col = "Red")
+legend('bottomright', legend = c('Mean', 'Maximum kappa','Best component'), 
+       pch = c(16, NA, NA), lty = c(NA, 1, 1), col = c('black', 'red', 'blue'))
 
-#accuracy
-a1 = as.matrix(plsFit1$results$Accuracy)
-a2 = as.matrix(plsFit2$results$Accuracy)
-a3 = as.matrix(plsFit3$results$Accuracy)
-a4 = as.matrix(plsFit4$results$Accuracy)
-a5 = as.matrix(plsFit5$results$Accuracy)
-a6 = as.matrix(plsFit6$results$Accuracy)
-a7 = as.matrix(plsFit7$results$Accuracy)
-a8 = as.matrix(plsFit8$results$Accuracy)
-a9 = as.matrix(plsFit9$results$Accuracy)
-a10 = as.matrix(plsFit10$results$Accuracy)
-a.total = Reduce(cbind, list(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10))
-
-a.avg = as.matrix(rowMeans(a.total))
-a.sd = as.matrix(rowSds(a.total))
-alower = a.avg - a.sd
-ahigher = a.avg + a.sd
-
-plot(a.avg, type = 'p', pch = 16, cex = .75, ylab = 'Accuracy', xlab = 'Component', 
-     xlim = c(0,40), main = 'Accuracy for Location')
-lines(alower, lty = 2, col = 'red')
-lines(ahigher, lty = 2, col = 'red')
-abline(v = 18, col = 'blue')
-legend('bottomright', legend = c('Mean', 'Standard deviation', 'Best component'), 
-       pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'))
 
 #plot confusion matrix
-
-cm.total = (cm1 + cm2 + cm3 + cm4 + cm5 + cm6 + cm7 + cm8+ cm9 + cm10)/10
+cm.total = Reduce('+', cm.list)/100
 cm.total = t(cm.total)
 cm.total = cm.total/rowSums(cm.total)
 
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('DA', 'DO', 'DX')
-colnames(cm.total) <- c('DA', 'DO', 'DX')
+rownames(cm.total) <- c('DA', 'BG', 'ESTM', 'MD', 'WDA', 'WDB')
+colnames(cm.total) <- c('DA', 'BG', 'ESTM', 'MD', 'WDA', 'WDB')
 
 
-write.csv(cm.total, "Figures/cm_final/cm_Location.csv")
+write.csv(cm.total, "Figures/cm_final/cm_Locationmean.csv")
 
 #sp loc special code
 cm.total = read.csv("Figures/cm_final/cm_Location.csv", stringsAsFactors = T)
@@ -191,14 +151,18 @@ colnames(cm.total) <- c('DA ES', 'DA TM', 'DA WDB','DO BG', 'DO ES', 'DO TM',
                         'DO MD', 'DO WDA', 'DO WDB', 'DX ES', 'DX TM', 'DX WDB')
 #plot
 pdf(file= "Figures/cm_final/dry/test.pdf", width = 6, height = 6)
-par(mar = c(5.1, 4.1, 10, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
+
+dev.new(width = 6, height = 8, unit = 'in')
+
+par(mar = c(1,2,4,1), oma = c(1,1,3,1))
 corrplot(cm.total, is.corr = T, method = 'square', addCoef.col = 'darkorange2',
-         tl.srt = 90, tl.offset = 1.5, number.digits = 3, tl.cex = .75,
+         tl.srt = 0, tl.offset = 1, number.digits = 4, tl.cex = 1.5, 
+         cl.cex = 1.5,
          tl.col = 'black', cl.pos = 'n', na.label = 'square', 
          na.label.col = 'white', addgrid.col = 'grey')
-mtext("Reference", side = 2, line = -5, cex = 1.5)
-mtext("Prediction", side = 3, cex = 1.5, at = 1.5, line = 4)
-dev.off()
+mtext("Reference", side = 2, line = -4, cex = 2.5)
+mtext("Prediction", side = 3, cex = 2.5, at = 3.5, line = 5)
+
 
 #loadings
 

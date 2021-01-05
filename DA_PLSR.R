@@ -24,10 +24,7 @@ spectra.df = as.data.frame(spectra)
 spectra.m = as.matrix(spectra)
 spec_df = as.data.frame(spectra.m)
 spec_df = cbind(spec_df, spectra.df$DA)
-spec_df = cbind(spec_df, spectra.df$Location)
-colnames(spec_df)[colnames(spec_df) == "spectra.df$DA"] <- "DA"
-colnames(spec_df)[colnames(spec_df) == "spectra.df$Location"] <- "Location"
-spec_df$Location <- as.factor(spec_df$Location)
+colnames(spec_df)[colnames(spec_df) == 'spectra.df$DA'] <- 'DA'
 
 spec_df2 = cbind(spec_df, spectra.df$Species_ID)
 colnames(spec_df2)[colnames(spec_df2) == "spectra.df$Species_ID"] <- "Species_ID"
@@ -38,10 +35,17 @@ colnames(spec_df2)[colnames(spec_df2) == "spectra.df$Name"] <- 'Name'
 ################################################################################
 #Training and testing sets - all
 ################################################################################
-for( i in 1:10){
-set.seed(i)
+ncomp = 23 
+
+rmse.fit <- matrix(nrow = ncomp)
+error.list <- c()
+r2 <- c()
+
+
+for( i in 1:100){
+
 training.samples <- 
-  createDataPartition(spec_df$DA, p = 0.8, list = FALSE)
+  createDataPartition(spec_df$DA, p = 0.7, list = FALSE)
 
 train.data  <- spec_df[training.samples, ]
 test.data <- spec_df[-training.samples, ]
@@ -50,63 +54,56 @@ test.data <- spec_df[-training.samples, ]
 
 plsFit <- train(
   DA~., data = train.data, method = "pls",
-  scale = TRUE,
-  trControl = trainControl("cv", number = 30),
-  tuneLength = 32
+  trControl = trainControl("repeatedcv", number = 10, repeats = 3),
+  tuneLength = ncomp
 )
 
-assign(paste0('plsFit', i), plsFit)
+#objects for determining n components
+rmse = assign(paste0('rmse', i), as.matrix(plsFit$results$RMSE))
+rmse.fit <- cbind(rmse.fit, get('rmse'))
 
 # Make predictions
 predictions <- plsFit %>% predict(test.data)
 # Model performance metrics
-  rmse = caret::RMSE(predictions, test.data[,"DA"])
-  assign(paste0('rmse', i), rmse)
-  Rsquare = caret::R2(predictions, test.data[,"DA"])
-  assign(paste0('Rsquare', i), Rsquare)
+error = assign(paste0('error', i), caret::RMSE(predictions, test.data[,"DA"]))
+error.list <- append(error.list, get('error'))
+
+Rsquare = assign(paste0('Rsquare', i), caret::R2(predictions, test.data[,"DA"]))
+r2 <- append(r2, get('Rsquare'))
+
 }
 
 
 ################################################################################
 #Calculate components
 ################################################################################
-er1 = as.matrix(plsFit1$results$RMSE)
-er2 = as.matrix(plsFit2$results$RMSE)
-er3 = as.matrix(plsFit3$results$RMSE)
-er4 = as.matrix(plsFit4$results$RMSE)
-er5 = as.matrix(plsFit5$results$RMSE)
-er6 = as.matrix(plsFit6$results$RMSE)
-er7 = as.matrix(plsFit7$results$RMSE)
-er8 = as.matrix(plsFit8$results$RMSE)
-er9 = as.matrix(plsFit9$results$RMSE)
-er10 = as.matrix(plsFit10$results$RMSE)
-er.total = Reduce(cbind, list(er1,er2,er3,er4,er5,er6,er7,er8,er9,er10))
 
-er.avg = as.matrix(rowMeans(er.total))
-er.sd = as.matrix(rowSds(er.total))
-er.lower = er.avg - er.sd
-er.higher = er.avg + er.sd
+rmse.total = rmse.fit[,-1]
+r.avg = as.matrix(rowMeans(rmse.total))
+r.sd = as.matrix(rowSds(rmse.total))
+
+r.lower = r.avg - r.sd
+r.higher = r.avg + r.sd
+x = 1:40
+par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
+plot(x, r.avg, type = 'p', pch = 16, cex = .75, ylab = 'RMSE', xlab = 'Component', 
+     xlim = c(1,60), main = 'RMSE by component')
+arrows(x, r.lower, x, r.higher,length=0.05, angle=90, code=3)
+abline(v = 23, col = 'blue')
+abline(h = min(r.higher), col = "Red")
+legend('topright', legend = c('Mean', 'Minimum RMSE','Best component'), 
+       pch = c(16, NA, NA), lty = c(NA, 1, 1), col = c('black', 'red', 'blue'))
 
 
-dev.new(width = 6, height = 6, unit = 'in')
-plot(er.avg, type = 'p', pch = 16, cex = .75, ylab = 'RMSE', xlab = 'Component', 
-     xlim = c(0,40), main = 'RMSE vs Component')
-lines(er.lower, lty = 2, col = 'red')
-lines(er.higher, lty = 2, col = 'red')
-abline(v = 14, col = 'blue')
-legend('topright', legend = c('Mean', 'Standard deviation', 'Best component'), 
-       pch = c(16, NA, NA), lty = c(NA, 2, 1), col = c('black', 'red', 'blue'),
-       bg = 'white')
 ################################################################################
 #Calculate error
 ################################################################################
-rmse = c(rmse1, rmse2, rmse3, rmse4, rmse5, rmse6, rmse7, rmse8, rmse9, rmse10 )
-avg.rmse = mean(rmse)
-sd.rmse = sd(rmse)
+
+avg.rmse = mean(error.list)
+sd.rmse = sd(error.list)
 avg.rmse
 sd.rmse 
-r2 = c(Rsquare1, Rsquare2, Rsquare3, Rsquare4, Rsquare5, Rsquare6, Rsquare7,
-       Rsquare8, Rsquare9, Rsquare10)
+
 avg.r2 = mean(r2)
 sd.r2 = sd(r2)
 avg.r2
@@ -118,9 +115,8 @@ sd.r2
 ################################################################################
 
 
-set.seed(2)
 training.samples <- 
-  createDataPartition(spec_df$DA, p = 0.8, list = FALSE)
+  createDataPartition(spec_df$DA, p = 0.7, list = FALSE)
 
 train.data  <- spec_df[training.samples, ]
 test.data <- spec_df[-training.samples, ]
@@ -130,12 +126,17 @@ test.plot$color = "black"
 test.plot$color[test.plot$Species_ID == "DO"]="red"
 test.plot$color[test.plot$Species_ID == "DA"]="blue"
 
+test.hyp = test.plot[test.plot$Species_ID == 'DX',]
+remove.in.hyb = setdiff(test.data, test.hyp[,1:2003])
+test.hyb2 = test.data[!rownames(test.data) %in% remove.in.hyb,]
+
+
 
 plsFit <- train(
   DA~., data = train.data, method = "pls",
   scale = TRUE,
-  trControl = trainControl("cv", number = 30),
-  tuneLength = 32
+  trControl = trainControl("repeatedcv", number = 10, repeats = 3),
+  tuneLength = 23
 )
 
 

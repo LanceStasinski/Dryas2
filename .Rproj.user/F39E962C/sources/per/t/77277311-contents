@@ -78,6 +78,7 @@ grid.text("Genetic distance", .015, .5, rot=90, gp=gpar(fontsize=16))
 library(fpc)
 library(cluster)
 
+#spectra
 pam = pamk(spec.dist)
 pam #2 clusters recommended
 
@@ -87,11 +88,21 @@ plot(fit.d, type = "rectangle", ylab = "Height")
 plot(fit, hang = -1, cex = .5)
 
 
-colors = c("red", "blue", 'brown', 'green', 'black')
-clus2 = cutree(fit, 5)
+colors = c("red", "blue")
+clus2 = cutree(fit, 2)
 plot(as.phylo(fit), type = "fan", tip.color = colors[clus2],
      label.offset = .1, cex = 0.7)
 
+#genetic
+pamg = pamk(tree.dist)
+pamg
+
+fit.g = hclust(tree.dist2, method ='ward.D2')
+fit.g2 = as.dendrogram(fit.g)
+
+clus.g = cutree(fit.g, 2)
+plot(as.phylo(fit.g), type = 'fan', tip.color = colors[clus.g],
+     label.offset =0, cex = .7)
 
 
 

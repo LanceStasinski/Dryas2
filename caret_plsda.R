@@ -35,13 +35,16 @@ spec_df = cbind(spec_df, spec_all.df$Location)
 colnames(spec_df)[colnames(spec_df) == "spec_all.df$Location"] <- "Location"
 
 #Set number of components to be used
-ncomp = 60
+ncomp = 32
 
 #Partition Data
 accuracy <- c()
 kappa <- c()
 k.fit <- matrix(nrow = ncomp)
 cm.list <- list()
+loadings.c1 <- matrix(nrow = 201)
+loadings.c2 <- matrix(nrow = 201)
+loadings.c3 <- matrix(nrow = 201)
 
 for(i in 1:100){
 
@@ -75,6 +78,16 @@ plsFit <- train(
 #objects for determining n components
 k = assign(paste0('k', i), as.matrix(plsFit$results$Kappa))
 k.fit <- cbind(k.fit, get('k'))
+
+#loadings
+c1 = assign(paste0('c1',i), as.matrix(plsFit$finalModel$loadings[,1]))
+loadings.c1 <- cbind(loadings.c1, get('c1'))
+
+c2 = assign(paste0('c2',i), as.matrix(plsFit$finalModel$loadings[,2]))
+loadings.c2 <- cbind(loadings.c2, get('c2'))
+
+c3 = assign(paste0('c3',i), as.matrix(plsFit$finalModel$loadings[,3]))
+loadings.c3 <- cbind(loadings.c3, get('c3'))
 
 #test model
 plsClasses <- predict(plsFit, newdata = testing)
@@ -118,7 +131,7 @@ par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 plot(x, kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', xlab = 'Component', 
      xlim = c(1,60), main = 'Kappa for Location')
 arrows(x, klower, x, khigher,length=0.05, angle=90, code=3)
-abline(v = 32, col = 'blue')
+abline(v = 38, col = 'blue')
 abline(h = max(klower), col = "Red")
 legend('bottomright', legend = c('Mean', 'Maximum kappa','Best component'), 
        pch = c(16, NA, NA), lty = c(NA, 1, 1), col = c('black', 'red', 'blue'))
@@ -132,68 +145,56 @@ cm.total = cm.total/rowSums(cm.total)
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('DA', 'BG', 'ESTM', 'MD', 'WDA', 'WDB')
-colnames(cm.total) <- c('DA', 'BG', 'ESTM', 'MD', 'WDA', 'WDB')
+rownames(cm.total) <- c('DA', 'DO', 'DX')
+colnames(cm.total) <- c('DA', 'DO', 'DX')
 
 
-write.csv(cm.total, "Figures/cm_final/cm_Locationmean.csv")
+write.csv(cm.total, "Figures/cm_final/cm_Location_mean.csv")
 
 #sp loc special code
-cm.total = read.csv("Figures/cm_final/cm_Location.csv", stringsAsFactors = T)
+cm.total = read.csv("Figures/cm_final/cm_sp_loc_mean.csv", stringsAsFactors = T)
 cm.total = as.matrix(cm.total)
 rownames(cm.total) <- cm.total[,1]
 cm.total = cm.total[,-1]
 cm.total = mapply(cm.total, FUN = as.numeric)
 cm.total = matrix(data = cm.total, ncol = 12, nrow = 12)
-rownames(cm.total) <- c('DA ES', 'DA TM', 'DA WDB','DO BG', 'DO ES', 'DO TM', 
-                        'DO MD', 'DO WDA', 'DO WDB', 'DX ES', 'DX TM', 'DX WDB')
-colnames(cm.total) <- c('DA ES', 'DA TM', 'DA WDB','DO BG', 'DO ES', 'DO TM', 
-                        'DO MD', 'DO WDA', 'DO WDB', 'DX ES', 'DX TM', 'DX WDB')
+rownames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+
+colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+
 #plot
 pdf(file= "Figures/cm_final/dry/test.pdf", width = 6, height = 6)
 
 dev.new(width = 6, height = 8, unit = 'in')
 
+cols = colorRampPalette(c('#f5f5f5', '#b35806'))
+
 par(mar = c(1,2,4,1), oma = c(1,1,3,1))
-corrplot(cm.total, is.corr = T, method = 'square', addCoef.col = 'darkorange2',
-         tl.srt = 0, tl.offset = 1, number.digits = 4, tl.cex = 1.5, 
-         cl.cex = 1.5,
+corrplot(cm.total, is.corr = T, method = 'square', col = cols(10), addCoef.col = '#542788',
+         tl.srt = 0, tl.offset = 1, number.digits = 2, tl.cex = 1.2, 
+         cl.cex = 1, number.cex = 1.5,
          tl.col = 'black', cl.pos = 'n', na.label = 'square', 
          na.label.col = 'white', addgrid.col = 'grey')
-mtext("Reference", side = 2, line = -4, cex = 2.5)
-mtext("Prediction", side = 3, cex = 2.5, at = 3.5, line = 5)
+mtext("Reference", side = 2, line = 2, cex = 2.5)
+mtext("Prediction", side = 3, cex = 2.5, at = 3.5, line = 6)
 
 
 #loadings
-
-component1 = Reduce(cbind, 
-                    list(comp1_1, comp1_2, comp1_3, comp1_4, comp1_5, comp1_6, 
-                         comp1_7, comp1_8, comp1_9, comp1_10))
-
-component2 = Reduce(cbind, 
-                    list(comp2_1, comp2_2, comp2_3, comp2_4, comp2_5, comp2_6, 
-                         comp2_7, comp2_8, comp2_9, comp2_10))
-
-component3 = Reduce(cbind, 
-                    list(comp3_1, comp3_2, comp3_3, comp3_4, comp3_5, comp3_6, 
-                         comp3_7, comp3_8, comp3_9, comp3_10))
+comp_to_spec = function(x){
+  t.comp = t(x)
+  colnames(t.comp) <- seq(400,2400, by = 10)
+  s.comp = as_spectra(t.comp)
+}
 
 
 #plot loadings
 
-comp_to_spec = function(x){
-  t.comp = t(x)
-  colnames(t.comp) <- seq(400,2400, by = 10)
-  s.comp = as.spectra(t.comp)
-}
+component1 = comp_to_spec(loadings.c1)
+component2 = comp_to_spec(loadings.c2)
+component3 = comp_to_spec(loadings.c3)
 
-component1 = comp_to_spec(component1)
-component2 = comp_to_spec(component2)
-component3 = comp_to_spec(component3)
 
-dev.new(width = 6, height = 6, unit = 'in')
-
-par(mar = c(5,4,1,1), oma = c(1,1,1,1))
+par(mar = c(5,4,1,1), oma = c(1,1,1,1), mfrow = c(1,1))
 plot(mean(component1), lwd = 2, lty = 1, col = rgb(1,0,0,1), 
      cex.lab = 1.5, ylim = c(-.2, .15), ylab = "Loading Values", 
      xlab = "Wavelength (nm)")
@@ -203,8 +204,8 @@ plot(mean(component2), lwd = 1.5, lty = 1, col = rgb(0,0,1,1), add = TRUE)
 plot_quantile(component2, total_prob = 0.95, col = rgb(0, 0, 1, 0.25), border = FALSE, add = TRUE)
 
 abline(h = 0, lty = 2, lwd = 1.5)
-legend('bottomright',inset = .02, legend=c("Component 1", "Component 2"),
-              col=c(rgb(1,0,0,1), rgb(0,0,1,1)), lty=1, cex=0.8, bg ='white')
+legend('bottomright',inset = .02, legend=c("Component 1", "Component 2", 'Component 3'),
+              col=c(rgb(1,0,0,1), rgb(0,0,1,1), rgb(0,1,0,1)), lty=1, cex=0.8, bg ='white')
 
 
 plot(mean(component3), lwd = 1.5, lty = 1, col = "darkgreen", add = TRUE)

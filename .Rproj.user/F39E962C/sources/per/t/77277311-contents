@@ -1,3 +1,8 @@
+#Compare spectral distance to phylogenetic distance
+################################################################################
+#Set up
+################################################################################
+
 library(spectrolab)
 library(ape)
 library(phytools)
@@ -7,7 +12,6 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 # Distance matrix
 ################################################################################
-
 #spectra
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 spec_all = spec_all[!meta(spec_all)$Species_ID == "DX",]
@@ -15,7 +19,6 @@ spec_all = normalize(spec_all)
 spec.mean = aggregate(spec_all,
                       by = meta(spec_all)$Name, 
                       mean, try_keep_txt(mean))
-
 
 spec.mean = as.matrix(spec.mean)
 
@@ -42,13 +45,10 @@ spec.mean = spec.mean[!rownames(spec.mean) == "tmi43_DA",]
 #reorder spec matrix to match order of genetic matrix
 spec.mean = spec.mean[row.names(tree.dist),,drop = F]
 
-#calculate distance
+#calculate spectral distance
 spec.dist = as.matrix(dist(spec.mean,
                            method = "manhattan", 
                            diag = T, upper = T))
-
-
-
 
 ################################################################################
 #compare matrices
@@ -60,7 +60,7 @@ mtest = vegan::mantel(spec.dist2, tree.dist2, method = "spearman",
                       permutations = 9999)
 mtest
 ################################################################################
-#plot
+#plot spectral distance vs genetic distance
 ################################################################################
 library(hexbin)
 library(grid)
@@ -73,7 +73,7 @@ grid.text("log10(Spectral distance)", .45, .07, gp=gpar(fontsize=16))
 grid.text("Genetic distance", .015, .5, rot=90, gp=gpar(fontsize=16))
 
 ################################################################################
-#heirarchical clustering
+#heirarchical clustering - not used in paper
 ################################################################################
 library(fpc)
 library(cluster)
@@ -104,9 +104,6 @@ clus.g = cutree(fit.g, 2)
 plot(as.phylo(fit.g), type = 'fan', tip.color = colors[clus.g],
      label.offset =0, cex = .7)
 
-
-
-
 groups = cutree(fit, k=2)
 rect.hclust(fit, k=5, border = 'red', hang)
 
@@ -115,7 +112,5 @@ fitk = kmeans(spec.dist, 4)
 clusplot(spec.dist, fitk$cluster, color=TRUE, shade=TRUE,
          labels=2, lines=0)
 
-################################################################################
-#MRPP
-################################################################################
+
 

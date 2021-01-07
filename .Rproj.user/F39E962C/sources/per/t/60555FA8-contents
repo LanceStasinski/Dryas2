@@ -1,14 +1,16 @@
+#Morphological trait analysis and plotting
+################################################################################
+#Set up
+################################################################################
 
 library(corrplot)
 library(plyr)
 library(vegan)
 library(ggplot2)
 library(ggpubr)
-#Morphology analysis
-
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
-leaf = read.csv('morphology.csv', stringsAsFactors = F)
+leaf = read.csv('morphology_2.csv', stringsAsFactors = F)
 values = c("parent",'parent','hybrid')
 leaf$Species = as.factor(leaf$Species)
 leaf$taxa <- values[leaf$Species]
@@ -47,7 +49,7 @@ traits = Reduce(cbind, list(gm,rs,l,at))
 summary(manova(traits ~ Species, data = nodo))
 
 #hybrid vs DO
-noda = leaf[!leaf$Species == 'DO',]
+noda = leaf[!leaf$Species == 'DA',]
 gm = noda$Glandular.Midvien
 rs = noda$Rusty.Scales
 l = noda$Length
@@ -95,63 +97,43 @@ rownames(hyb.c) <- c('Glands', 'Scales', 'Length', 'Tomentum')
 ################################################################################
 #Plot traits by species
 ################################################################################
-#normal plots
-glands = table(leaf$Species, leaf$Glandular.Midvien)
-scales = table(leaf$Species, leaf$Rusty.Scales)
-adaxial = table(leaf$Species, leaf$Adaxial.tomentum)
-
-par(mfrow = c(3,2))
-boxplot(leaf$Length~leaf$Species, ylab = 'Species', xlab = 'Leaf Length (mm)',
-        main = 'Leaf length', col = c("#00B0F6","#F8766D",'gray30'), 
-        horizontal = T, las = 1)
-barplot(glands, main="Glandular midvein",
-        xlab= NA, names = c("Absent", "Present"),
-        ylab = "Counts", col=c("#00B0F6","#F8766D",'gray30'), beside=F)
-barplot(scales, main = "Midvein scales", 
-        xlab = NA, names = c("Absent", "Present"),
-        ylab = "Counts", col = c("#00B0F6", "#F8766D", "gray30"), beside=TRUE)
-barplot(adaxial, main = "Adaxial tomentum", 
-        xlab = NA, names = c('Sparse', 'Moderate', 'Dense'),
-        ylab = "Counts", col = c("#00B0F6", "#F8766D", "gray30"), beside=TRUE)
-corrplot(p.c, type = "lower", diag = F, cl.cex = 1, addCoef.col = 'black',
-         tl.col = 'black', cl.length = 5)
-mtext('Parent', side = 2, line = -2, at = 2, cex = 1.15)
-corrplot(hyb.c, type = 'lower', diag = F, cl.cex = 1, addCoef.col = 'black',
-         tl.col = 'black', cl.length = 5)
-mtext('Hybrid', side = 2, line = -2, at = 2, cex = 1.15)
-
-#corplots
-cols = colorRampPalette(c('#01665e','#35978f','#80cdc1','#c7eae5',
-                          '#f5f5f5','#f6e8c3','#dfc27d','#bf812d','#8c510a'))
-
-par(mfrow = c(1,2))
-corrplot(p.c, type = "lower", diag = F, cl.cex = 1, addCoef.col = 'black',
-         tl.col = 'black', cl.length = 5, col = cols(10))
-mtext('Parent', side = 2, line = -2, at = 2, cex = 1.5)
-corrplot(hyb.c, type = 'lower', diag = F, cl.cex = 1, addCoef.col = 'black',
-         tl.col = 'black', cl.length = 5, col = cols(10))
-mtext('Hybrid', side = 2, line = -2, at = 2, cex = 1.5)
-
-
-#ggplot
 #length
 bp = ggplot(leaf, aes(x = Species, y = Length))+ ylab('Length (mm)')+
         geom_boxplot() +
         ggtitle('Leaf Length')+
         theme(plot.title = element_text(hjust = .5))
 
+#Midvein total
+midvein = ggplot(leaf,
+               aes(x = factor(Species,
+                              levels = c('DA', 'DO', 'DX')),
+                   fill = factor(Midvein,
+                                 levels = c(0,1,2,3),
+                                 labels = c('Neither', 'Glands', 'Scales',
+                                            'Glands + Scales')))) +
+  geom_bar(position = 'fill') +
+  scale_y_continuous(breaks = seq(0,1,.2)) +
+  scale_fill_grey(start = .9, end = .1) +
+  labs(y = "Proportion",
+       fill = 'Glands or Scales',
+       x = 'Species') +
+  theme_minimal()+
+  ggtitle('Abaxial Midvein Morphology')+
+  theme(plot.title = element_text(hjust = .5))
+
 #Midvein Glands
 gland = ggplot(leaf,
        aes(x = factor(Species,
                       levels = c('DA', 'DO', 'DX')),
            fill = factor(Glandular.Midvien,
-                         levels = c(0,1),
-                         labels = c('Absent', 'Present')))) +
+                         levels = c(0,1,2),
+                         labels = c('No Glands', 'Glands', 
+                                    'Glands + Scales')))) +
   geom_bar(position = 'fill') +
   scale_y_continuous(breaks = seq(0,1,.2)) +
   scale_fill_grey(start = .8, end = .2) +
   labs(y = "Proportion",
-       fill = 'Glands',
+       fill = '',
        x = 'Species') +
   theme_minimal()+
   ggtitle('Midvein Glandular Trichomes')+
@@ -162,17 +144,35 @@ scale = ggplot(leaf,
        aes(x = factor(Species,
                       levels = c('DA', 'DO', 'DX')),
            fill = factor(Rusty.Scales,
-                         levels = c(0,1),
-                         labels = c('Absent', 'Present')))) +
+                         levels = c(0,1,2),
+                         labels = c('No Scales', 'Scales', 
+                                    'Scales + Glands')))) +
         geom_bar(position = 'fill') +
         scale_y_continuous(breaks = seq(0,1,.2)) +
         scale_fill_grey(start = .8, end = .2) +
         labs(y = "Proportion",
-             fill = 'Scales',
+             fill = '',
              x = 'Species') +
         theme_minimal()+
         ggtitle('Midvein Scales')+
         theme(plot.title = element_text(hjust = .5))
+
+#has both scales and glands
+scale_gland = ggplot(leaf,
+               aes(x = factor(Species,
+                              levels = c('DA', 'DO', 'DX')),
+                   fill = factor(Scales.and.glands,
+                                 levels = c(0,1),
+                                 labels = c('Not concurrent', 'Concurrent')))) +
+  geom_bar(position = 'fill') +
+  scale_y_continuous(breaks = seq(0,1,.2)) +
+  scale_fill_grey(start = .8, end = .2) +
+  labs(y = "Proportion",
+       fill = 'Scales and Glands',
+       x = 'Species') +
+  theme_minimal()+
+  ggtitle('Pressence of scales and glands')+
+  theme(plot.title = element_text(hjust = .5))
 
 #tomentum
 tom = ggplot(leaf,
@@ -191,7 +191,7 @@ tom = ggplot(leaf,
         ggtitle('Adaxial Tomentum')+
         theme(plot.title = element_text(hjust = .5))
 
-ggarrange(bp, gland,scale,tom, ncol = 2, nrow = 2)
+ggarrange(bp, midvein,tom, ncol = 3, nrow = 1)
 
 #corrplots
 par(mfrow = c(1,2))
@@ -201,8 +201,9 @@ mtext('Parent', side = 2, line = -1, at = 2, cex = 1.25)
 corrplot(hyb.c, type = 'lower', diag = F, cl.cex = 1, addCoef.col = 'black',
          tl.col = 'black', cl.length = 5)
 mtext('Hybrid', side = 2, line = -1, at = 2, cex = 1.25)
+
 ################################################################################
-#Bootstrapping
+#Bootstrapping - a different way to compare traits - not used in the paper
 ################################################################################
 library(boot)
 #scale vs gland

@@ -15,7 +15,8 @@ library("spectrolab")
 #add metadata to raw spectra
 add_meta <- function(spectra_path, metadata_path){
   spectra_raw = read_spectra(path = spectra_path, format = "sed")
-  metadata = read.csv(file = metadata_path, header = TRUE, stringsAsFactors = FALSE)
+  metadata = read.csv(file = metadata_path, header = TRUE, 
+                      stringsAsFactors = FALSE)
   meta(spectra_raw) <- metadata
   return(spectra_raw)
 }
@@ -145,6 +146,7 @@ wdb_clean = thebigclean(wdb_path, wdb_meta)
 clean_big3 = Reduce(combine, list(tm_clean, es_clean, wdb_clean))
 vn_big3 = normalize(clean_big3)
 
+#clean_all is the object used for most analyses
 clean_all = Reduce(combine, list(tm_clean, es_clean, wdb_clean, mdb_clean, 
                                  wda_clean, bg_clean))
 saveRDS(clean_all, "Clean-up/Clean_spectra/clean_all.rds")

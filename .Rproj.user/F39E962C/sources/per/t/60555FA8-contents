@@ -10,7 +10,7 @@ library(ggplot2)
 library(ggpubr)
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
-leaf = read.csv('morphology_2.csv', stringsAsFactors = F)
+leaf = read.csv('morphology.csv', stringsAsFactors = F)
 values = c("parent",'parent','hybrid')
 leaf$Species = as.factor(leaf$Species)
 leaf$taxa <- values[leaf$Species]
@@ -126,14 +126,13 @@ gland = ggplot(leaf,
        aes(x = factor(Species,
                       levels = c('DA', 'DO', 'DX')),
            fill = factor(Glandular.Midvien,
-                         levels = c(0,1,2),
-                         labels = c('No Glands', 'Glands', 
-                                    'Glands + Scales')))) +
+                         levels = c(0,1),
+                         labels = c('Absent', 'Present')))) +
   geom_bar(position = 'fill') +
   scale_y_continuous(breaks = seq(0,1,.2)) +
   scale_fill_grey(start = .8, end = .2) +
   labs(y = "Proportion",
-       fill = '',
+       fill = 'Glands',
        x = 'Species') +
   theme_minimal()+
   ggtitle('Midvein Glandular Trichomes')+
@@ -144,14 +143,13 @@ scale = ggplot(leaf,
        aes(x = factor(Species,
                       levels = c('DA', 'DO', 'DX')),
            fill = factor(Rusty.Scales,
-                         levels = c(0,1,2),
-                         labels = c('No Scales', 'Scales', 
-                                    'Scales + Glands')))) +
+                         levels = c(0,1),
+                         labels = c('Absent', 'Present')))) +
         geom_bar(position = 'fill') +
         scale_y_continuous(breaks = seq(0,1,.2)) +
         scale_fill_grey(start = .8, end = .2) +
         labs(y = "Proportion",
-             fill = '',
+             fill = 'Scales',
              x = 'Species') +
         theme_minimal()+
         ggtitle('Midvein Scales')+
@@ -191,7 +189,7 @@ tom = ggplot(leaf,
         ggtitle('Adaxial Tomentum')+
         theme(plot.title = element_text(hjust = .5))
 
-ggarrange(bp, midvein,tom, ncol = 3, nrow = 1)
+ggarrange(bp, gland, scale, tom, ncol = 2, nrow = 2)
 
 #corrplots
 par(mfrow = c(1,2))

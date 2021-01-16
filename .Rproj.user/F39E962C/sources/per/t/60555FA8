@@ -3,23 +3,23 @@
     "path": "~/GitHub/Dryas2/traits.R",
     "project_path": "traits.R",
     "type": "r_source",
-    "hash": "1017361999",
+    "hash": "2711806183",
     "contents": "",
     "dirty": false,
     "created": 1604327545773.0,
     "source_on_save": false,
-    "relative_order": 3,
+    "relative_order": 2,
     "properties": {
         "tempName": "Untitled2",
-        "cursorPosition": "207,13",
-        "scrollLine": "189"
+        "cursorPosition": "100,0",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1610032594,
+    "lastKnownWriteTime": 1610133751,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1610032594775,
+    "last_content_update": 1610133751212,
     "read_only": false,
     "read_only_alternatives": []
 }

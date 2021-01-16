@@ -18,6 +18,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
+spec_all = spec_all[!meta(spec_all)$Species_ID == 'DX',]
 
 #Code for new populations
 s.m = as_spectra(as.matrix(spec_all))
@@ -25,7 +26,7 @@ meta(s.m) = read.csv('metadata_2.csv', stringsAsFactors = F)
 spec_all = s.m
 
 #remove any NaN values - mostly pertains to populations
-spec_all = spec_all[!meta(spec_all)$Species_ID == "NaN",]
+spec_all = spec_all[!meta(spec_all)$sp_loc == "NaN",]
 
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
@@ -37,15 +38,15 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$Species_ID)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$Species_ID"] <- "Species_ID"
+spec_df = cbind(spec_df, spec_all.df$sp_loc)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$sp_loc"] <- "sp_loc"
 
 ################################################################################
 #Run PLSDA
 ################################################################################
 
 #Set number of components to be used
-ncomp = 24
+ncomp = 33
 
 #create vectors, lists, and matrices to store metrics and loadings
 accuracy <- c()
@@ -61,7 +62,7 @@ for(i in 1:100){
 
 #create data partition: 70% of data for training, 30% for testing
 inTrain <- caret::createDataPartition(
-  y = spec_df$Species_ID,
+  y = spec_df$sp_loc,
   p = .7,
   list = FALSE
 )
@@ -77,7 +78,7 @@ ctrl <- trainControl(
 
 #Fit model. Note max iterations set to 10000 to allow model convergence
 plsFit <- train(
-  Species_ID ~ .,
+  sp_loc ~ .,
   data = training,
   maxit = 10000,
   method = "pls",
@@ -102,7 +103,7 @@ loadings.c3 <- cbind(loadings.c3, get('c3'))
 plsClasses <- predict(plsFit, newdata = testing)
 
 #confusion/classification matrix objects to assess accuracy 
-cm = confusionMatrix(data = plsClasses, as.factor(testing$Species_ID))
+cm = confusionMatrix(data = plsClasses, as.factor(testing$sp_loc))
 cm.m = assign(paste0("cm", i), as.matrix(cm))
 cm.list <- list.append(cm.list, get('cm.m'))
 
@@ -140,10 +141,10 @@ klower = kavg - ksd
 khigher = kavg + ksd
 
 #Graph to visually choose optimal number of components
-x = 1:60
+x = 1:50
 par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 plot(x, kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', 
-     xlab = 'Component', xlim = c(1,60), main = 'Kappa for Species_ID')
+     xlab = 'Component', xlim = c(1,60), main = 'Kappa for sp_loc')
 arrows(x, klower, x, khigher,length=0.05, angle=90, code=3)
 abline(v = 38, col = 'blue')
 abline(h = max(klower), col = "Red")
@@ -166,9 +167,9 @@ rownames(cm.total) <- c('ES-TM', 'WDB', 'BG', 'ES-TM', 'MD', 'WD')
 colnames(cm.total) <- c('ES-TM', 'WDB', 'BG', 'ES-TM', 'MD', 'WD')
 
 #save confusion matrix
-write.csv(cm.total, "Figures/cm_final/cm_Species_ID_mean_newpops.csv")
+write.csv(cm.total, "Figures/cm_final/cm_sp_loc_mean_newpops.csv")
 
-#species + Species_ID special code
+#species + sp_loc special code
 cm.total = read.csv("Figures/cm_final/cm_sp_loc_mean.csv", stringsAsFactors = T)
 cm.total = as.matrix(cm.total)
 rownames(cm.total) <- cm.total[,1]

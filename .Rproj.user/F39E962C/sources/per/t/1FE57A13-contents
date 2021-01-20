@@ -32,8 +32,6 @@ colnames(spec_df)[colnames(spec_df) == 'spectra.df$DA'] <- 'DA'
 ################################################################################
 #Training and testing sets - all
 ################################################################################
-#set number of components
-ncomp = 80
 
 #10-fold cross validation repeated 5 times
 plsFit = PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = ncomp,
@@ -41,10 +39,14 @@ plsFit = PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = ncomp,
                                   verbose = T, random = T)
 
 saveRDS(plsFit, '10fold_r5_80comp_randompart.rds')
+plsFit = read_rds('10fold_r5_80comp_randompart.rds')
 
+m = PLS_beta_formula(DA~., data = spec_df, nt = 3,
+             modele = 'pls-beta')
 #Acquire statistics from each repeat
 plsFit.info = kfolds2CVinfos_beta(plsFit)
 saveRDS(plsFit.info, 'pls_beta_info_10fold_5r_80comp_randompart.rds')
+plsFit.info = read_rds('pls_beta_info_10fold_5r_80comp_randompart.rds')
 
 #Convert info to data frame, calculate RMSE from RSS
 for(i in 1:5){
@@ -155,7 +157,7 @@ legend('topright', legend = c('Mean', 'Lowest BIC + 2','Best component'),
 for(NK in 1:5){
   results.list = list()
   for(k in 1:10){
-  matr = as.matrix(plsFit$results_kfolds[[NK]][[k]][,46])
+  matr = as.matrix(plsFit$results_kfolds[[NK]][[k]][,54])
   result.matrix = assign(paste0('matr',k), matr)
   results.list <- list.append(results.list, get('result.matrix'))
   }
@@ -172,26 +174,55 @@ mean.predictions = as.data.frame((full.mat_1 + full.mat_2 + full.mat_3 +
 colnames(mean.predictions) <- c("Predictions")
 mean.predictions$DA <- spectra.df$DA
 mean.predictions$Species_ID <- spectra.df$Species_ID
+mean.predictions$Name <- spectra.df$Name
 
-#assign colors
-mean.predictions$color = 'black'
-mean.predictions$color[mean.predictions$Species_ID == "DO"] = "#F8766D"
-mean.predictions$color[mean.predictions$Species_ID == "DA"] = "#00B0F6"
+
+#find median and range of predicted values
+l = list(mean.predictions$Name)
+med = aggregate(mean.predictions$Predictions, by = l, median)
+DA = aggregate(DA~Name, data = mean.predictions, mean)
+DA$Predictions = med[,2]
+max = aggregate(mean.predictions$Predictions, by = l, max)
+DA$max = max[,2]
+min = aggregate(mean.predictions$Predictions, by = l, min)
+DA$min = min[,2]
+
+#Add colors
+DA$color = 'black'
+DA$color[DA$DA > .7] = "#00B0F6"
+DA$color[DA$DA < .3] = "#F8766D"
 
 #plot actual ancestry vs predicted ancestry
 dev.new(width = 6, height = 6, unit = 'in')
 par(mfrow = c(1,1))
-plot(mean.predictions$DA, mean.predictions$Predictions, cex.lab = 1.5,
+plot(DA$DA, DA$Predictions, cex.lab = 1.5,
      xlab = "Actual Dryas alaskensis ancestry",
-     ylab = "Predicted Dryas alaskensi ancestry")
+     ylab = "Predicted Dryas alaskensi ancestry", pch = 8)
 lines(x = c(-2, 2), y = c(-2, 2))
-points(mean.predictions$DA, mean.predictions$Predictions,
-       col = mean.predictions$color, pch = 16)
+arrows(DA$DA, DA$min, DA$DA, DA$max,length=0.05, angle=90, code=3)
+points(DA$DA, DA$Predictions,
+       col = DA$color, pch = 8)
 legend("bottomright", inset = 0.01,
        legend=c("D. octopetala", "Hybrid", "D. alaskensis", "1:1 line"), 
        text.font = c(3,1,3,1),
-       col=c("#F8766D", "black", "#00B0F6", "black"), pch = c(16,16,16,NA),
+       col=c("#F8766D", "black", "#00B0F6", "black"), pch = c(8,8,8,NA),
        lty = c(NA,NA,NA,1), bg = 'white')
 #extra
 c.rmse = caret::RMSE(mean.predictions$Predictions, mean.predictions$DA)
 c.r2 = caret::R2(mean.predictions$Predictions, mean.predictions$DA)
+
+a = caret::RMSE(full.mat_1, spectra.df$DA)
+b = caret::RMSE(full.mat_2, spectra.df$DA)
+c = caret::RMSE(full.mat_3, spectra.df$DA)
+d = caret::RMSE(full.mat_4, spectra.df$DA)
+e = caret::RMSE(full.mat_5, spectra.df$DA)
+rmse = c(a,b,c,d,e)
+sd(rmse)
+
+f = caret::R2(full.mat_1, spectra.df$DA)
+g = caret::R2(full.mat_2, spectra.df$DA)
+h = caret::R2(full.mat_3, spectra.df$DA)
+i = caret::R2(full.mat_4, spectra.df$DA)
+j = caret::R2(full.mat_5, spectra.df$DA)
+r2 = c(f,g,h,i,j)
+sd(r2)

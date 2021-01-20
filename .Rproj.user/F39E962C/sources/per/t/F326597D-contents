@@ -18,7 +18,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
-spec_all = spec_all[!meta(spec_all)$Species_ID == 'DX',]
+spec_all = spec_all[!meta(spec_all)$GenePop_ID == 'DX',]
 
 #Code for new populations
 s.m = as_spectra(as.matrix(spec_all))
@@ -26,7 +26,7 @@ meta(s.m) = read.csv('metadata_2.csv', stringsAsFactors = F)
 spec_all = s.m
 
 #remove any NaN values - mostly pertains to populations
-spec_all = spec_all[!meta(spec_all)$sp_loc == "NaN",]
+spec_all = spec_all[!meta(spec_all)$GenePop_ID == "NaN",]
 
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
@@ -38,15 +38,15 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$sp_loc)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$sp_loc"] <- "sp_loc"
+spec_df = cbind(spec_df, spec_all.df$GenePop_ID)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
 
 ################################################################################
 #Run PLSDA
 ################################################################################
 
 #Set number of components to be used
-ncomp = 33
+ncomp = 38
 
 #create vectors, lists, and matrices to store metrics and loadings
 accuracy <- c()
@@ -62,7 +62,7 @@ for(i in 1:100){
 
 #create data partition: 70% of data for training, 30% for testing
 inTrain <- caret::createDataPartition(
-  y = spec_df$sp_loc,
+  y = spec_df$GenePop_ID,
   p = .7,
   list = FALSE
 )
@@ -78,7 +78,7 @@ ctrl <- trainControl(
 
 #Fit model. Note max iterations set to 10000 to allow model convergence
 plsFit <- train(
-  sp_loc ~ .,
+  GenePop_ID ~ .,
   data = training,
   maxit = 10000,
   method = "pls",
@@ -103,7 +103,7 @@ loadings.c3 <- cbind(loadings.c3, get('c3'))
 plsClasses <- predict(plsFit, newdata = testing)
 
 #confusion/classification matrix objects to assess accuracy 
-cm = confusionMatrix(data = plsClasses, as.factor(testing$sp_loc))
+cm = confusionMatrix(data = plsClasses, as.factor(testing$GenePop_ID))
 cm.m = assign(paste0("cm", i), as.matrix(cm))
 cm.list <- list.append(cm.list, get('cm.m'))
 
@@ -144,7 +144,7 @@ khigher = kavg + ksd
 x = 1:50
 par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 plot(x, kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', 
-     xlab = 'Component', xlim = c(1,60), main = 'Kappa for sp_loc')
+     xlab = 'Component', xlim = c(1,60), main = 'Kappa for GenePop_ID')
 arrows(x, klower, x, khigher,length=0.05, angle=90, code=3)
 abline(v = 38, col = 'blue')
 abline(h = max(klower), col = "Red")
@@ -154,10 +154,27 @@ legend('bottomright', legend = c('Mean', 'Maximum kappa','Best component'),
 ################################################################################
 #Confusion/Classification Matrices
 ################################################################################
-#take average of 100 confusion matrices, reorient matrix
-cm.total = Reduce('+', cm.list)/100
-cm.total = t(cm.total)
-cm.total = cm.total/rowSums(cm.total)
+#take average of 100 confusion matrices, reorient matrix, change averages to 
+#proportions
+cm.avg = Reduce('+', cm.list)/100
+cm.avg = t(cm.avg)
+cm.total = cm.avg/rowSums(cm.avg)
+
+#standard deviations
+f1 <- function(lst){
+  n <- length(lst); 	   
+  rc <- dim(lst[[1]]); 	   
+  ar1 <- array(unlist(lst), c(rc, n)); 	   
+  round(apply(ar1, c(1, 2), sd), 2); 	         
+}
+cm.sd = f1(cm.list)
+cm.sd = t(cm.sd)
+cm.sd = cm.sd/rowSums(cm.avg)
+rownames(cm.sd) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 
+                     'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+colnames(cm.sd) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 
+                     'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+write.csv(cm.sd, file = 'Figures/cm_final/standard deviations/GenePop_ID_sd.csv')
 
 #format matrix for plotting
 cm.total = as.data.frame(cm.total)
@@ -167,10 +184,10 @@ rownames(cm.total) <- c('ES-TM', 'WDB', 'BG', 'ES-TM', 'MD', 'WD')
 colnames(cm.total) <- c('ES-TM', 'WDB', 'BG', 'ES-TM', 'MD', 'WD')
 
 #save confusion matrix
-write.csv(cm.total, "Figures/cm_final/cm_sp_loc_mean_newpops.csv")
+write.csv(cm.total, "Figures/cm_final/cm_GenePop_ID_mean_newpops.csv")
 
-#species + sp_loc special code
-cm.total = read.csv("Figures/cm_final/cm_sp_loc_mean.csv", stringsAsFactors = T)
+#species + GenePop_ID special code
+cm.total = read.csv("Figures/cm_final/cm_GenePop_ID_mean.csv", stringsAsFactors = T)
 cm.total = as.matrix(cm.total)
 rownames(cm.total) <- cm.total[,1]
 cm.total = cm.total[,-1]

@@ -5,6 +5,7 @@
 
 library(spectrolab)
 library(caret)
+library(dplyr)
 library(mlbench)
 library(corrplot)
 library(matrixStats)
@@ -18,7 +19,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
-spec_all = spec_all[!meta(spec_all)$GenePop_ID == 'DX',]
+
 
 #Code for new populations
 s.m = as_spectra(as.matrix(spec_all))
@@ -26,7 +27,7 @@ meta(s.m) = read.csv('metadata_2.csv', stringsAsFactors = F)
 spec_all = s.m
 
 #remove any NaN values - mostly pertains to populations
-spec_all = spec_all[!meta(spec_all)$GenePop_ID == "NaN",]
+spec_all = spec_all[!meta(spec_all)$Species_ID == "NaN",]
 
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
@@ -38,32 +39,30 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$GenePop_ID)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
+spec_df = cbind(spec_df, spec_all.df$Species_ID)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$Species_ID"] <- "Species_ID"
+
 
 ################################################################################
 #Run PLSDA
 ################################################################################
 
 #Set number of components to be used
-ncomp = 38
+ncomp = 22
 
 #create vectors, lists, and matrices to store metrics and loadings
 accuracy <- c()
 kappa <- c()
 k.fit <- matrix(nrow = ncomp)
 cm.list <- list()
-loadings.c1 <- matrix(nrow = 201)
-loadings.c2 <- matrix(nrow = 201)
-loadings.c3 <- matrix(nrow = 201)
 
 #start of PLSDA code
 for(i in 1:100){
 
 #create data partition: 70% of data for training, 30% for testing
 inTrain <- caret::createDataPartition(
-  y = spec_df$GenePop_ID,
-  p = .7,
+  y = spec_df$Species_ID,
+  p = .8,
   list = FALSE
 )
 
@@ -74,13 +73,14 @@ testing <- spec_df[-inTrain,]
 ctrl <- trainControl(
   method = "repeatedcv",
   number = 10,
+  sampling = 'up',
   repeats = 3)
 
 #Fit model. Note max iterations set to 10000 to allow model convergence
 plsFit <- train(
-  GenePop_ID ~ .,
+  Species_ID ~ .,
   data = training,
-  maxit = 10000,
+  maxit = 100000,
   method = "pls",
   trControl = ctrl,
   tuneLength = ncomp)
@@ -89,21 +89,11 @@ plsFit <- train(
 k = assign(paste0('k', i), as.matrix(plsFit$results$Kappa))
 k.fit <- cbind(k.fit, get('k'))
 
-#loadings
-c1 = assign(paste0('c1',i), as.matrix(plsFit$finalModel$loadings[,1]))
-loadings.c1 <- cbind(loadings.c1, get('c1'))
-
-c2 = assign(paste0('c2',i), as.matrix(plsFit$finalModel$loadings[,2]))
-loadings.c2 <- cbind(loadings.c2, get('c2'))
-
-c3 = assign(paste0('c3',i), as.matrix(plsFit$finalModel$loadings[,3]))
-loadings.c3 <- cbind(loadings.c3, get('c3'))
-
 #test model using the testing data partition (30% of data)
 plsClasses <- predict(plsFit, newdata = testing)
 
 #confusion/classification matrix objects to assess accuracy 
-cm = confusionMatrix(data = plsClasses, as.factor(testing$GenePop_ID))
+cm = confusionMatrix(data = plsClasses, as.factor(testing$Species_ID))
 cm.m = assign(paste0("cm", i), as.matrix(cm))
 cm.list <- list.append(cm.list, get('cm.m'))
 
@@ -141,12 +131,12 @@ klower = kavg - ksd
 khigher = kavg + ksd
 
 #Graph to visually choose optimal number of components
-x = 1:50
+x = 1:60
 par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 plot(x, kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', 
-     xlab = 'Component', xlim = c(1,60), main = 'Kappa for GenePop_ID')
+     xlab = 'Component', xlim = c(1,60), main = 'Kappa for Species_ID')
 arrows(x, klower, x, khigher,length=0.05, angle=90, code=3)
-abline(v = 38, col = 'blue')
+abline(v = 29, col = 'blue')
 abline(h = max(klower), col = "Red")
 legend('bottomright', legend = c('Mean', 'Maximum kappa','Best component'), 
        pch = c(16, NA, NA), lty = c(NA, 1, 1), col = c('black', 'red', 'blue'))
@@ -170,24 +160,22 @@ f1 <- function(lst){
 cm.sd = f1(cm.list)
 cm.sd = t(cm.sd)
 cm.sd = cm.sd/rowSums(cm.avg)
-rownames(cm.sd) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 
-                     'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
-colnames(cm.sd) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 
-                     'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
-write.csv(cm.sd, file = 'Figures/cm_final/standard deviations/GenePop_ID_sd.csv')
+rownames(cm.sd) <- c('DA', 'DO', 'DX')
+colnames(cm.sd) <- c('DA', 'DO', 'DX')
+write.csv(cm.sd, file = 'Figures/cm_final/standard deviations/Species_ID_sd_upsample2_small2.csv')
 
 #format matrix for plotting
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('ES-TM', 'WDB', 'BG', 'ES-TM', 'MD', 'WD')
-colnames(cm.total) <- c('ES-TM', 'WDB', 'BG', 'ES-TM', 'MD', 'WD')
+rownames(cm.total) <- c('DA', 'DO', 'DX')
+colnames(cm.total) <- c('DA', 'DO', 'DX')
 
 #save confusion matrix
-write.csv(cm.total, "Figures/cm_final/cm_GenePop_ID_mean_newpops.csv")
+write.csv(cm.total, "Figures/cm_final/cm_Species_ID_upsample2_small2.csv")
 
-#species + GenePop_ID special code
-cm.total = read.csv("Figures/cm_final/cm_GenePop_ID_mean.csv", stringsAsFactors = T)
+#species + Species_ID special code
+cm.total = read.csv("Figures/cm_final/cm_Species_ID_upsample2_small2.csv", stringsAsFactors = T)
 cm.total = as.matrix(cm.total)
 rownames(cm.total) <- cm.total[,1]
 cm.total = cm.total[,-1]
@@ -201,7 +189,7 @@ colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM',
 #plot confusion matrix
 cols = colorRampPalette(c('#f5f5f5', '#b35806'))
 
-par(mar = c(1,2,4,1), oma = c(1,1,3,1))
+par(mar = c(1,2,2,1), oma = c(1,1,3,1))
 corrplot(cm.total,
          is.corr = T, 
          method = 'square', 
@@ -218,8 +206,8 @@ corrplot(cm.total,
          na.label = 'square', 
          na.label.col = 'white',
          addgrid.col = 'grey')
-mtext("Reference", side = 2, line = 2, cex = 2.5)
-mtext("Prediction", side = 3, cex = 2.5, at = 3.5, line = 6)
+mtext("Reference", side = 2, line = -8, cex = 2.5)
+mtext("Prediction", side = 3, cex = 2.5, at = 2, line = 3)
 
 
 ################################################################################

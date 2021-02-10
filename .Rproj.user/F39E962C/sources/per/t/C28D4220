@@ -1,0 +1,32 @@
+{
+    "id": "C28D4220",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1612406130393.0,
+    "source_on_save": false,
+    "relative_order": 11,
+    "properties": {
+        "expression": "spec_df_up",
+        "caption": "spec_df_up",
+        "totalObservations": 1380,
+        "displayedObservations": 1380,
+        "variables": 203,
+        "cacheKey": "442CCEAF",
+        "object": "spec_df_up",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=spec_df_up&cache_key=442CCEAF&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7810123700365321520,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1612406130393,
+    "read_only": false,
+    "read_only_alternatives": []
+}

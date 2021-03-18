@@ -111,7 +111,7 @@ plot(mean(ala), lwd = 2, lty = 1, col = "#00B0F6",
 plot(mean(oct), lwd = 2, lty = 1, col = "#F8766D", add = T)
 plot(mean(hyb), lwd = 2, lty = 1, col = "black", add = T)
 plot_regions(ala, regions = default_spec_regions(), add = TRUE)
-legend('bottomright', inset = .02, legend = c("DA", "DO", "DX"),
+legend('bottomright', inset = .02, legend = c("DAK", "DAJ", "DX"),
        col = c("#00B0F6", "#F8766D", "black"), lty = 1, lwd = 2, cex =.8,
        bg = "white")
 
@@ -131,18 +131,18 @@ mdb = spec_all[meta(spec_all)$GenePop_ID == "DO_mdb",]
 bg = spec_all[meta(spec_all)$GenePop_ID == "DO_bgc",]
 
 dev.new(width = 6, height = 8, unit = 'in')
-plot(mean(da_et), lwd = 2, lty = 1, col = "#00B0F6", 
+plot(mean(da_et), lwd = 2, lty = 1, col = "#a6cee3", 
      cex.lab = 1.5, ylim = c(0, .85), ylab = "Reflectance", 
      xlab = 'Wavelength (nm)', main = "Mean reflecatnce per population")
 plot_regions(da_et, regions = default_spec_regions(), add = TRUE)
-plot(mean(da_wd), lwd = 2, lty = 1, col = "turquoise2", add = T)
-plot(mean(et), lwd = 2, lty = 1, col = "#F8766D", add = T)
-plot(mean(wd), lwd = 2, lty = 1, col = "#00BF7D", add = T)
-plot(mean(mdb), lwd = 2, lty = 1, col = "#A3A500", add = T)
-plot(mean(bg), lwd = 2, lty = 1, col = "#E76BF3", add = T)
+plot(mean(da_wd), lwd = 2, lty = 1, col = "#b2df8a", add = T)
+plot(mean(et), lwd = 2, lty = 1, col = "#fb9a99", add = T)
+plot(mean(wd), lwd = 2, lty = 1, col = "#ff7f00", add = T)
+plot(mean(mdb), lwd = 2, lty = 1, col = "#e31a1c", add = T)
+plot(mean(bg), lwd = 2, lty = 1, col = "#33a02c", add = T)
 legend('bottomright',inset = .02, 
-       legend=c('DA ES-TM', 'DA WDB', 'DO BG', 'DO ES-TM', 'DO MD', 'DO WD'),
-       col=c("#00B0F6",'turquoise2', "#E76BF3", "#F8766D", "#A3A500", "#00BF7D"), 
+       legend=c('DAK ES-TM', 'DAK WDB', 'DAJ BG', 'DAJ ES-TM', 'DAJ MD', 'DAJ WD'),
+       col=c("#a6cee3",'#b2df8a', "#33a02c", "#fb9a99", "#e31a1c", "#ff7f00"), 
        lty=1, lwd = 2, cex=0.8, bg = 'white')
 
 

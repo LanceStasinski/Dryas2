@@ -20,14 +20,8 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 
-
-#Code for new populations
-s.m = as_spectra(as.matrix(spec_all))
-meta(s.m) = read.csv('metadata_2.csv', stringsAsFactors = F)
-spec_all = s.m
-
 #remove any NaN values - mostly pertains to populations
-spec_all = spec_all[!meta(spec_all)$GenePop_ID == "NaN",]
+spec_all = spec_all[!meta(spec_all)$sp_loc == "NaN",]
 
 spec_all.m = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
@@ -39,8 +33,8 @@ spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
-spec_df = cbind(spec_df, spec_all.df$GenePop_ID)
-colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
+spec_df = cbind(spec_df, spec_all.df$sp_loc)
+colnames(spec_df)[colnames(spec_df) == "spec_all.df$sp_loc"] <- "sp_loc"
 
 
 ################################################################################
@@ -48,26 +42,32 @@ colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
 ################################################################################
 
 #Set number of components to be used
-ncomp = 42
+ncomp = 29
 
 #create vectors, lists, and matrices to store metrics and loadings
 accuracy <- c()
 kappa <- c()
 k.fit <- matrix(nrow = ncomp)
 cm.list <- list()
-da_et.vip = matrix(nrow=201)
+da_es.vip = matrix(nrow=201)
+da_tm.vip = matrix(nrow=201)
 da_wdb.vip = matrix(nrow=201)
 do_bg.vip = matrix(nrow=201)
-do_et.vip = matrix(nrow=201)
+do_es.vip = matrix(nrow=201)
 do_md.vip = matrix(nrow=201)
-do_wd.vip = matrix(nrow=201)
+do_tm.vip = matrix(nrow=201)
+do_wda.vip = matrix(nrow=201)
+do_wdb.vip = matrix(nrow=201)
+dx_es.vip = matrix(nrow=201)
+dx_tm.vip = matrix(nrow=201)
+dx_wdb.vip = matrix(nrow=201)
 
 #start of PLSDA code
 for(i in 1:100){
   
   #create data partition: 70% of data for training, 30% for testing
   inTrain <- caret::createDataPartition(
-    y = spec_df$GenePop_ID,
+    y = spec_df$sp_loc,
     p = .8,
     list = FALSE
   )
@@ -84,7 +84,7 @@ for(i in 1:100){
   
   #Fit model. Note max iterations set to 10000 to allow model convergence
   plsFit <- train(
-    GenePop_ID ~ .,
+    sp_loc ~ .,
     data = training,
     maxit = 100000,
     method = "pls",
@@ -94,24 +94,41 @@ for(i in 1:100){
   #variable importance
   vip = varImp(plsFit)
   
-  da_et = assign(paste0('da_et', i), vip$importance$DA_et)
-  da_et.vip <- cbind(da_et.vip, get('da_et'))
+  da_es = assign(paste0('da_es', i), vip$importance$DA_es)
+  da_es.vip <- cbind(da_es.vip, get('da_es'))
+  
+  da_tm = assign(paste0('da_tm', i), vip$importance$DA_tm)
+  da_tm.vip <- cbind(da_tm.vip, get('da_tm'))
   
   da_wdb = assign(paste0('da_wdb', i), vip$importance$DA_wdb)
   da_wdb.vip <- cbind(da_wdb.vip, get('da_wdb'))
   
-  do_bg = assign(paste0('do_bg', i), vip$importance$DO_bgc)
+  do_bg = assign(paste0('do_bg', i), vip$importance$DO_bg)
   do_bg.vip <- cbind(do_bg.vip, get('do_bg'))
   
-  do_et = assign(paste0('do_et', i), vip$importance$DO_et)
-  do_et.vip <- cbind(do_et.vip, get('do_et'))
+  do_es = assign(paste0('do_es', i), vip$importance$DO_es)
+  do_es.vip <- cbind(do_es.vip, get('do_es'))
   
   do_md = assign(paste0('do_md', i), vip$importance$DO_mdb)
   do_md.vip <- cbind(do_md.vip, get('do_md'))
   
-  do_wd = assign(paste0('do_wd', i), vip$importance$DO_wd)
-  do_wd.vip <- cbind(do_wd.vip, get('do_wd'))
+  do_tm = assign(paste0('do_tm', i), vip$importance$DO_tm)
+  do_tm.vip <- cbind(do_tm.vip, get('do_tm'))
   
+  do_wda = assign(paste0('do_wda', i), vip$importance$DO_wda)
+  do_wda.vip <- cbind(do_wda.vip, get('do_wda'))
+  
+  do_wdb = assign(paste0('do_wdb', i), vip$importance$DO_wdb)
+  do_wdb.vip <- cbind(do_wdb.vip, get('do_wdb'))
+  
+  dx_es = assign(paste0('dx_es', i), vip$importance$DX_es)
+  dx_es.vip <- cbind(dx_es.vip, get('dx_es'))
+
+  dx_tm = assign(paste0('dx_tm', i), vip$importance$DX_tm)
+  dx_tm.vip <- cbind(dx_tm.vip, get('dx_tm'))
+  
+  dx_wdb = assign(paste0('dx_wdb', i), vip$importance$DX_wdb)
+  dx_wdb.vip <- cbind(dx_wdb.vip, get('dx_wdb'))
   #kappa objects for determining n components
   k = assign(paste0('k', i), as.matrix(plsFit$results$Kappa))
   k.fit <- cbind(k.fit, get('k'))
@@ -120,7 +137,7 @@ for(i in 1:100){
   plsClasses <- predict(plsFit, newdata = testing)
   
   #confusion/classification matrix objects to assess accuracy 
-  cm = confusionMatrix(data = plsClasses, as.factor(testing$GenePop_ID))
+  cm = confusionMatrix(data = plsClasses, as.factor(testing$sp_loc))
   cm.m = assign(paste0("cm", i), as.matrix(cm))
   cm.list <- list.append(cm.list, get('cm.m'))
   
@@ -161,7 +178,7 @@ khigher = kavg + ksd
 x = 1:60
 par(mfrow = c(1,1), mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
 plot(x, kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', 
-     xlab = 'Component', xlim = c(1,60), main = 'Kappa for GenePop_ID')
+     xlab = 'Component', xlim = c(1,60), main = 'Kappa for sp_loc')
 arrows(x, klower, x, khigher,length=0.05, angle=90, code=3)
 abline(v = 43, col = 'blue')
 abline(h = max(klower), col = "Red")
@@ -187,26 +204,41 @@ f1 <- function(lst){
 cm.sd = f1(cm.list)
 cm.sd = t(cm.sd)
 cm.sd = cm.sd/rowSums(cm.avg)
-rownames(cm.sd) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
-colnames(cm.sd) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
-write.csv(cm.sd, file = 'Figures/cm_final/standard deviations/GenePop_ID_sd_upsample2_small2.csv')
+rownames(cm.sd) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'MD', 
+                     'TM', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+colnames(cm.sd) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'MD', 
+                     'TM', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+write.csv(cm.sd, file = 'Figures/cm_final/standard deviations/sp_loc_sd_upsample2_small2.csv')
 
 #format matrix for plotting
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
-colnames(cm.total) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
+rownames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'MD', 
+                        'TM', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'MD', 
+                        'TM', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
 
 #save confusion matrix
-write.csv(cm.total, "Figures/cm_final/cm_GenePop_ID_upsample2_small2.csv")
+write.csv(cm.total, "Figures/cm_final/cm_sp_loc_upsample2_small2.csv")
 
+#species + sp_loc special code
+cm.total = read.csv("Figures/cm_final/cm_sp_loc_upsample2_small2.csv", stringsAsFactors = T)
+cm.total = as.matrix(cm.total)
+rownames(cm.total) <- cm.total[,1]
+cm.total = cm.total[,-1]
+cm.total = mapply(cm.total, FUN = as.numeric)
+cm.total = matrix(data = cm.total, ncol = 12, nrow = 12)
+rownames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 
+                        'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
+colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM', 
+                        'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
 
 #plot confusion matrix
 
-cols = colorRampPalette(c('#f5f5f5', '#b35806'))
+cols = colorRampPalette(c('#f5f5f5', '#fe9929'))
 
-par(mar = c(1,2,2,1), oma = c(1,1,3,1))
+par(mfrow = c(1,1), mar = c(1,2,2,1), oma = c(1,1,3,1))
 corrplot::corrplot(cm.total,
          is.corr = T, 
          method = 'square', 
@@ -234,8 +266,11 @@ vip_to_spec = function(x){
   colnames(t.vip) <- seq(400,2400, by = 10)
   s.vip = as_spectra(t.vip)
 }
-da_et.vip = da_et.vip[,-1]
-da_et.vip.spec = vip_to_spec(da_et.vip)
+da_es.vip = da_es.vip[,-1]
+da_es.vip.spec = vip_to_spec(da_es.vip)
+
+da_tm.vip = da_tm.vip[,-1]
+da_tm.vip.spec = vip_to_spec(da_tm.vip)
 
 da_wdb.vip = da_wdb.vip[,-1]
 da_wdb.vip.spec = vip_to_spec(da_wdb.vip)
@@ -243,102 +278,151 @@ da_wdb.vip.spec = vip_to_spec(da_wdb.vip)
 do_bg.vip = do_bg.vip[,-1]
 do_bg.vip.spec = vip_to_spec(do_bg.vip)
 
-do_et.vip = do_et.vip[,-1]
-do_et.vip.spec = vip_to_spec(do_et.vip)
+do_es.vip = do_es.vip[,-1]
+do_es.vip.spec = vip_to_spec(do_es.vip)
 
 do_md.vip = do_md.vip[,-1]
 do_md.vip.spec = vip_to_spec(do_md.vip)
 
-do_wd.vip = do_wd.vip[,-1]
-do_wd.vip.spec = vip_to_spec(do_wd.vip)
+do_tm.vip = do_tm.vip[,-1]
+do_tm.vip.spec = vip_to_spec(do_tm.vip)
+
+do_wda.vip = do_wda.vip[,-1]
+do_wda.vip.spec = vip_to_spec(do_wda.vip)
+
+do_wdb.vip = do_wdb.vip[,-1]
+do_wdb.vip.spec = vip_to_spec(do_wdb.vip)
+
+dx_es.vip = dx_es.vip[,-1]
+dx_es.vip.spec = vip_to_spec(dx_es.vip)
+
+dx_tm.vip = dx_tm.vip[,-1]
+dx_tm.vip.spec = vip_to_spec(dx_tm.vip)
+
+dx_wdb.vip = dx_wdb.vip[,-1]
+dx_wdb.vip.spec = vip_to_spec(dx_wdb.vip)
 
 #plot
-par(mfrow = c(2,3))
-plot(mean(da_et.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+par(mfrow = c(3,4))
+plot(mean(da_es.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = "Variable Importance", 
-     xlab = NA, main = 'DA-ET')
-plot_quantile(da_et.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
+     xlab = NA, main = 'DA at ES')
+plot_quantile(da_es.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(da_et.vip.spec, regions = default_spec_regions(),
+plot_regions(da_es.vip.spec, regions = default_spec_regions(),
              add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
+plot(mean(da_tm.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+     cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
+     xlab = NA, main = 'DA at TM')
+plot_quantile(da_tm.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
+              border = FALSE, add = TRUE)
+plot_regions(da_tm.vip.spec, regions = default_spec_regions(),
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
 plot(mean(da_wdb.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
-     xlab = NA, main = 'DA-WDB')
+     xlab = NA, main = 'DA at WDB')
 plot_quantile(da_wdb.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
 plot_regions(da_wdb.vip.spec, regions = default_spec_regions(),
              add_label = T, add = TRUE)
-
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
 plot(mean(do_bg.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
-     xlab = NA, main = 'DO-BG')
+     xlab = NA, main = 'DO at BG')
 plot_quantile(do_bg.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
 plot_regions(do_bg.vip.spec, regions = default_spec_regions(),
              add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
 
-
-plot(mean(do_et.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+plot(mean(do_es.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = "Variable Importance", 
-     xlab = 'Wavelength (nm)', main = 'DO-ET')
-plot_quantile(do_et.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
+     xlab = NA, main = 'DO at ES')
+plot_quantile(do_es.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(do_et.vip.spec, regions = default_spec_regions(),
+plot_regions(do_es.vip.spec, regions = default_spec_regions(),
              add_label = T, add = TRUE)
-
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
 plot(mean(do_md.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA,
-     xlab = 'Wavelength (nm)', main = 'DO-MD')
+     xlab = NA, main = 'DO at MD')
 plot_quantile(do_md.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
 plot_regions(do_md.vip.spec, regions = default_spec_regions(),
              add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
-
-plot(mean(do_wd.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+plot(mean(do_tm.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
-     xlab = 'Wavelength (nm)', main = 'DO-WD')
-plot_quantile(do_wd.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
+     xlab = NA, main = 'DO at TM')
+plot_quantile(do_tm.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(do_wd.vip.spec, regions = default_spec_regions(),
+plot_regions(do_tm.vip.spec, regions = default_spec_regions(),
              add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
-################################################################################
-#Loadings plot
-################################################################################
-#Convert data into 'spectral' data for fancy graphing
-comp_to_spec = function(x){
-  t.comp = t(x)
-  colnames(t.comp) <- seq(400,2400, by = 10)
-  s.comp = as_spectra(t.comp)
-}
+plot(mean(do_wda.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+     cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
+     xlab = NA, main = 'DO at WDA')
+plot_quantile(do_wda.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
+              border = FALSE, add = TRUE)
+plot_regions(do_wda.vip.spec, regions = default_spec_regions(),
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
-component1 = comp_to_spec(loadings.c1)
-component2 = comp_to_spec(loadings.c2)
-component3 = comp_to_spec(loadings.c3)
+plot(mean(do_wdb.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+     cex.lab = 1.25, ylim = c(0, 100), ylab = "Variable Importance", 
+     xlab = 'Wavelength (nm)', main = 'DO at WDB')
+plot_quantile(do_wdb.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
+              border = FALSE, add = TRUE)
+plot_regions(do_wdb.vip.spec, regions = default_spec_regions(),
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
 
-#plot loadings for first 3 components
-dev.new(width = 6, height = 8, unit = 'in')
-par(mar = c(5,4,1,1), oma = c(1,1,1,1), mfrow = c(1,1))
-plot(mean(component1), lwd = 2, lty = 1, col = rgb(1,0,0,1), 
-     cex.lab = 1.5, ylim = c(-.2, .15), ylab = "Loading Values", 
-     xlab = "Wavelength (nm)")
-plot_quantile(component1, total_prob = 0.95, col = rgb(1, 0, 0, 0.25), 
+plot(mean(dx_es.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+     cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
+     xlab = 'Wavelength (nm)', main = 'DX at ES')
+plot_quantile(dx_es.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(component1, regions = default_spec_regions(), add = TRUE)
-plot(mean(component2), lwd = 1.5, lty = 1, col = rgb(0,0,1,1), add = TRUE)
-plot_quantile(component2, total_prob = 0.95, col = rgb(0, 0, 1, 0.25), 
+plot_regions(dx_es.vip.spec, regions = default_spec_regions(),
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
+
+plot(mean(dx_tm.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+     cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
+     xlab = 'Wavelength (nm)', main = 'DX at TM')
+plot_quantile(dx_tm.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot(mean(component3), lwd = 1.5, lty = 1, col = "darkgreen", add = TRUE)
-plot_quantile(component3, total_prob = 0.95, col = rgb(0, .5, 0, 0.25),
+plot_regions(dx_tm.vip.spec, regions = default_spec_regions(),
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
+
+plot(mean(dx_wdb.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
+     cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
+     xlab = 'Wavelength (nm)', main = 'DX at WDB')
+plot_quantile(dx_wdb.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-abline(h = 0, lty = 2, lwd = 1.5)
-legend('bottomright',inset = .02,
-       legend=c("Component 1", "Component 2", 'Component 3'),
-       col=c(rgb(1,0,0,1), rgb(0,0,1,1), rgb(0,1,0,1)), 
-       lty=1, cex=0.8, bg ='white')
+plot_regions(dx_wdb.vip.spec, regions = default_spec_regions(),
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
+
+

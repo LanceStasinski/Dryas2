@@ -187,16 +187,16 @@ f1 <- function(lst){
 cm.sd = f1(cm.list)
 cm.sd = t(cm.sd)
 cm.sd = cm.sd/rowSums(cm.avg)
-rownames(cm.sd) <- c('DA', 'DO', 'DX')
-colnames(cm.sd) <- c('DA', 'DO', 'DX')
+rownames(cm.sd) <- c('BG', 'ES', 'MD', 'TM', 'WDA', 'WDB')
+colnames(cm.sd) <- c('BG', 'ES', 'MD', 'TM', 'WDA', 'WDB')
 write.csv(cm.sd, file = 'Figures/cm_final/standard deviations/Location_sd_upsample2_small2.csv')
 
 #format matrix for plotting
 cm.total = as.data.frame(cm.total)
 cm.total = cm.total %>% replace_with_na_all(condition = ~.x == 0)
 cm.total = as.matrix(cm.total)
-rownames(cm.total) <- c('DA', 'DO', 'DX')
-colnames(cm.total) <- c('DA', 'DO', 'DX')
+rownames(cm.total) <- c('BG', 'ES', 'MD', 'TM', 'WDA', 'WDB')
+colnames(cm.total) <- c('BG', 'ES', 'MD', 'TM', 'WDA', 'WDB')
 
 #save confusion matrix
 write.csv(cm.total, "Figures/cm_final/cm_Location_upsample2_small2.csv")
@@ -214,10 +214,10 @@ colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM',
                         'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
 
 #plot confusion matrix
-cols = colorRampPalette(c('#f5f5f5', '#b35806'))
+cols = colorRampPalette(c('#f5f5f5', '#fe9929'))
 
 par(mar = c(1,2,2,1), oma = c(1,1,3,1))
-corrplot(cm.total,
+corrplot::corrplot(cm.total,
          is.corr = T, 
          method = 'square', 
          col = cols(10),
@@ -233,8 +233,8 @@ corrplot(cm.total,
          na.label = 'square', 
          na.label.col = 'white',
          addgrid.col = 'grey')
-mtext("Reference", side = 2, line = -8, cex = 2.5)
-mtext("Prediction", side = 3, cex = 2.5, at = 2, line = 3)
+mtext("Reference", side = 2, line = -2, cex = 2.5)
+mtext("Prediction", side = 3, cex = 2.5, at = 3.5, line = 2)
 
 ################################################################################
 #Variable importance

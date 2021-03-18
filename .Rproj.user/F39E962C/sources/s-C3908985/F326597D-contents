@@ -197,11 +197,16 @@ colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM',
                         'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
 
 #plot confusion matrix
-cols = colorRampPalette(c('#f5f5f5', '#b35806'))
+cm.total = read.csv("Figures/cm_final/cm_Species_ID_upsample2_small2.csv", stringsAsFactors = F)
+rownames(cm.total) = cm.total[,1]
+cm.total = as.matrix(cm.total[,-1])
+
+
+cols = colorRampPalette(c('#f5f5f5', '#fe9929'))
 
 par(mar = c(1,2,2,1), oma = c(1,1,3,1))
-corrplot(cm.total,
-         is.corr = T, 
+corrplot::corrplot(cm.total,
+         is.corr = F, 
          method = 'square', 
          col = cols(10),
          addCoef.col = '#542788',

@@ -203,8 +203,12 @@ write.csv(cm.total, "Figures/cm_final/cm_GenePop_ID_upsample2_small2.csv")
 
 
 #plot confusion matrix
+cm.total = read.csv("Figures/cm_final/cm_GenePop_ID_upsample2_small2.csv", stringsAsFactors = F)
+cm.total = as.matrix(cm.total[,-1])
+rownames(cm.total) = c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
+colnames(cm.total) = c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
 
-cols = colorRampPalette(c('#f5f5f5', '#b35806'))
+cols = colorRampPalette(c('#f5f5f5', '#fe9929'))
 
 par(mar = c(1,2,2,1), oma = c(1,1,3,1))
 corrplot::corrplot(cm.total,

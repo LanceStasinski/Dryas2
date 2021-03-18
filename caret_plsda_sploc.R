@@ -236,7 +236,7 @@ colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM',
 
 #plot confusion matrix
 
-cols = colorRampPalette(c('#f5f5f5', '#b35806'))
+cols = colorRampPalette(c('#f5f5f5', '#fe9929'))
 
 par(mfrow = c(1,1), mar = c(1,2,2,1), oma = c(1,1,3,1))
 corrplot::corrplot(cm.total,

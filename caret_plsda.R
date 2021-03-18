@@ -21,11 +21,6 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 
 
-#Code for new populations
-s.m = as_spectra(as.matrix(spec_all))
-meta(s.m) = read.csv('metadata_2.csv', stringsAsFactors = F)
-spec_all = s.m
-
 #remove any NaN values - mostly pertains to populations
 spec_all = spec_all[!meta(spec_all)$Species_ID == "NaN",]
 
@@ -55,6 +50,9 @@ accuracy <- c()
 kappa <- c()
 k.fit <- matrix(nrow = ncomp)
 cm.list <- list()
+da.vip = matrix(nrow=201)
+do.vip = matrix(nrow=201)
+dx.vip = matrix(nrow=201)
 
 #start of PLSDA code
 for(i in 1:100){
@@ -84,6 +82,18 @@ plsFit <- train(
   method = "pls",
   trControl = ctrl,
   tuneLength = ncomp)
+
+#variable importance
+vip = varImp(plsFit)
+
+da = assign(paste0('da', i), vip$importance$DA)
+da.vip <- cbind(da.vip, get('da'))
+
+do = assign(paste0('do', i), vip$importance$DO)
+do.vip <- cbind(do.vip, get('do'))
+
+dx = assign(paste0('dx', i), vip$importance$DX)
+dx.vip <- cbind(dx.vip, get('dx'))
 
 #kappa objects for determining n components
 k = assign(paste0('k', i), as.matrix(plsFit$results$Kappa))
@@ -187,11 +197,16 @@ colnames(cm.total) <- c('ES', 'TM', 'WDB', 'BG', 'ES', 'TM',
                         'MD', 'WDA', 'WDB', 'ES', 'TM', 'WDB')
 
 #plot confusion matrix
-cols = colorRampPalette(c('#f5f5f5', '#b35806'))
+cm.total = read.csv("Figures/cm_final/cm_Species_ID_upsample2_small2.csv", stringsAsFactors = F)
+rownames(cm.total) = cm.total[,1]
+cm.total = as.matrix(cm.total[,-1])
+
+
+cols = colorRampPalette(c('#f5f5f5', '#fe9929'))
 
 par(mar = c(1,2,2,1), oma = c(1,1,3,1))
-corrplot(cm.total,
-         is.corr = T, 
+corrplot::corrplot(cm.total,
+         is.corr = F, 
          method = 'square', 
          col = cols(10),
          addCoef.col = '#542788',
@@ -209,38 +224,54 @@ corrplot(cm.total,
 mtext("Reference", side = 2, line = -8, cex = 2.5)
 mtext("Prediction", side = 3, cex = 2.5, at = 2, line = 3)
 
-
 ################################################################################
-#Loadings plot
+#Variable importance
 ################################################################################
-#Convert data into 'spectral' data for fancy graphing
-comp_to_spec = function(x){
-  t.comp = t(x)
-  colnames(t.comp) <- seq(400,2400, by = 10)
-  s.comp = as_spectra(t.comp)
+vip_to_spec = function(x){
+  t.vip = t(x)
+  colnames(t.vip) <- seq(400,2400, by = 10)
+  s.vip = as_spectra(t.vip)
 }
+do.vip = do.vip[,-1]
+do.vip.spec = vip_to_spec(do.vip)
 
-component1 = comp_to_spec(loadings.c1)
-component2 = comp_to_spec(loadings.c2)
-component3 = comp_to_spec(loadings.c3)
+da.vip = da.vip[,-1]
+da.vip.spec = vip_to_spec(da.vip)
 
-#plot loadings for first 3 components
-dev.new(width = 6, height = 8, unit = 'in')
-par(mar = c(5,4,1,1), oma = c(1,1,1,1), mfrow = c(1,1))
-plot(mean(component1), lwd = 2, lty = 1, col = rgb(1,0,0,1), 
-     cex.lab = 1.5, ylim = c(-.2, .15), ylab = "Loading Values", 
-     xlab = "Wavelength (nm)")
-plot_quantile(component1, total_prob = 0.95, col = rgb(1, 0, 0, 0.25), 
+dx.vip = dx.vip[,-1]
+dx.vip.spec = vip_to_spec(dx.vip)
+
+#plot
+par(mfrow = c(3,1))
+
+plot(mean(da.vip.spec), lwd = 1.5, lty = 1, col = '#00B0F6', ylim = c(0, 100),
+     ylab = "Variable Importance", xlab = NA, cex.lab = 1.5)
+plot_quantile(da.vip.spec, total_prob = 0.95, col = rgb(0, 0.69, 0.965, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(component1, regions = default_spec_regions(), add = TRUE)
-plot(mean(component2), lwd = 1.5, lty = 1, col = rgb(0,0,1,1), add = TRUE)
-plot_quantile(component2, total_prob = 0.95, col = rgb(0, 0, 1, 0.25), 
+plot_regions(da.vip.spec, regions = default_spec_regions(),
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
+
+plot(mean(do.vip.spec), lwd = 2, lty = 1, col = '#F8766D', 
+     cex.lab = 1.5, ylim = c(0, 100), ylab = "Variable Importance", 
+     xlab = NA)
+plot_quantile(do.vip.spec, total_prob = 0.95, col = rgb(0.972549,0.4627451,0.427451, 0.25), 
               border = FALSE, add = TRUE)
-plot(mean(component3), lwd = 1.5, lty = 1, col = "darkgreen", add = TRUE)
-plot_quantile(component3, total_prob = 0.95, col = rgb(0, .5, 0, 0.25),
+plot_regions(do.vip.spec, regions = default_spec_regions(),
+            add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
+
+
+plot(mean(dx.vip.spec), lwd = 1.5, lty = 1, col = rgb(0,0,0,1), ylim = c(0, 100),
+     ylab = "Variable Importance", xlab = 'Wavelength (nm)', cex.lab = 1.5)
+plot_quantile(dx.vip.spec, total_prob = 0.95, col = rgb(0, 0, 0, 0.25), 
               border = FALSE, add = TRUE)
-abline(h = 0, lty = 2, lwd = 1.5)
-legend('bottomright',inset = .02,
-       legend=c("Component 1", "Component 2", 'Component 3'),
-       col=c(rgb(1,0,0,1), rgb(0,0,1,1), rgb(0,1,0,1)), 
-       lty=1, cex=0.8, bg ='white')
+plot_regions(dx.vip.spec, regions = default_spec_regions(), 
+             add_label = T, add = TRUE)
+abline(v = 1450, lty = 2, lwd = 1.5)
+abline(v = 1940, lty = 2, lwd = 1.5)
+
+
+

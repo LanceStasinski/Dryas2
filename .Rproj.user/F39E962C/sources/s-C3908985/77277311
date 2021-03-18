@@ -1,25 +1,25 @@
 {
-    "id": "984345AF",
-    "path": "~/GitHub/Dryas2/NDWI.R",
-    "project_path": "NDWI.R",
+    "id": "77277311",
+    "path": "~/Dryas Research/Dryas 2.0/distances.R",
+    "project_path": null,
     "type": "r_source",
-    "hash": "1361220542",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1608039164099.0,
+    "created": 1601043659395.0,
     "source_on_save": false,
     "relative_order": 6,
     "properties": {
-        "cursorPosition": "4,0",
+        "cursorPosition": "2,0",
         "scrollLine": "0",
         "tempName": "Untitled1"
     },
     "folds": "",
-    "lastKnownWriteTime": 1608056918,
+    "lastKnownWriteTime": 1610047365,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1608056918017,
+    "last_content_update": 1610047365,
     "read_only": false,
     "read_only_alternatives": []
 }

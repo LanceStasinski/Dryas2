@@ -1,0 +1,32 @@
+{
+    "id": "15F0192E",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1616098404797.0,
+    "source_on_save": false,
+    "relative_order": 20,
+    "properties": {
+        "expression": "do_tree",
+        "caption": "do_tree",
+        "totalObservations": 117,
+        "displayedObservations": 117,
+        "variables": 117,
+        "cacheKey": "0B5E14C8",
+        "object": "do_tree",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=do_tree&cache_key=0B5E14C8&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2750827987400,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1616098404797,
+    "read_only": false,
+    "read_only_alternatives": []
+}

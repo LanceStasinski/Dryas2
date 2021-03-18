@@ -20,7 +20,7 @@ spec_all= readRDS("Clean-up/Clean_spectra/clean_all.rds")
 
 #remove NAs and resample to every ten nm
 spec_all = spec_all[!meta(spec_all)$DA == "NaN",]
-spectra = resample(spec_all, seq(400, 2400, by = 10))
+spectra = spectrolab::resample(spec_all, seq(400, 2400, by = 10))
 
 #prepare data for PLS
 spectra.df = as.data.frame(spectra)
@@ -196,15 +196,15 @@ par(mfrow = c(1,1))
 plot(DA$DA, DA$Predictions, cex.lab = 1.5,
      xlab = "Actual Dryas alaskensis ancestry",
      ylab = "Predicted Dryas alaskensi ancestry", pch = 16)
-lines(x = c(-2, 2), y = c(-2, 2))
+lines(x = c(-2, 2), y = c(-2, 2), lty=2)
 arrows(DA$DA, DA$min, DA$DA, DA$max,length=0.05, angle=90, code=0, col = DA$color)
 points(DA$DA, DA$Predictions,
        col = DA$color, pch = 16)
 legend("bottomright", inset = 0.01,
-       legend=c("D. octopetala", "Hybrid", "D. alaskensis", "1:1 line"), 
+       legend=c("D. ajanensis", "Hybrid", "D. alaskensis", "1:1 line"), 
        text.font = c(3,1,3,1),
-       col=c("#F8766D", "black", "#00B0F6", "black"), pch = c(8,8,8,NA),
-       lty = c(NA,NA,NA,1), bg = 'white')
+       col=c("#F8766D", "black", "#00B0F6", "black"), pch = c(16,16,16,NA),
+       lty = c(NA,NA,NA,2), bg = 'white')
 #extra
 c.rmse = caret::RMSE(mean.predictions$Predictions, mean.predictions$DA)
 c.r2 = caret::R2(mean.predictions$Predictions, mean.predictions$DA)

@@ -1,0 +1,32 @@
+{
+    "id": "866FD2CD",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1616098325931.0,
+    "source_on_save": false,
+    "relative_order": 18,
+    "properties": {
+        "expression": "do",
+        "caption": "do",
+        "totalObservations": 117,
+        "displayedObservations": 117,
+        "variables": 19,
+        "cacheKey": "8DFF000C",
+        "object": "do",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=do&cache_key=8DFF000C&max_cols=50",
+        "preview": 0
+    },
+    "folds": "",
+    "lastKnownWriteTime": 2750625163208,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1616098325931,
+    "read_only": false,
+    "read_only_alternatives": []
+}

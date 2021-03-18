@@ -28,7 +28,7 @@ rownames(spec.mean) <- meta_new[, "genetic_name"]
 
 
 #Genetic distance matrix
-tree = read.tree(file = "dryas_phylogeny.treefile")
+tree = read.tree(file = "new_tree.tre")
 tree.dist = cophenetic(tree)
 
 #Make sure both matrices have same sample IDs
@@ -49,16 +49,109 @@ spec.mean = spec.mean[row.names(tree.dist),,drop = F]
 spec.dist = as.matrix(dist(spec.mean,
                            method = "manhattan", 
                            diag = T, upper = T))
-
-################################################################################
-#compare matrices
-################################################################################
+#Mantel test
 spec.dist2 = as.dist(spec.dist)
 tree.dist2 = as.dist(tree.dist)
 
 mtest = vegan::mantel(spec.dist2, tree.dist2, method = "spearman", 
                       permutations = 9999)
 mtest
+
+################################################################################
+#mantel by location
+################################################################################
+#functions
+breakdown = function(site){
+  place = meta_new[meta_new$Location == site,]
+  rownames(place) <- place[, "genetic_name"]
+  return(place)
+}
+
+cut_spec = function(place){
+  place.ID = rownames(place)
+  remove.s = setdiff(spec.ID, place.ID)
+  place.spec = spec.mean[!rownames(spec.mean) %in% remove.s,]
+  return(place.spec)
+}
+
+cut_tree = function(place.spec){
+  s.ID = rownames(place.spec)
+  remove.g = setdiff(gene.ID, s.ID)
+  place.tree.dist = tree.dist[!rownames(tree.dist) %in% remove.g, ]
+  place.tree.dist = place.tree.dist[,!colnames(place.tree.dist) %in% remove.g]
+  return(place.tree.dist)
+}
+
+mantel_by_location = function(site){
+  place = breakdown(site)
+  place.spec = cut_spec(place)
+  place.tree.dist = cut_tree(place.spec)
+  spec.dist = as.matrix(dist(place.spec, method = "manhattan",
+                             diag = T, upper = T))
+  dist.s = as.dist(spec.dist)
+  dist.t = as.dist(place.tree.dist)
+  mtest = vegan::mantel(dist.s, dist.t, method = "spearman",
+                        permutations = 9999)
+  return(mtest)
+}
+
+bg = mantel_by_location("Bison Gulch")
+es = mantel_by_location("Eagle Summit")
+md = mantel_by_location("Murphy Dome B")
+tm = mantel_by_location("Twelve Mile")
+wda = mantel_by_location("Wickersham Dome A")
+wdb = mantel_by_location("Wickersham Dome B")
+
+bg
+es
+md
+tm
+wda
+wdb
+
+################################################################################
+#mantel by species
+################################################################################
+#functions
+breakdown = function(species){
+  place = meta_new[meta_new$Species_ID == species,]
+  rownames(place) <- place[, "genetic_name"]
+  return(place)
+}
+
+cut_spec = function(place){
+  place.ID = rownames(place)
+  remove.s = setdiff(spec.ID, place.ID)
+  place.spec = spec.mean[!rownames(spec.mean) %in% remove.s,]
+  return(place.spec)
+}
+
+cut_tree = function(place.spec){
+  s.ID = rownames(place.spec)
+  remove.g = setdiff(gene.ID, s.ID)
+  place.tree.dist = tree.dist[!rownames(tree.dist) %in% remove.g, ]
+  place.tree.dist = place.tree.dist[,!colnames(place.tree.dist) %in% remove.g]
+  return(place.tree.dist)
+}
+
+mantel_by_species = function(species){
+  place = breakdown(species)
+  place.spec = cut_spec(place)
+  place.tree.dist = cut_tree(place.spec)
+  spec.dist = as.matrix(dist(place.spec, method = "manhattan",
+                             diag = T, upper = T))
+  dist.s = as.dist(spec.dist)
+  dist.t = as.dist(place.tree.dist)
+  mtest = vegan::mantel(dist.s, dist.t, method = "spearman",
+                        permutations = 9999)
+  return(mtest)
+}
+
+daj = mantel_by_species("DO")
+dak = mantel_by_species("DA")
+daj
+dak
+
 ################################################################################
 #plot spectral distance vs genetic distance
 ################################################################################

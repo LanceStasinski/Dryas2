@@ -9,14 +9,13 @@ library(dplyr)
 library(randomForest)
 library(cluster)
 
-setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 ################################################################################
 #Data setup 
 ################################################################################
 
 #data
-spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
+spec_all = readRDS("clean_all.rds")
 
 #add new population delineations
 s.m = as_spectra(as.matrix(spec_all))
@@ -58,6 +57,7 @@ pred.sp = cbind(pam2$clustering, spec_df$Species_ID)
 sp.t = table(pred.sp[,2],pred.sp[,1])
 colnames(sp.t) = rownames(sp.t)
 sp.cm = confusionMatrix(sp.t)
+saveRDS(sp.cm, "rf_confusion_matrix_output/species_cm.rds")
 sp.k = sp.cm$overall[2]
 
 #population
@@ -66,6 +66,7 @@ pred.pop = cbind(pam6$clustering, spec_df$GenePop_ID)
 pop.t = table(pred.pop[,2],pred.pop[,1])
 colnames(pop.t) = rownames(pop.t)
 pop.cm = confusionMatrix(pop.t)
+saveRDS(pop.cm, "rf_confusion_matrix_output/pop_cm.rds")
 pop.k = pop.cm$overall[2]
 
 #location
@@ -74,6 +75,7 @@ pred.loc = cbind(pam6$clustering, spec_df$Location)
 loc.t = table(pred.loc[,2],pred.loc[,1])
 colnames(loc.t) = rownames(loc.t)
 loc.cm = confusionMatrix(loc.t)
+saveRDS(loc.cm, "rf_confusion_matrix_output/location_cm.rds")
 loc.k = loc.cm$overall[2]
 
 #species+location
@@ -82,6 +84,7 @@ pred.sploc = cbind(pam9$clustering, spec_df$sp_loc)
 sploc.t = table(pred.sploc[,2],pred.sploc[,1])
 colnames(sploc.t) = rownames(sploc.t)
 sploc.cm = confusionMatrix(sploc.t)
+saveRDS(sploc.cm, "rf_confusion_matrix_output/species_location.rds")
 sploc.k = sploc.cm$overall[2]
 
 #kappa scores

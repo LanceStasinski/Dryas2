@@ -14,7 +14,7 @@ library(rlist)
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 ################################################################################
-#Data setup !!!!NOTE: use ctrl+f to find a replace the field to be classified!!!
+#Data setup 
 ################################################################################
 
 #data

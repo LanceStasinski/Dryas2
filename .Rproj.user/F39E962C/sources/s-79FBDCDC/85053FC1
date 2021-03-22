@@ -1,16 +1,17 @@
 {
-    "id": "BBB37494",
-    "path": "~/GitHub/Dryas2/spectra_plots.R",
-    "project_path": "spectra_plots.R",
+    "id": "85053FC1",
+    "path": "~/GitHub/Dryas2/map_finala.R",
+    "project_path": "map_finala.R",
     "type": "r_source",
-    "hash": "4048568943",
+    "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1609956572333.0,
+    "created": 1616077178775.0,
     "source_on_save": false,
-    "relative_order": 2,
+    "relative_order": 18,
     "properties": {
-        "cursorPosition": "117,0",
+        "tempName": "Untitled1",
+        "cursorPosition": "84,78",
         "scrollLine": "0"
     },
     "folds": "",
@@ -18,7 +19,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1616082526826,
+    "last_content_update": 1616082526854,
     "read_only": false,
     "read_only_alternatives": []
 }

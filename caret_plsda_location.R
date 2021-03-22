@@ -269,8 +269,6 @@ plot(mean(bg.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1),
      xlab = NA, main = 'Bison Gulch')
 plot_quantile(bg.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(bg.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 
@@ -279,8 +277,6 @@ plot(mean(es.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1),
      xlab = NA, main = 'Eagle Summit')
 plot_quantile(es.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(es.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 
@@ -289,8 +285,6 @@ plot(mean(md.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1),
      xlab = NA, main = 'Murphy Dome')
 plot_quantile(md.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(md.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 
@@ -300,8 +294,6 @@ plot(mean(tm.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1),
      xlab = NA, main = 'Twelve Mile')
 plot_quantile(tm.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(tm.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 
@@ -310,8 +302,6 @@ plot(mean(wda.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1),
      xlab = 'Wavelength (nm)', main = 'Wickersham Dome A')
 plot_quantile(wda.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(wda.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 
@@ -320,7 +310,5 @@ plot(mean(wdb.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1),
      xlab = 'Wavelength (nm)', main = 'Wickersham Dome B')
 plot_quantile(wdb.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(wdb.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)

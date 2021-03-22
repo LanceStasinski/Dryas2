@@ -14,7 +14,7 @@ library(rlist)
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 ################################################################################
-#Data setup !!!!NOTE: use ctrl+f to find a replace the field to be classified!!!
+#Data setup 
 ################################################################################
 
 #data
@@ -248,8 +248,6 @@ plot(mean(da.vip.spec), lwd = 1.5, lty = 1, col = '#00B0F6', ylim = c(0, 100),
      ylab = "Variable Importance", xlab = NA, cex.lab = 1.5)
 plot_quantile(da.vip.spec, total_prob = 0.95, col = rgb(0, 0.69, 0.965, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(da.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 
@@ -258,8 +256,6 @@ plot(mean(do.vip.spec), lwd = 2, lty = 1, col = '#F8766D',
      xlab = NA)
 plot_quantile(do.vip.spec, total_prob = 0.95, col = rgb(0.972549,0.4627451,0.427451, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(do.vip.spec, regions = default_spec_regions(),
-            add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 
@@ -268,8 +264,6 @@ plot(mean(dx.vip.spec), lwd = 1.5, lty = 1, col = rgb(0,0,0,1), ylim = c(0, 100)
      ylab = "Variable Importance", xlab = 'Wavelength (nm)', cex.lab = 1.5)
 plot_quantile(dx.vip.spec, total_prob = 0.95, col = rgb(0, 0, 0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(dx.vip.spec, regions = default_spec_regions(), 
-             add_label = T, add = TRUE)
 abline(v = 1450, lty = 2, lwd = 1.5)
 abline(v = 1940, lty = 2, lwd = 1.5)
 

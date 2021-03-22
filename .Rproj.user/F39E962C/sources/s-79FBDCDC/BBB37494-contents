@@ -110,7 +110,6 @@ plot(mean(ala), lwd = 2, lty = 1, col = "#00B0F6",
      ylab = "Reflectance", xlab = "Wavelength (nm)")
 plot(mean(oct), lwd = 2, lty = 1, col = "#F8766D", add = T)
 plot(mean(hyb), lwd = 2, lty = 1, col = "black", add = T)
-plot_regions(ala, regions = default_spec_regions(), add = TRUE)
 legend('bottomright', inset = .02, legend = c("DAK", "DAJ", "DX"),
        col = c("#00B0F6", "#F8766D", "black"), lty = 1, lwd = 2, cex =.8,
        bg = "white")
@@ -134,7 +133,6 @@ dev.new(width = 6, height = 8, unit = 'in')
 plot(mean(da_et), lwd = 2, lty = 1, col = "#a6cee3", 
      cex.lab = 1.5, ylim = c(0, .85), ylab = "Reflectance", 
      xlab = 'Wavelength (nm)', main = "Mean reflecatnce per population")
-plot_regions(da_et, regions = default_spec_regions(), add = TRUE)
 plot(mean(da_wd), lwd = 2, lty = 1, col = "#b2df8a", add = T)
 plot(mean(et), lwd = 2, lty = 1, col = "#fb9a99", add = T)
 plot(mean(wd), lwd = 2, lty = 1, col = "#ff7f00", add = T)

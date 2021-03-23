@@ -1,0 +1,701 @@
+"","X","Object.ID","Name","scan.name","LMA","Leaf.Area..cm2.","Leaf.mass..g.","SLA","Species","Location","Notes","Species_ID","GenePop_ID","SpeciesLoc_ID","Clone","sp_loc","DA"
+"1",1,123,"DryalaTM1","dryala-tm1_00003",0.014419643,6.72,0.0969,69.3498452,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9944
+"2",2,124,"DryalaTM1","dryala-tm1_00004",0.014419643,6.72,0.0969,69.3498452,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9944
+"3",3,125,"DryalaTM1","dryala-tm1_00005",0.014419643,6.72,0.0969,69.3498452,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9944
+"4",4,126,"DryalaTM1","dryala-tm1_00006",0.014419643,6.72,0.0969,69.3498452,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9944
+"5",5,175,"DryalaTM10","dryala-tm10_00055",0.013012458,8.83,0.1149,76.84943429,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9802
+"6",6,176,"DryalaTM10","dryala-tm10_00056",0.013012458,8.83,0.1149,76.84943429,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9802
+"7",7,177,"DryalaTM10","dryala-tm10_00057",0.013012458,8.83,0.1149,76.84943429,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9802
+"8",8,178,"DryalaTM10","dryala-tm10_00058",0.013012458,8.83,0.1149,76.84943429,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9802
+"9",9,183,"DryalaTM11","dryala-tm11_00063",0.012755966,12.99,0.1657,78.3946892,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9804
+"10",10,184,"DryalaTM11","dryala-tm11_00064",0.012755966,12.99,0.1657,78.3946892,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9804
+"11",11,185,"DryalaTM11","dryala-tm11_00065",0.012755966,12.99,0.1657,78.3946892,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9804
+"12",12,186,"DryalaTM11","dryala-tm11_00066",0.012755966,12.99,0.1657,78.3946892,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9804
+"13",13,194,"DryalaTM13","dryala-tm13_00074",0.012911585,6.56,0.0847,77.4498229,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9918
+"14",14,195,"DryalaTM13","dryala-tm13_00075",0.012911585,6.56,0.0847,77.4498229,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9918
+"15",15,197,"DryalaTM13","dryala-tm13_00077",0.012911585,6.56,0.0847,77.4498229,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9918
+"16",16,198,"DryalaTM13","dryala-tm13_00078",0.012911585,6.56,0.0847,77.4498229,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9918
+"17",17,200,"DryalaTM14","dryala-tm14_00080",0.013064877,8.94,0.1168,76.54109589,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.995
+"18",18,201,"DryalaTM14","dryala-tm14_00081",0.013064877,8.94,0.1168,76.54109589,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.995
+"19",19,203,"DryalaTM14","dryala-tm14_00083",0.013064877,8.94,0.1168,76.54109589,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.995
+"20",20,204,"DryalaTM14","dryala-tm14_00084",0.013064877,8.94,0.1168,76.54109589,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.995
+"21",21,207,"DryalaTM15","dryala-tm15_00087",0.011180061,9.83,0.1099,89.44494995,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.965
+"22",22,208,"DryalaTM15","dryala-tm15_00088",0.011180061,9.83,0.1099,89.44494995,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.965
+"23",23,209,"DryalaTM15","dryala-tm15_00089",0.011180061,9.83,0.1099,89.44494995,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.965
+"24",24,211,"DryalaTM15","dryala-tm15_00091",0.011180061,9.83,0.1099,89.44494995,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.965
+"25",25,212,"DryalaTM16","dryala-tm16_00092",0.010298913,18.4,0.1895,97.09762533,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9972
+"26",26,213,"DryalaTM16","dryala-tm16_00093",0.010298913,18.4,0.1895,97.09762533,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9972
+"27",27,214,"DryalaTM16","dryala-tm16_00094",0.010298913,18.4,0.1895,97.09762533,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9972
+"28",28,215,"DryalaTM16","dryala-tm16_00095",0.010298913,18.4,0.1895,97.09762533,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9972
+"29",29,219,"DryalaTM17","dryala-tm17_00099",0.01349277,8.99,0.1213,74.11376752,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.993
+"30",30,220,"DryalaTM17","dryala-tm17_00100",0.01349277,8.99,0.1213,74.11376752,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.993
+"31",31,221,"DryalaTM17","dryala-tm17_00101",0.01349277,8.99,0.1213,74.11376752,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.993
+"32",32,222,"DryalaTM17","dryala-tm17_00102",0.01349277,8.99,0.1213,74.11376752,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.993
+"33",33,223,"DryalaTM18","dryala-tm18_00103",0.010717092,10.18,0.1091,93.30889093,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9948
+"34",34,225,"DryalaTM18","dryala-tm18_00105",0.010717092,10.18,0.1091,93.30889093,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9948
+"35",35,226,"DryalaTM18","dryala-tm18_00106",0.010717092,10.18,0.1091,93.30889093,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9948
+"36",36,227,"DryalaTM18","dryala-tm18_00107",0.010717092,10.18,0.1091,93.30889093,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9948
+"37",37,229,"DryalaTM19","dryala-tm19_00109",0.012898707,9.28,0.1197,77.52715121,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.8936
+"38",38,230,"DryalaTM19","dryala-tm19_00110",0.012898707,9.28,0.1197,77.52715121,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.8936
+"39",39,232,"DryalaTM19","dryala-tm19_00112",0.012898707,9.28,0.1197,77.52715121,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.8936
+"40",40,233,"DryalaTM19","dryala-tm19_00113",0.012898707,9.28,0.1197,77.52715121,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.8936
+"41",41,127,"DryalaTM2","dryala-tm2_00007",0.013733719,6.91,0.0949,72.81348788,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9956
+"42",42,128,"DryalaTM2","dryala-tm2_00008",0.013733719,6.91,0.0949,72.81348788,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9956
+"43",43,130,"DryalaTM2","dryala-tm2_00010",0.013733719,6.91,0.0949,72.81348788,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9956
+"44",44,131,"DryalaTM2","dryala-tm2_00011",0.013733719,6.91,0.0949,72.81348788,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9956
+"45",45,235,"DryalaTM20","dryala-tm20_00115",0.013553371,7.12,0.0965,73.78238342,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.956
+"46",46,236,"DryalaTM20","dryala-tm20_00116",0.013553371,7.12,0.0965,73.78238342,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.956
+"47",47,237,"DryalaTM20","dryala-tm20_00117",0.013553371,7.12,0.0965,73.78238342,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.956
+"48",48,239,"DryalaTM20","dryala-tm20_00119",0.013553371,7.12,0.0965,73.78238342,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.956
+"49",49,133,"DryalaTM3","dryala-tm3_00013",0.012263314,6.76,0.0829,81.54402895,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9846
+"50",50,134,"DryalaTM3","dryala-tm3_00014",0.012263314,6.76,0.0829,81.54402895,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9846
+"51",51,137,"DryalaTM3","dryala-tm3_00017",0.012263314,6.76,0.0829,81.54402895,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9846
+"52",52,138,"DryalaTM3","dryala-tm3_00018",0.012263314,6.76,0.0829,81.54402895,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9846
+"53",53,139,"DryalaTM4","dryala-tm4_00019",0.009898348,7.87,0.0779,101.0269576,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9872
+"54",54,142,"DryalaTM4","dryala-tm4_00022",0.009898348,7.87,0.0779,101.0269576,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9872
+"55",55,143,"DryalaTM4","dryala-tm4_00023",0.009898348,7.87,0.0779,101.0269576,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9872
+"56",56,144,"DryalaTM4","dryala-tm4_00024",0.009898348,7.87,0.0779,101.0269576,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9872
+"57",57,145,"DryalaTM5","dryala-tm5_00025",0.012787724,7.82,0.1,78.2,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9938
+"58",58,146,"DryalaTM5","dryala-tm5_00026",0.012787724,7.82,0.1,78.2,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9938
+"59",59,148,"DryalaTM5","dryala-tm5_00028",0.012787724,7.82,0.1,78.2,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9938
+"60",60,149,"DryalaTM5","dryala-tm5_00029",0.012787724,7.82,0.1,78.2,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9938
+"61",61,151,"DryalaTM6","dryala-tm6_00031",0.012055623,8.27,0.0997,82.94884654,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9788
+"62",62,154,"DryalaTM6","dryala-tm6_00034",0.012055623,8.27,0.0997,82.94884654,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9788
+"63",63,155,"DryalaTM6","dryala-tm6_00035",0.012055623,8.27,0.0997,82.94884654,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9788
+"64",64,156,"DryalaTM6","dryala-tm6_00036",0.012055623,8.27,0.0997,82.94884654,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9788
+"65",65,157,"DryalaTM7","dryala-tm7_00037",0.012427746,8.65,0.1075,80.46511628,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9768
+"66",66,158,"DryalaTM7","dryala-tm7_00038",0.012427746,8.65,0.1075,80.46511628,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9768
+"67",67,159,"DryalaTM7","dryala-tm7_00039",0.012427746,8.65,0.1075,80.46511628,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9768
+"68",68,160,"DryalaTM7","dryala-tm7_00040",0.012427746,8.65,0.1075,80.46511628,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9768
+"69",69,164,"DryalaTM8","dryala-tm8_00044",0.013905229,6.12,0.0851,71.91539365,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9936
+"70",70,166,"DryalaTM8","dryala-tm8_00046",0.013905229,6.12,0.0851,71.91539365,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9936
+"71",71,167,"DryalaTM8","dryala-tm8_00047",0.013905229,6.12,0.0851,71.91539365,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9936
+"72",72,168,"DryalaTM8","dryala-tm8_00048",0.013905229,6.12,0.0851,71.91539365,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9936
+"73",73,170,"DryalaTM9","dryala-tm9_00050",0.010747126,10.44,0.1122,93.04812834,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9964
+"74",74,171,"DryalaTM9","dryala-tm9_00051",0.010747126,10.44,0.1122,93.04812834,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9964
+"75",75,173,"DryalaTM9","dryala-tm9_00053",0.010747126,10.44,0.1122,93.04812834,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9964
+"76",76,174,"DryalaTM9","dryala-tm9_00054",0.010747126,10.44,0.1122,93.04812834,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9964
+"77",77,241,"DryhybTM41","dryhyb-tm41_00245",0.006417722,7.9,0.0507,155.8185404,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9076
+"78",78,242,"DryhybTM41","dryhyb-tm41_00246",0.006417722,7.9,0.0507,155.8185404,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9076
+"79",79,243,"DryhybTM41","dryhyb-tm41_00247",0.006417722,7.9,0.0507,155.8185404,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9076
+"80",80,244,"DryhybTM41","dryhyb-tm41_00248",0.006417722,7.9,0.0507,155.8185404,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9076
+"81",81,253,"DryhybTM43","dryhyb-tm43_00257",0.012470462,9.31,0.1161,80.18949182,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9778
+"82",82,254,"DryhybTM43","dryhyb-tm43_00258",0.012470462,9.31,0.1161,80.18949182,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9778
+"83",83,255,"DryhybTM43","dryhyb-tm43_00259",0.012470462,9.31,0.1161,80.18949182,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9778
+"84",84,256,"DryhybTM43","dryhyb-tm43_00260",0.012470462,9.31,0.1161,80.18949182,"alaskensis","Twelve Mile",NA,"DA","DA_et","DA_tmi","No","DA_tm",0.9778
+"85",85,258,"DryhybTM44","dryhyb-tm44_00262",0.01267951,5.71,0.0724,78.86740331,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.4724
+"86",86,259,"DryhybTM44","dryhyb-tm44_00263",0.01267951,5.71,0.0724,78.86740331,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.4724
+"87",87,260,"DryhybTM44","dryhyb-tm44_00264",0.01267951,5.71,0.0724,78.86740331,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.4724
+"88",88,262,"DryhybTM44","dryhyb-tm44_00266",0.01267951,5.71,0.0724,78.86740331,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.4724
+"89",89,263,"DryhybTM45","dryhyb-tm45_00267",0.01544757,3.91,0.0604,64.73509934,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.5226
+"90",90,264,"DryhybTM45","dryhyb-tm45_00268",0.01544757,3.91,0.0604,64.73509934,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.5226
+"91",91,265,"DryhybTM45","dryhyb-tm45_00269",0.01544757,3.91,0.0604,64.73509934,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.5226
+"92",92,268,"DryhybTM45","dryhyb-tm45_00272",0.01544757,3.91,0.0604,64.73509934,"hybrid","Twelve Mile",NA,"DX","NaN","DX_tmi","No","DX_tm",0.5226
+"93",93,271,"DryoctTM21","dryoct-tm21_00122",0.012315789,3.8,0.0468,81.1965812,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0134
+"94",94,272,"DryoctTM21","dryoct-tm21_00123",0.012315789,3.8,0.0468,81.1965812,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0134
+"95",95,273,"DryoctTM21","dryoct-tm21_00124",0.012315789,3.8,0.0468,81.1965812,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0134
+"96",96,274,"DryoctTM21","dryoct-tm21_00125",0.012315789,3.8,0.0468,81.1965812,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0134
+"97",97,275,"DryoctTM22","dryoct-tm22_00126",0.01173028,3.93,0.0461,85.2494577,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0442
+"98",98,277,"DryoctTM22","dryoct-tm22_00128",0.01173028,3.93,0.0461,85.2494577,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0442
+"99",99,279,"DryoctTM22","dryoct-tm22_00130",0.01173028,3.93,0.0461,85.2494577,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0442
+"100",100,280,"DryoctTM22","dryoct-tm22_00131",0.01173028,3.93,0.0461,85.2494577,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0442
+"101",101,281,"DryoctTM23","dryoct-tm23_00132",0.013630952,3.36,0.0458,73.36244541,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.047
+"102",102,282,"DryoctTM23","dryoct-tm23_00133",0.013630952,3.36,0.0458,73.36244541,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.047
+"103",103,283,"DryoctTM23","dryoct-tm23_00134",0.013630952,3.36,0.0458,73.36244541,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.047
+"104",104,284,"DryoctTM23","dryoct-tm23_00135",0.013630952,3.36,0.0458,73.36244541,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.047
+"105",105,289,"DryoctTM24","dryoct-tm24_00140",0.012432432,3.7,0.046,80.43478261,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"106",106,290,"DryoctTM24","dryoct-tm24_00141",0.012432432,3.7,0.046,80.43478261,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"107",107,291,"DryoctTM24","dryoct-tm24_00142",0.012432432,3.7,0.046,80.43478261,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"108",108,292,"DryoctTM24","dryoct-tm24_00143",0.012432432,3.7,0.046,80.43478261,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"109",109,293,"DryoctTM25","dryoct-tm25_00144",0.011805338,6.37,0.0752,84.70744681,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"110",110,295,"DryoctTM25","dryoct-tm25_00146",0.011805338,6.37,0.0752,84.70744681,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"111",111,297,"DryoctTM25","dryoct-tm25_00148",0.011805338,6.37,0.0752,84.70744681,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"112",112,298,"DryoctTM25","dryoct-tm25_00149",0.011805338,6.37,0.0752,84.70744681,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0352
+"113",113,299,"DryoctTM26","dryoct-tm26_00150",0.013682008,4.78,0.0654,73.08868502,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.027
+"114",114,300,"DryoctTM26","dryoct-tm26_00151",0.013682008,4.78,0.0654,73.08868502,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.027
+"115",115,301,"DryoctTM26","dryoct-tm26_00152",0.013682008,4.78,0.0654,73.08868502,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.027
+"116",116,302,"DryoctTM26","dryoct-tm26_00153",0.013682008,4.78,0.0654,73.08868502,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.027
+"117",117,305,"DryoctTM27","dryoct-tm27_00156",0.013273543,2.23,0.0296,75.33783784,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0182
+"118",118,306,"DryoctTM27","dryoct-tm27_00157",0.013273543,2.23,0.0296,75.33783784,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0182
+"119",119,309,"DryoctTM27","dryoct-tm27_00160",0.013273543,2.23,0.0296,75.33783784,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0182
+"120",120,310,"DryoctTM27","dryoct-tm27_00161",0.013273543,2.23,0.0296,75.33783784,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0182
+"121",121,311,"DryoctTM28","dryoct-tm28_00162",0.011648936,3.76,0.0438,85.84474886,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0176
+"122",122,312,"DryoctTM28","dryoct-tm28_00163",0.011648936,3.76,0.0438,85.84474886,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0176
+"123",123,314,"DryoctTM28","dryoct-tm28_00165",0.011648936,3.76,0.0438,85.84474886,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0176
+"124",124,316,"DryoctTM28","dryoct-tm28_00167",0.011648936,3.76,0.0438,85.84474886,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0176
+"125",125,317,"DryoctTM29","dryoct-tm29_00168",0.011658654,4.16,0.0485,85.77319588,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0164
+"126",126,321,"DryoctTM29","dryoct-tm29_00172",0.011658654,4.16,0.0485,85.77319588,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0164
+"127",127,322,"DryoctTM29","dryoct-tm29_00173",0.011658654,4.16,0.0485,85.77319588,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0164
+"128",128,323,"DryoctTM29","dryoct-tm29_00174",0.011658654,4.16,0.0485,85.77319588,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0164
+"129",129,327,"DryoctTM30","dryoct-tm30_00178",0.011224944,4.49,0.0504,89.08730159,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0778
+"130",130,328,"DryoctTM30","dryoct-tm30_00179",0.011224944,4.49,0.0504,89.08730159,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0778
+"131",131,329,"DryoctTM30","dryoct-tm30_00180",0.011224944,4.49,0.0504,89.08730159,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0778
+"132",132,330,"DryoctTM30","dryoct-tm30_00181",0.011224944,4.49,0.0504,89.08730159,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0778
+"133",133,331,"DryoctTM31","dryoct-tm31_00182",0.011321839,3.48,0.0394,88.3248731,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"134",134,332,"DryoctTM31","dryoct-tm31_00183",0.011321839,3.48,0.0394,88.3248731,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"135",135,335,"DryoctTM31","dryoct-tm31_00186",0.011321839,3.48,0.0394,88.3248731,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"136",136,337,"DryoctTM31","dryoct-tm31_00188",0.011321839,3.48,0.0394,88.3248731,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"137",137,338,"DryoctTM32","dryoct-tm32_00189",0.013217116,6.31,0.0834,75.65947242,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.1222
+"138",138,340,"DryoctTM32","dryoct-tm32_00191",0.013217116,6.31,0.0834,75.65947242,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.1222
+"139",139,342,"DryoctTM32","dryoct-tm32_00193",0.013217116,6.31,0.0834,75.65947242,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.1222
+"140",140,343,"DryoctTM32","dryoct-tm32_00194",0.013217116,6.31,0.0834,75.65947242,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.1222
+"141",141,344,"DryoctTM33","dryoct-tm33_00195",0.008649573,5.85,0.0506,115.6126482,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.2426
+"142",142,345,"DryoctTM33","dryoct-tm33_00196",0.008649573,5.85,0.0506,115.6126482,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.2426
+"143",143,346,"DryoctTM33","dryoct-tm33_00197",0.008649573,5.85,0.0506,115.6126482,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.2426
+"144",144,351,"DryoctTM33","dryoct-tm33_00202",0.008649573,5.85,0.0506,115.6126482,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.2426
+"145",145,353,"DryoctTM34","dryoct-tm34_00204",0.011441242,4.51,0.0516,87.40310078,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0196
+"146",146,354,"DryoctTM34","dryoct-tm34_00205",0.011441242,4.51,0.0516,87.40310078,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0196
+"147",147,355,"DryoctTM34","dryoct-tm34_00206",0.011441242,4.51,0.0516,87.40310078,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0196
+"148",148,356,"DryoctTM34","dryoct-tm34_00207",0.011441242,4.51,0.0516,87.40310078,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0196
+"149",149,358,"DryoctTM35","dryoct-tm35_00209",0.01162963,4.05,0.0471,85.98726115,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0144
+"150",150,359,"DryoctTM35","dryoct-tm35_00210",0.01162963,4.05,0.0471,85.98726115,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0144
+"151",151,361,"DryoctTM35","dryoct-tm35_00212",0.01162963,4.05,0.0471,85.98726115,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0144
+"152",152,362,"DryoctTM35","dryoct-tm35_00213",0.01162963,4.05,0.0471,85.98726115,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0144
+"153",153,365,"DryoctTM36","dryoct-tm36_00216",0.01150463,4.32,0.0497,86.92152918,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0212
+"154",154,366,"DryoctTM36","dryoct-tm36_00217",0.01150463,4.32,0.0497,86.92152918,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0212
+"155",155,367,"DryoctTM36","dryoct-tm36_00218",0.01150463,4.32,0.0497,86.92152918,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0212
+"156",156,368,"DryoctTM36","dryoct-tm36_00219",0.01150463,4.32,0.0497,86.92152918,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0212
+"157",157,370,"DryoctTM37","dryoct-tm37_00221",0.011479029,4.53,0.052,87.11538462,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0204
+"158",158,372,"DryoctTM37","dryoct-tm37_00223",0.011479029,4.53,0.052,87.11538462,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0204
+"159",159,373,"DryoctTM37","dryoct-tm37_00224",0.011479029,4.53,0.052,87.11538462,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0204
+"160",160,374,"DryoctTM37","dryoct-tm37_00225",0.011479029,4.53,0.052,87.11538462,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0204
+"161",161,376,"DryoctTM38","dryoct-tm38_00227",0.011145511,3.23,0.036,89.72222222,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0206
+"162",162,377,"DryoctTM38","dryoct-tm38_00228",0.011145511,3.23,0.036,89.72222222,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0206
+"163",163,378,"DryoctTM38","dryoct-tm38_00229",0.011145511,3.23,0.036,89.72222222,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0206
+"164",164,379,"DryoctTM38","dryoct-tm38_00230",0.011145511,3.23,0.036,89.72222222,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0206
+"165",165,381,"DryoctTM39","dryoct-tm39_00232",0.012763158,3.8,0.0485,78.35051546,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"166",166,383,"DryoctTM39","dryoct-tm39_00234",0.012763158,3.8,0.0485,78.35051546,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"167",167,384,"DryoctTM39","dryoct-tm39_00235",0.012763158,3.8,0.0485,78.35051546,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"168",168,385,"DryoctTM39","dryoct-tm39_00236",0.012763158,3.8,0.0485,78.35051546,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0536
+"169",169,388,"DryoctTM40","dryoct-tm40_00239",0.011343284,4.02,0.0456,88.15789474,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0484
+"170",170,389,"DryoctTM40","dryoct-tm40_00240",0.011343284,4.02,0.0456,88.15789474,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0484
+"171",171,390,"DryoctTM40","dryoct-tm40_00241",0.011343284,4.02,0.0456,88.15789474,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0484
+"172",172,391,"DryoctTM40","dryoct-tm40_00242",0.011343284,4.02,0.0456,88.15789474,"octopetala","Twelve Mile",NA,"DO","DO_et","DO_tmi","No","DO_tm",0.0484
+"173",173,393,"DryalaESA1","es-dry_00001",0.013797054,6.11,0.0843,72.47924081,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9864
+"174",174,394,"DryalaESA1","es-dry_00002",0.013797054,6.11,0.0843,72.47924081,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9864
+"175",175,395,"DryalaESA1","es-dry_00003",0.013797054,6.11,0.0843,72.47924081,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9864
+"176",176,397,"DryalaESA1","es-dry_00005",0.013797054,6.11,0.0843,72.47924081,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9864
+"177",177,447,"DryalaESA10","es-dry_00055",0.010254902,15.3,0.1569,97.51434034,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9696
+"178",178,449,"DryalaESA10","es-dry_00057",0.010254902,15.3,0.1569,97.51434034,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9696
+"179",179,450,"DryalaESA10","es-dry_00058",0.010254902,15.3,0.1569,97.51434034,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9696
+"180",180,452,"DryalaESA10","es-dry_00060",0.010254902,15.3,0.1569,97.51434034,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9696
+"181",181,454,"DryalaESA11","es-dry_00062",0.011569507,11.15,0.129,86.43410853,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.943
+"182",182,455,"DryalaESA11","es-dry_00063",0.011569507,11.15,0.129,86.43410853,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.943
+"183",183,456,"DryalaESA11","es-dry_00064",0.011569507,11.15,0.129,86.43410853,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.943
+"184",184,457,"DryalaESA11","es-dry_00065",0.011569507,11.15,0.129,86.43410853,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.943
+"185",185,467,"DryalaESA13","es-dry_00075",0.014118439,7.43,0.1049,70.8293613,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9332
+"186",186,468,"DryalaESA13","es-dry_00076",0.014118439,7.43,0.1049,70.8293613,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9332
+"187",187,469,"DryalaESA13","es-dry_00077",0.014118439,7.43,0.1049,70.8293613,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9332
+"188",188,470,"DryalaESA13","es-dry_00078",0.014118439,7.43,0.1049,70.8293613,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9332
+"189",189,483,"DryalaESA16","es-dry_00091",0.011788129,13.31,0.1569,84.83110261,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.975
+"190",190,484,"DryalaESA16","es-dry_00092",0.011788129,13.31,0.1569,84.83110261,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.975
+"191",191,485,"DryalaESA16","es-dry_00093",0.011788129,13.31,0.1569,84.83110261,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.975
+"192",192,486,"DryalaESA16","es-dry_00094",0.011788129,13.31,0.1569,84.83110261,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.975
+"193",193,489,"DryalaESA17","es-dry_00097",0.012631048,9.92,0.1253,79.16999202,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9044
+"194",194,491,"DryalaESA17","es-dry_00099",0.012631048,9.92,0.1253,79.16999202,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9044
+"195",195,492,"DryalaESA17","es-dry_00100",0.012631048,9.92,0.1253,79.16999202,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9044
+"196",196,493,"DryalaESA17","es-dry_00101",0.012631048,9.92,0.1253,79.16999202,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9044
+"197",197,501,"DryalaESA19","es-dry_00109",0.012666667,8.1,0.1026,78.94736842,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.918
+"198",198,502,"DryalaESA19","es-dry_00110",0.012666667,8.1,0.1026,78.94736842,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.918
+"199",199,503,"DryalaESA19","es-dry_00111",0.012666667,8.1,0.1026,78.94736842,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.918
+"200",200,504,"DryalaESA19","es-dry_00112",0.012666667,8.1,0.1026,78.94736842,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.918
+"201",201,399,"DryalaESA2","es-dry_00007",0.013053506,10.84,0.1415,76.60777385,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9344
+"202",202,400,"DryalaESA2","es-dry_00008",0.013053506,10.84,0.1415,76.60777385,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9344
+"203",203,402,"DryalaESA2","es-dry_00010",0.013053506,10.84,0.1415,76.60777385,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9344
+"204",204,404,"DryalaESA2","es-dry_00012",0.013053506,10.84,0.1415,76.60777385,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9344
+"205",205,509,"DryalaESA20","es-dry_00117",0.010258065,10.85,0.1113,97.48427673,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9538
+"206",206,510,"DryalaESA20","es-dry_00118",0.010258065,10.85,0.1113,97.48427673,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9538
+"207",207,511,"DryalaESA20","es-dry_00119",0.010258065,10.85,0.1113,97.48427673,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9538
+"208",208,512,"DryalaESA20","es-dry_00120",0.010258065,10.85,0.1113,97.48427673,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9538
+"209",209,519,"DryalaESA22","es-dry_00127",0.011180359,10.59,0.1184,89.44256757,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9264
+"210",210,522,"DryalaESA22","es-dry_00130",0.011180359,10.59,0.1184,89.44256757,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9264
+"211",211,523,"DryalaESA22","es-dry_00131",0.011180359,10.59,0.1184,89.44256757,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9264
+"212",212,524,"DryalaESA22","es-dry_00132",0.011180359,10.59,0.1184,89.44256757,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9264
+"213",213,525,"DryalaESA23","es-dry_00133",0.013108108,7.4,0.097,76.28865979,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.959
+"214",214,526,"DryalaESA23","es-dry_00134",0.013108108,7.4,0.097,76.28865979,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.959
+"215",215,528,"DryalaESA23","es-dry_00136",0.013108108,7.4,0.097,76.28865979,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.959
+"216",216,529,"DryalaESA23","es-dry_00137",0.013108108,7.4,0.097,76.28865979,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.959
+"217",217,537,"DryalaESA25","es-dry_00145",0.010573066,6.98,0.0738,94.5799458,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9558
+"218",218,538,"DryalaESA25","es-dry_00146",0.010573066,6.98,0.0738,94.5799458,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9558
+"219",219,540,"DryalaESA25","es-dry_00148",0.010573066,6.98,0.0738,94.5799458,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9558
+"220",220,541,"DryalaESA25","es-dry_00149",0.010573066,6.98,0.0738,94.5799458,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9558
+"221",221,544,"DryalaESA26","es-dry_00152",0.010634921,19.53,0.2077,94.02985075,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9742
+"222",222,545,"DryalaESA26","es-dry_00153",0.010634921,19.53,0.2077,94.02985075,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9742
+"223",223,546,"DryalaESA26","es-dry_00154",0.010634921,19.53,0.2077,94.02985075,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9742
+"224",224,548,"DryalaESA26","es-dry_00156",0.010634921,19.53,0.2077,94.02985075,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9742
+"225",225,550,"DryalaESA27","es-dry_00158",0.013284839,13.06,0.1735,75.27377522,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9906
+"226",226,551,"DryalaESA27","es-dry_00159",0.013284839,13.06,0.1735,75.27377522,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9906
+"227",227,552,"DryalaESA27","es-dry_00160",0.013284839,13.06,0.1735,75.27377522,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9906
+"228",228,554,"DryalaESA27","es-dry_00162",0.013284839,13.06,0.1735,75.27377522,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9906
+"229",229,561,"DryalaESA29","es-dry_00169",0.009664915,15.22,0.1471,103.4670292,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9232
+"230",230,562,"DryalaESA29","es-dry_00170",0.009664915,15.22,0.1471,103.4670292,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9232
+"231",231,565,"DryalaESA29","es-dry_00173",0.009664915,15.22,0.1471,103.4670292,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9232
+"232",232,566,"DryalaESA29","es-dry_00174",0.009664915,15.22,0.1471,103.4670292,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9232
+"233",233,567,"DryalaESA30","es-dry_00175",0.010159109,12.57,0.1277,98.43382929,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9568
+"234",234,568,"DryalaESA30","es-dry_00176",0.010159109,12.57,0.1277,98.43382929,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9568
+"235",235,569,"DryalaESA30","es-dry_00177",0.010159109,12.57,0.1277,98.43382929,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9568
+"236",236,571,"DryalaESA30","es-dry_00179",0.010159109,12.57,0.1277,98.43382929,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9568
+"237",237,579,"DryalaESA32","es-dry_00187",0.011075697,12.55,0.139,90.28776978,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9584
+"238",238,580,"DryalaESA32","es-dry_00188",0.011075697,12.55,0.139,90.28776978,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9584
+"239",239,581,"DryalaESA32","es-dry_00189",0.011075697,12.55,0.139,90.28776978,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9584
+"240",240,582,"DryalaESA32","es-dry_00190",0.011075697,12.55,0.139,90.28776978,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.9584
+"241",241,430,"DryalaESA7","es-dry_00038",0.021944444,6.48,0.1422,45.56962025,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.962
+"242",242,431,"DryalaESA7","es-dry_00039",0.021944444,6.48,0.1422,45.56962025,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.962
+"243",243,432,"DryalaESA7","es-dry_00040",0.021944444,6.48,0.1422,45.56962025,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.962
+"244",244,433,"DryalaESA7","es-dry_00041",0.021944444,6.48,0.1422,45.56962025,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.962
+"245",245,442,"DryalaESA9","es-dry_00050",0.01234362,11.99,0.148,81.01351351,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.907
+"246",246,443,"DryalaESA9","es-dry_00051",0.01234362,11.99,0.148,81.01351351,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.907
+"247",247,444,"DryalaESA9","es-dry_00052",0.01234362,11.99,0.148,81.01351351,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.907
+"248",248,445,"DryalaESA9","es-dry_00053",0.01234362,11.99,0.148,81.01351351,"alaskensis","Eagle Summit",NA,"DA","DA_et","DA_esa","No","DA_es",0.907
+"249",249,406,"DryhybESA3","es-dry_00014",0.012247191,8.01,0.0981,81.65137615,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.6854
+"250",250,407,"DryhybESA3","es-dry_00015",0.012247191,8.01,0.0981,81.65137615,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.6854
+"251",251,408,"DryhybESA3","es-dry_00016",0.012247191,8.01,0.0981,81.65137615,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.6854
+"252",252,409,"DryhybESA3","es-dry_00017",0.012247191,8.01,0.0981,81.65137615,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.6854
+"253",253,425,"DryhybESA6","es-dry_00033",0.01416804,6.07,0.086,70.58139535,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.5344
+"254",254,426,"DryhybESA6","es-dry_00034",0.01416804,6.07,0.086,70.58139535,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.5344
+"255",255,427,"DryhybESA6","es-dry_00035",0.01416804,6.07,0.086,70.58139535,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.5344
+"256",256,428,"DryhybESA6","es-dry_00036",0.01416804,6.07,0.086,70.58139535,"hybrid","Eagle Summit",NA,"DX","NaN","DX_esa","No","DX_es",0.5344
+"257",257,585,"DryoctESA33","es-dry_00193",0.011273792,6.83,0.077,88.7012987,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0764
+"258",258,586,"DryoctESA33","es-dry_00194",0.011273792,6.83,0.077,88.7012987,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0764
+"259",259,587,"DryoctESA33","es-dry_00195",0.011273792,6.83,0.077,88.7012987,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0764
+"260",260,588,"DryoctESA33","es-dry_00196",0.011273792,6.83,0.077,88.7012987,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0764
+"261",261,589,"DryoctESA34","es-dry_00197",0.011015228,3.94,0.0434,90.78341014,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0154
+"262",262,591,"DryoctESA34","es-dry_00199",0.011015228,3.94,0.0434,90.78341014,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0154
+"263",263,592,"DryoctESA34","es-dry_00200",0.011015228,3.94,0.0434,90.78341014,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0154
+"264",264,593,"DryoctESA34","es-dry_00201",0.011015228,3.94,0.0434,90.78341014,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0154
+"265",265,601,"DryoctESA36","es-dry_00209",0.012475634,5.13,0.064,80.15625,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"266",266,602,"DryoctESA36","es-dry_00210",0.012475634,5.13,0.064,80.15625,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"267",267,604,"DryoctESA36","es-dry_00212",0.012475634,5.13,0.064,80.15625,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"268",268,605,"DryoctESA36","es-dry_00213",0.012475634,5.13,0.064,80.15625,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"269",269,613,"DryoctESA38","es-dry_00221",0.01368336,6.19,0.0847,73.08146399,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0134
+"270",270,614,"DryoctESA38","es-dry_00222",0.01368336,6.19,0.0847,73.08146399,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0134
+"271",271,616,"DryoctESA38","es-dry_00224",0.01368336,6.19,0.0847,73.08146399,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0134
+"272",272,618,"DryoctESA38","es-dry_00226",0.01368336,6.19,0.0847,73.08146399,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0134
+"273",273,619,"DryoctESA39","es-dry_00227",0.012378223,3.49,0.0432,80.78703704,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0128
+"274",274,621,"DryoctESA39","es-dry_00229",0.012378223,3.49,0.0432,80.78703704,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0128
+"275",275,623,"DryoctESA39","es-dry_00231",0.012378223,3.49,0.0432,80.78703704,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0128
+"276",276,624,"DryoctESA39","es-dry_00232",0.012378223,3.49,0.0432,80.78703704,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0128
+"277",277,412,"DryoctESA4","es-dry_00020",0.012674419,3.44,0.0436,78.89908257,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0592
+"278",278,413,"DryoctESA4","es-dry_00021",0.012674419,3.44,0.0436,78.89908257,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0592
+"279",279,414,"DryoctESA4","es-dry_00022",0.012674419,3.44,0.0436,78.89908257,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0592
+"280",280,415,"DryoctESA4","es-dry_00023",0.012674419,3.44,0.0436,78.89908257,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0592
+"281",281,625,"DryoctESA40","es-dry_00233",0.012029178,7.54,0.0907,83.13120176,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.012
+"282",282,626,"DryoctESA40","es-dry_00234",0.012029178,7.54,0.0907,83.13120176,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.012
+"283",283,628,"DryoctESA40","es-dry_00236",0.012029178,7.54,0.0907,83.13120176,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.012
+"284",284,630,"DryoctESA40","es-dry_00238",0.012029178,7.54,0.0907,83.13120176,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.012
+"285",285,637,"DryoctESA42","es-dry_00245",0.013455882,4.08,0.0549,74.31693989,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.013
+"286",286,638,"DryoctESA42","es-dry_00246",0.013455882,4.08,0.0549,74.31693989,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.013
+"287",287,639,"DryoctESA42","es-dry_00247",0.013455882,4.08,0.0549,74.31693989,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.013
+"288",288,642,"DryoctESA42","es-dry_00250",0.013455882,4.08,0.0549,74.31693989,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.013
+"289",289,649,"DryoctESA44","es-dry_00257",0.01166,5,0.0583,85.76329331,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0566
+"290",290,652,"DryoctESA44","es-dry_00260",0.01166,5,0.0583,85.76329331,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0566
+"291",291,653,"DryoctESA44","es-dry_00261",0.01166,5,0.0583,85.76329331,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0566
+"292",292,654,"DryoctESA44","es-dry_00262",0.01166,5,0.0583,85.76329331,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0566
+"293",293,656,"DryoctESA45","es-dry_00264",0.011995012,4.01,0.0481,83.36798337,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.016
+"294",294,657,"DryoctESA45","es-dry_00265",0.011995012,4.01,0.0481,83.36798337,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.016
+"295",295,658,"DryoctESA45","es-dry_00266",0.011995012,4.01,0.0481,83.36798337,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.016
+"296",296,659,"DryoctESA45","es-dry_00267",0.011995012,4.01,0.0481,83.36798337,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.016
+"297",297,662,"DryoctESA46","es-dry_00270",0.012165992,4.94,0.0601,82.19633943,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0148
+"298",298,663,"DryoctESA46","es-dry_00271",0.012165992,4.94,0.0601,82.19633943,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0148
+"299",299,664,"DryoctESA46","es-dry_00272",0.012165992,4.94,0.0601,82.19633943,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0148
+"300",300,666,"DryoctESA46","es-dry_00274",0.012165992,4.94,0.0601,82.19633943,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0148
+"301",301,674,"DryoctESA48","es-dry_00282",0.009816092,4.35,0.0427,101.8735363,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.038
+"302",302,675,"DryoctESA48","es-dry_00283",0.009816092,4.35,0.0427,101.8735363,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.038
+"303",303,677,"DryoctESA48","es-dry_00285",0.009816092,4.35,0.0427,101.8735363,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.038
+"304",304,678,"DryoctESA48","es-dry_00286",0.009816092,4.35,0.0427,101.8735363,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.038
+"305",305,417,"DryoctESA5","es-dry_00025",0.011877934,4.26,0.0506,84.18972332,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"306",306,419,"DryoctESA5","es-dry_00027",0.011877934,4.26,0.0506,84.18972332,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"307",307,420,"DryoctESA5","es-dry_00028",0.011877934,4.26,0.0506,84.18972332,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"308",308,421,"DryoctESA5","es-dry_00029",0.011877934,4.26,0.0506,84.18972332,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"309",309,685,"DryoctESA50","es-dry_00293",0.012550336,4.47,0.0561,79.67914439,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.019
+"310",310,688,"DryoctESA50","es-dry_00296",0.012550336,4.47,0.0561,79.67914439,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.019
+"311",311,689,"DryoctESA50","es-dry_00297",0.012550336,4.47,0.0561,79.67914439,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.019
+"312",312,690,"DryoctESA50","es-dry_00298",0.012550336,4.47,0.0561,79.67914439,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.019
+"313",313,691,"DryoctESA51","es-dry_00299",0.013322259,3.01,0.0401,75.06234414,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0162
+"314",314,692,"DryoctESA51","es-dry_00300",0.013322259,3.01,0.0401,75.06234414,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0162
+"315",315,693,"DryoctESA51","es-dry_00301",0.013322259,3.01,0.0401,75.06234414,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0162
+"316",316,694,"DryoctESA51","es-dry_00302",0.013322259,3.01,0.0401,75.06234414,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0162
+"317",317,697,"DryoctESA52","es-dry_00305",0.011116505,4.12,0.0458,89.95633188,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"318",318,698,"DryoctESA52","es-dry_00306",0.011116505,4.12,0.0458,89.95633188,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"319",319,700,"DryoctESA52","es-dry_00308",0.011116505,4.12,0.0458,89.95633188,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"320",320,702,"DryoctESA52","es-dry_00310",0.011116505,4.12,0.0458,89.95633188,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0504
+"321",321,709,"DryoctESA54","es-dry_00317",0.012747036,5.06,0.0645,78.4496124,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0274
+"322",322,711,"DryoctESA54","es-dry_00319",0.012747036,5.06,0.0645,78.4496124,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0274
+"323",323,712,"DryoctESA54","es-dry_00320",0.012747036,5.06,0.0645,78.4496124,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0274
+"324",324,713,"DryoctESA54","es-dry_00321",0.012747036,5.06,0.0645,78.4496124,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0274
+"325",325,723,"DryoctESA56","es-dry_00331",0.013070423,3.55,0.0464,76.50862069,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0284
+"326",326,724,"DryoctESA56","es-dry_00332",0.013070423,3.55,0.0464,76.50862069,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0284
+"327",327,725,"DryoctESA56","es-dry_00333",0.013070423,3.55,0.0464,76.50862069,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0284
+"328",328,726,"DryoctESA56","es-dry_00334",0.013070423,3.55,0.0464,76.50862069,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0284
+"329",329,733,"DryoctESA58","es-dry_00341",0.010954198,5.24,0.0574,91.28919861,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0574
+"330",330,734,"DryoctESA58","es-dry_00342",0.010954198,5.24,0.0574,91.28919861,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0574
+"331",331,735,"DryoctESA58","es-dry_00343",0.010954198,5.24,0.0574,91.28919861,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0574
+"332",332,738,"DryoctESA58","es-dry_00346",0.010954198,5.24,0.0574,91.28919861,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0574
+"333",333,739,"DryoctESA59","es-dry_00347",0.011951872,3.74,0.0447,83.6689038,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"334",334,742,"DryoctESA59","es-dry_00350",0.011951872,3.74,0.0447,83.6689038,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"335",335,743,"DryoctESA59","es-dry_00351",0.011951872,3.74,0.0447,83.6689038,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"336",336,744,"DryoctESA59","es-dry_00352",0.011951872,3.74,0.0447,83.6689038,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0254
+"337",337,745,"DryoctESA60","es-dry_00353",0.012583979,3.87,0.0487,79.4661191,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0388
+"338",338,746,"DryoctESA60","es-dry_00354",0.012583979,3.87,0.0487,79.4661191,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0388
+"339",339,747,"DryoctESA60","es-dry_00355",0.012583979,3.87,0.0487,79.4661191,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0388
+"340",340,749,"DryoctESA60","es-dry_00357",0.012583979,3.87,0.0487,79.4661191,"octopetala","Eagle Summit",NA,"DO","DO_et","DO_esa","No","DO_es",0.0388
+"341",341,1125,"DryalaWDB1","wdb-dry_00002",0.012510013,7.49,0.0937,79.93596585,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9118
+"342",342,1126,"DryalaWDB1","wdb-dry_00003",0.012510013,7.49,0.0937,79.93596585,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9118
+"343",343,1127,"DryalaWDB1","wdb-dry_00004",0.012510013,7.49,0.0937,79.93596585,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9118
+"344",344,1129,"DryalaWDB1","wdb-dry_00006",0.012510013,7.49,0.0937,79.93596585,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9118
+"345",345,1178,"DryalaWDB10","wdb-dry_00055",0.014090909,6.6,0.093,70.96774194,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9008
+"346",346,1180,"DryalaWDB10","wdb-dry_00057",0.014090909,6.6,0.093,70.96774194,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9008
+"347",347,1181,"DryalaWDB10","wdb-dry_00058",0.014090909,6.6,0.093,70.96774194,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9008
+"348",348,1183,"DryalaWDB10","wdb-dry_00060",0.014090909,6.6,0.093,70.96774194,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9008
+"349",349,1184,"DryalaWDB11","wdb-dry_00061",0.011619718,12.78,0.1485,86.06060606,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7486
+"350",350,1185,"DryalaWDB11","wdb-dry_00062",0.011619718,12.78,0.1485,86.06060606,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7486
+"351",351,1186,"DryalaWDB11","wdb-dry_00063",0.011619718,12.78,0.1485,86.06060606,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7486
+"352",352,1189,"DryalaWDB11","wdb-dry_00066",0.011619718,12.78,0.1485,86.06060606,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7486
+"353",353,1192,"DryalaWDB12","wdb-dry_00069",0.013110505,7.33,0.0961,76.27471384,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8336
+"354",354,1193,"DryalaWDB12","wdb-dry_00070",0.013110505,7.33,0.0961,76.27471384,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8336
+"355",355,1194,"DryalaWDB12","wdb-dry_00071",0.013110505,7.33,0.0961,76.27471384,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8336
+"356",356,1195,"DryalaWDB12","wdb-dry_00072",0.013110505,7.33,0.0961,76.27471384,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8336
+"357",357,1130,"DryalaWDB2","wdb-dry_00007",0.011702432,6.99,0.0818,85.45232274,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9912
+"358",358,1132,"DryalaWDB2","wdb-dry_00009",0.011702432,6.99,0.0818,85.45232274,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9912
+"359",359,1133,"DryalaWDB2","wdb-dry_00010",0.011702432,6.99,0.0818,85.45232274,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9912
+"360",360,1134,"DryalaWDB2","wdb-dry_00011",0.011702432,6.99,0.0818,85.45232274,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9912
+"361",361,1136,"DryalaWDB3","wdb-dry_00013",0.01295082,5.49,0.0711,77.21518987,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7258
+"362",362,1137,"DryalaWDB3","wdb-dry_00014",0.01295082,5.49,0.0711,77.21518987,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7258
+"363",363,1138,"DryalaWDB3","wdb-dry_00015",0.01295082,5.49,0.0711,77.21518987,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7258
+"364",364,1139,"DryalaWDB3","wdb-dry_00016",0.01295082,5.49,0.0711,77.21518987,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.7258
+"365",365,1142,"DryalaWDB4","wdb-dry_00019",0.012643678,6.96,0.088,79.09090909,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8652
+"366",366,1143,"DryalaWDB4","wdb-dry_00020",0.012643678,6.96,0.088,79.09090909,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8652
+"367",367,1146,"DryalaWDB4","wdb-dry_00023",0.012643678,6.96,0.088,79.09090909,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8652
+"368",368,1147,"DryalaWDB4","wdb-dry_00024",0.012643678,6.96,0.088,79.09090909,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8652
+"369",369,1149,"DryalaWDB5","wdb-dry_00026",0.019636076,6.32,0.1241,50.92667204,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9678
+"370",370,1150,"DryalaWDB5","wdb-dry_00027",0.019636076,6.32,0.1241,50.92667204,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9678
+"371",371,1151,"DryalaWDB5","wdb-dry_00028",0.019636076,6.32,0.1241,50.92667204,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9678
+"372",372,1153,"DryalaWDB5","wdb-dry_00030",0.019636076,6.32,0.1241,50.92667204,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9678
+"373",373,1155,"DryalaWDB6","wdb-dry_00032",0.010534979,9.72,0.1024,94.921875,"hybrid","Wickersham Dome B",NA,"DX","NaN","DA_wdb","No","DA_wdb",0.6084
+"374",374,1156,"DryalaWDB6","wdb-dry_00033",0.010534979,9.72,0.1024,94.921875,"hybrid","Wickersham Dome B",NA,"DX","NaN","DA_wdb","No","DA_wdb",0.6084
+"375",375,1157,"DryalaWDB6","wdb-dry_00034",0.010534979,9.72,0.1024,94.921875,"hybrid","Wickersham Dome B",NA,"DX","NaN","DA_wdb","No","DA_wdb",0.6084
+"376",376,1159,"DryalaWDB6","wdb-dry_00036",0.010534979,9.72,0.1024,94.921875,"hybrid","Wickersham Dome B",NA,"DX","NaN","DA_wdb","No","DA_wdb",0.6084
+"377",377,1161,"DryalaWDB7","wdb-dry_00038",0.011756579,15.2,0.1787,85.05875769,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9098
+"378",378,1162,"DryalaWDB7","wdb-dry_00039",0.011756579,15.2,0.1787,85.05875769,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9098
+"379",379,1163,"DryalaWDB7","wdb-dry_00040",0.011756579,15.2,0.1787,85.05875769,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9098
+"380",380,1164,"DryalaWDB7","wdb-dry_00041",0.011756579,15.2,0.1787,85.05875769,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9098
+"381",381,1167,"DryalaWDB8","wdb-dry_00044",0.012603424,14.02,0.1767,79.34352009,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8294
+"382",382,1168,"DryalaWDB8","wdb-dry_00045",0.012603424,14.02,0.1767,79.34352009,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8294
+"383",383,1170,"DryalaWDB8","wdb-dry_00047",0.012603424,14.02,0.1767,79.34352009,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8294
+"384",384,1171,"DryalaWDB8","wdb-dry_00048",0.012603424,14.02,0.1767,79.34352009,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.8294
+"385",385,1173,"DryalaWDB9","wdb-dry_00050",0.014196617,9.46,0.1343,70.43931497,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9574
+"386",386,1174,"DryalaWDB9","wdb-dry_00051",0.014196617,9.46,0.1343,70.43931497,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9574
+"387",387,1175,"DryalaWDB9","wdb-dry_00052",0.014196617,9.46,0.1343,70.43931497,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9574
+"388",388,1176,"DryalaWDB9","wdb-dry_00053",0.014196617,9.46,0.1343,70.43931497,"alaskensis","Wickersham Dome B",NA,"DA","DA_wdb","DA_wdb","No","DA_wdb",0.9574
+"389",389,1316,"DryhybWDB41","wdb-dry_00193",0.009355359,12.41,0.1161,106.8906115,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.4806
+"390",390,1318,"DryhybWDB41","wdb-dry_00195",0.009355359,12.41,0.1161,106.8906115,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.4806
+"391",391,1319,"DryhybWDB41","wdb-dry_00196",0.009355359,12.41,0.1161,106.8906115,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.4806
+"392",392,1321,"DryhybWDB41","wdb-dry_00198",0.009355359,12.41,0.1161,106.8906115,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.4806
+"393",393,1340,"DryhybWDB45","wdb-dry_00217",0.012488208,8.48,0.1059,80.07554297,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.58
+"394",394,1342,"DryhybWDB45","wdb-dry_00219",0.012488208,8.48,0.1059,80.07554297,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.58
+"395",395,1343,"DryhybWDB45","wdb-dry_00220",0.012488208,8.48,0.1059,80.07554297,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.58
+"396",396,1344,"DryhybWDB45","wdb-dry_00221",0.012488208,8.48,0.1059,80.07554297,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.58
+"397",397,1347,"DryhybWDB46","wdb-dry_00224",0.010208668,6.23,0.0636,97.95597484,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.3622
+"398",398,1348,"DryhybWDB46","wdb-dry_00225",0.010208668,6.23,0.0636,97.95597484,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.3622
+"399",399,1349,"DryhybWDB46","wdb-dry_00226",0.010208668,6.23,0.0636,97.95597484,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.3622
+"400",400,1350,"DryhybWDB46","wdb-dry_00227",0.010208668,6.23,0.0636,97.95597484,"hybrid","Wickersham Dome B",NA,"DX","NaN","DX_wdb","No","DX_wdb",0.3622
+"401",401,1197,"DryoctWDB21","wdb-dry_00074",0.012982456,3.99,0.0518,77.02702703,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0948
+"402",402,1198,"DryoctWDB21","wdb-dry_00075",0.012982456,3.99,0.0518,77.02702703,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0948
+"403",403,1199,"DryoctWDB21","wdb-dry_00076",0.012982456,3.99,0.0518,77.02702703,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0948
+"404",404,1200,"DryoctWDB21","wdb-dry_00077",0.012982456,3.99,0.0518,77.02702703,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0948
+"405",405,1202,"DryoctWDB22","wdb-dry_00079",0.009648289,10.52,0.1015,103.6453202,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0828
+"406",406,1204,"DryoctWDB22","wdb-dry_00081",0.009648289,10.52,0.1015,103.6453202,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0828
+"407",407,1205,"DryoctWDB22","wdb-dry_00082",0.009648289,10.52,0.1015,103.6453202,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0828
+"408",408,1207,"DryoctWDB22","wdb-dry_00084",0.009648289,10.52,0.1015,103.6453202,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0828
+"409",409,1208,"DryoctWDB23","wdb-dry_00085",0.011220779,3.85,0.0432,89.12037037,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1108
+"410",410,1211,"DryoctWDB23","wdb-dry_00088",0.011220779,3.85,0.0432,89.12037037,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1108
+"411",411,1212,"DryoctWDB23","wdb-dry_00089",0.011220779,3.85,0.0432,89.12037037,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1108
+"412",412,1213,"DryoctWDB23","wdb-dry_00090",0.011220779,3.85,0.0432,89.12037037,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1108
+"413",413,1214,"DryoctWDB24","wdb-dry_00091",0.010046512,6.45,0.0648,99.53703704,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0534
+"414",414,1215,"DryoctWDB24","wdb-dry_00092",0.010046512,6.45,0.0648,99.53703704,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0534
+"415",415,1218,"DryoctWDB24","wdb-dry_00095",0.010046512,6.45,0.0648,99.53703704,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0534
+"416",416,1219,"DryoctWDB24","wdb-dry_00096",0.010046512,6.45,0.0648,99.53703704,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0534
+"417",417,1220,"DryoctWDB25","wdb-dry_00097",0.010646492,7.27,0.0774,93.92764858,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0822
+"418",418,1227,"DryoctWDB26","wdb-dry_00104",0.010408163,6.86,0.0714,96.07843137,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0446
+"419",419,1228,"DryoctWDB26","wdb-dry_00105",0.010408163,6.86,0.0714,96.07843137,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0446
+"420",420,1229,"DryoctWDB26","wdb-dry_00106",0.010408163,6.86,0.0714,96.07843137,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0446
+"421",421,1230,"DryoctWDB26","wdb-dry_00107",0.010408163,6.86,0.0714,96.07843137,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0446
+"422",422,1232,"DryoctWDB27","wdb-dry_00109",0.0104,6.5,0.0676,96.15384615,"hybrid","Wickersham Dome B",NA,"DX","NaN","DO_wdb","No","DX_wdb",0.4286
+"423",423,1233,"DryoctWDB27","wdb-dry_00110",0.0104,6.5,0.0676,96.15384615,"hybrid","Wickersham Dome B",NA,"DX","NaN","DO_wdb","No","DX_wdb",0.4286
+"424",424,1234,"DryoctWDB27","wdb-dry_00111",0.0104,6.5,0.0676,96.15384615,"hybrid","Wickersham Dome B",NA,"DX","NaN","DO_wdb","No","DX_wdb",0.4286
+"425",425,1235,"DryoctWDB27","wdb-dry_00112",0.0104,6.5,0.0676,96.15384615,"hybrid","Wickersham Dome B",NA,"DX","NaN","DO_wdb","No","DX_wdb",0.4286
+"426",426,1240,"DryoctWDB28","wdb-dry_00117",0.01,8.47,0.0847,100,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0646
+"427",427,1241,"DryoctWDB28","wdb-dry_00118",0.01,8.47,0.0847,100,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0646
+"428",428,1242,"DryoctWDB28","wdb-dry_00119",0.01,8.47,0.0847,100,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0646
+"429",429,1243,"DryoctWDB28","wdb-dry_00120",0.01,8.47,0.0847,100,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0646
+"430",430,1248,"DryoctWDB29","wdb-dry_00125",0.008387097,7.75,0.065,119.2307692,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.068
+"431",431,1249,"DryoctWDB29","wdb-dry_00126",0.008387097,7.75,0.065,119.2307692,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.068
+"432",432,1250,"DryoctWDB30","wdb-dry_00127",0.010917874,4.14,0.0452,91.59292035,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0942
+"433",433,1251,"DryoctWDB30","wdb-dry_00128",0.010917874,4.14,0.0452,91.59292035,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0942
+"434",434,1252,"DryoctWDB30","wdb-dry_00129",0.010917874,4.14,0.0452,91.59292035,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0942
+"435",435,1253,"DryoctWDB30","wdb-dry_00130",0.010917874,4.14,0.0452,91.59292035,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0942
+"436",436,1256,"DryoctWDB31","wdb-dry_00133",0.010345781,7.23,0.0748,96.65775401,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0574
+"437",437,1262,"DryoctWDB32","wdb-dry_00139",0.011081081,6.66,0.0738,90.24390244,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.044
+"438",438,1265,"DryoctWDB32","wdb-dry_00142",0.011081081,6.66,0.0738,90.24390244,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.044
+"439",439,1266,"DryoctWDB32","wdb-dry_00143",0.011081081,6.66,0.0738,90.24390244,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.044
+"440",440,1267,"DryoctWDB32","wdb-dry_00144",0.011081081,6.66,0.0738,90.24390244,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.044
+"441",441,1268,"DryoctWDB33","wdb-dry_00145",0.012522727,4.4,0.0551,79.85480944,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1742
+"442",442,1269,"DryoctWDB33","wdb-dry_00146",0.012522727,4.4,0.0551,79.85480944,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1742
+"443",443,1271,"DryoctWDB33","wdb-dry_00148",0.012522727,4.4,0.0551,79.85480944,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1742
+"444",444,1272,"DryoctWDB33","wdb-dry_00149",0.012522727,4.4,0.0551,79.85480944,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1742
+"445",445,1280,"DryoctWDB35","wdb-dry_00157",0.010498084,10.44,0.1096,95.25547445,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0436
+"446",446,1281,"DryoctWDB35","wdb-dry_00158",0.010498084,10.44,0.1096,95.25547445,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0436
+"447",447,1283,"DryoctWDB35","wdb-dry_00160",0.010498084,10.44,0.1096,95.25547445,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0436
+"448",448,1284,"DryoctWDB35","wdb-dry_00161",0.010498084,10.44,0.1096,95.25547445,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0436
+"449",449,1286,"DryoctWDB36","wdb-dry_00163",0.010769231,3.12,0.0336,92.85714286,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0964
+"450",450,1287,"DryoctWDB36","wdb-dry_00164",0.010769231,3.12,0.0336,92.85714286,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0964
+"451",451,1288,"DryoctWDB36","wdb-dry_00165",0.010769231,3.12,0.0336,92.85714286,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0964
+"452",452,1290,"DryoctWDB36","wdb-dry_00167",0.010769231,3.12,0.0336,92.85714286,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.0964
+"453",453,1304,"DryoctWDB39","wdb-dry_00181",0.010088889,6.75,0.0681,99.11894273,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.085
+"454",454,1306,"DryoctWDB39","wdb-dry_00183",0.010088889,6.75,0.0681,99.11894273,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.085
+"455",455,1307,"DryoctWDB39","wdb-dry_00184",0.010088889,6.75,0.0681,99.11894273,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.085
+"456",456,1309,"DryoctWDB39","wdb-dry_00186",0.010088889,6.75,0.0681,99.11894273,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.085
+"457",457,1311,"DryoctWDB40","wdb-dry_00188",0.01146789,4.36,0.05,87.2,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1076
+"458",458,1312,"DryoctWDB40","wdb-dry_00189",0.01146789,4.36,0.05,87.2,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1076
+"459",459,1313,"DryoctWDB40","wdb-dry_00190",0.01146789,4.36,0.05,87.2,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1076
+"460",460,1314,"DryoctWDB40","wdb-dry_00191",0.01146789,4.36,0.05,87.2,"octopetala","Wickersham Dome B",NA,"DO","DO_wd","DO_wdb","No","DO_wdb",0.1076
+"461",461,885,"DryoctMDB1","murphyB-dry_00002",0.010379651,13.17,0.1367,96.34235552,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"462",462,886,"DryoctMDB1","murphyB-dry_00003",0.010379651,13.17,0.1367,96.34235552,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"463",463,888,"DryoctMDB1","murphyB-dry_00005",0.010379651,13.17,0.1367,96.34235552,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"464",464,889,"DryoctMDB1","murphyB-dry_00006",0.010379651,13.17,0.1367,96.34235552,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"465",465,939,"DryoctMDB10","murphyB-dry_00056",0.012170767,6.91,0.0841,82.16409037,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"466",466,940,"DryoctMDB10","murphyB-dry_00057",0.012170767,6.91,0.0841,82.16409037,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"467",467,941,"DryoctMDB10","murphyB-dry_00058",0.012170767,6.91,0.0841,82.16409037,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"468",468,943,"DryoctMDB10","murphyB-dry_00060",0.012170767,6.91,0.0841,82.16409037,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"469",469,945,"DryoctMDB11","murphyB-dry_00062",0.009360987,8.92,0.0835,106.8263473,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"470",470,946,"DryoctMDB11","murphyB-dry_00063",0.009360987,8.92,0.0835,106.8263473,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"471",471,947,"DryoctMDB11","murphyB-dry_00064",0.009360987,8.92,0.0835,106.8263473,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"472",472,949,"DryoctMDB11","murphyB-dry_00066",0.009360987,8.92,0.0835,106.8263473,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"473",473,950,"DryoctMDB12","murphyB-dry_00067",0.012879747,6.32,0.0814,77.64127764,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"474",474,951,"DryoctMDB12","murphyB-dry_00068",0.012879747,6.32,0.0814,77.64127764,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"475",475,952,"DryoctMDB12","murphyB-dry_00069",0.012879747,6.32,0.0814,77.64127764,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"476",476,955,"DryoctMDB12","murphyB-dry_00072",0.012879747,6.32,0.0814,77.64127764,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"477",477,956,"DryoctMDB13","murphyB-dry_00073",0.012756098,4.1,0.0523,78.39388145,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"478",478,957,"DryoctMDB13","murphyB-dry_00074",0.012756098,4.1,0.0523,78.39388145,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"479",479,958,"DryoctMDB13","murphyB-dry_00075",0.012756098,4.1,0.0523,78.39388145,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"480",480,960,"DryoctMDB13","murphyB-dry_00077",0.012756098,4.1,0.0523,78.39388145,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"481",481,962,"DryoctMDB14","murphyB-dry_00079",0.010673352,6.98,0.0745,93.69127517,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"482",482,965,"DryoctMDB14","murphyB-dry_00082",0.010673352,6.98,0.0745,93.69127517,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"483",483,966,"DryoctMDB14","murphyB-dry_00083",0.010673352,6.98,0.0745,93.69127517,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"484",484,967,"DryoctMDB14","murphyB-dry_00084",0.010673352,6.98,0.0745,93.69127517,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"485",485,969,"DryoctMDB15","murphyB-dry_00086",0.010447227,5.59,0.0584,95.71917808,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"486",486,970,"DryoctMDB15","murphyB-dry_00087",0.010447227,5.59,0.0584,95.71917808,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"487",487,972,"DryoctMDB15","murphyB-dry_00089",0.010447227,5.59,0.0584,95.71917808,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"488",488,973,"DryoctMDB15","murphyB-dry_00090",0.010447227,5.59,0.0584,95.71917808,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"489",489,975,"DryoctMDB16","murphyB-dry_00092",0.011692525,7.09,0.0829,85.52472859,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"490",490,976,"DryoctMDB16","murphyB-dry_00093",0.011692525,7.09,0.0829,85.52472859,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"491",491,978,"DryoctMDB16","murphyB-dry_00095",0.011692525,7.09,0.0829,85.52472859,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"492",492,979,"DryoctMDB16","murphyB-dry_00096",0.011692525,7.09,0.0829,85.52472859,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"493",493,980,"DryoctMDB17","murphyB-dry_00097",0.011973684,6.08,0.0728,83.51648352,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"494",494,982,"DryoctMDB17","murphyB-dry_00099",0.011973684,6.08,0.0728,83.51648352,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"495",495,983,"DryoctMDB17","murphyB-dry_00100",0.011973684,6.08,0.0728,83.51648352,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"496",496,985,"DryoctMDB17","murphyB-dry_00102",0.011973684,6.08,0.0728,83.51648352,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"497",497,987,"DryoctMDB18","murphyB-dry_00104",0.012362525,4.91,0.0607,80.88962109,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"498",498,988,"DryoctMDB18","murphyB-dry_00105",0.012362525,4.91,0.0607,80.88962109,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"499",499,989,"DryoctMDB18","murphyB-dry_00106",0.012362525,4.91,0.0607,80.88962109,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"500",500,990,"DryoctMDB18","murphyB-dry_00107",0.012362525,4.91,0.0607,80.88962109,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"501",501,992,"DryoctMDB19","murphyB-dry_00109",0.010900974,12.32,0.1343,91.73492182,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"502",502,995,"DryoctMDB19","murphyB-dry_00112",0.010900974,12.32,0.1343,91.73492182,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"503",503,996,"DryoctMDB19","murphyB-dry_00113",0.010900974,12.32,0.1343,91.73492182,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"504",504,997,"DryoctMDB19","murphyB-dry_00114",0.010900974,12.32,0.1343,91.73492182,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"505",505,890,"DryoctMDB2","murphyB-dry_00007",0.010632716,6.48,0.0689,94.04934688,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"506",506,892,"DryoctMDB2","murphyB-dry_00009",0.010632716,6.48,0.0689,94.04934688,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"507",507,893,"DryoctMDB2","murphyB-dry_00010",0.010632716,6.48,0.0689,94.04934688,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"508",508,895,"DryoctMDB2","murphyB-dry_00012",0.010632716,6.48,0.0689,94.04934688,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"509",509,999,"DryoctMDB20","murphyB-dry_00116",0.012215054,4.65,0.0568,81.86619718,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"510",510,1000,"DryoctMDB20","murphyB-dry_00117",0.012215054,4.65,0.0568,81.86619718,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"511",511,1002,"DryoctMDB20","murphyB-dry_00119",0.012215054,4.65,0.0568,81.86619718,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"512",512,1003,"DryoctMDB20","murphyB-dry_00120",0.012215054,4.65,0.0568,81.86619718,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"513",513,896,"DryoctMDB3","murphyB-dry_00013",0.010447761,4.02,0.042,95.71428571,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"514",514,897,"DryoctMDB3","murphyB-dry_00014",0.010447761,4.02,0.042,95.71428571,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"515",515,898,"DryoctMDB3","murphyB-dry_00015",0.010447761,4.02,0.042,95.71428571,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"516",516,900,"DryoctMDB3","murphyB-dry_00017",0.010447761,4.02,0.042,95.71428571,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"517",517,902,"DryoctMDB4","murphyB-dry_00019",0.010432692,6.24,0.0651,95.85253456,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"518",518,904,"DryoctMDB4","murphyB-dry_00021",0.010432692,6.24,0.0651,95.85253456,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"519",519,905,"DryoctMDB4","murphyB-dry_00022",0.010432692,6.24,0.0651,95.85253456,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"520",520,906,"DryoctMDB4","murphyB-dry_00023",0.010432692,6.24,0.0651,95.85253456,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"521",521,908,"DryoctMDB5","murphyB-dry_00025",0.010626741,7.18,0.0763,94.10222805,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"522",522,911,"DryoctMDB5","murphyB-dry_00028",0.010626741,7.18,0.0763,94.10222805,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"523",523,912,"DryoctMDB5","murphyB-dry_00029",0.010626741,7.18,0.0763,94.10222805,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"524",524,913,"DryoctMDB5","murphyB-dry_00030",0.010626741,7.18,0.0763,94.10222805,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"525",525,914,"DryoctMDB6","murphyB-dry_00031",0.011729201,6.13,0.0719,85.25730181,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"526",526,916,"DryoctMDB6","murphyB-dry_00033",0.011729201,6.13,0.0719,85.25730181,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"527",527,917,"DryoctMDB6","murphyB-dry_00034",0.011729201,6.13,0.0719,85.25730181,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"528",528,919,"DryoctMDB6","murphyB-dry_00036",0.011729201,6.13,0.0719,85.25730181,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"529",529,920,"DryoctMDB7","murphyB-dry_00037",0.012802102,5.71,0.0731,78.1121751,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"530",530,921,"DryoctMDB7","murphyB-dry_00038",0.012802102,5.71,0.0731,78.1121751,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"531",531,923,"DryoctMDB7","murphyB-dry_00040",0.012802102,5.71,0.0731,78.1121751,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"532",532,925,"DryoctMDB7","murphyB-dry_00042",0.012802102,5.71,0.0731,78.1121751,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"533",533,926,"DryoctMDB8","murphyB-dry_00043",0.01165812,5.85,0.0682,85.7771261,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"534",534,928,"DryoctMDB8","murphyB-dry_00045",0.01165812,5.85,0.0682,85.7771261,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"535",535,929,"DryoctMDB8","murphyB-dry_00046",0.01165812,5.85,0.0682,85.7771261,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"536",536,931,"DryoctMDB8","murphyB-dry_00048",0.01165812,5.85,0.0682,85.7771261,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"537",537,932,"DryoctMDB9","murphyB-dry_00049",0.012096506,6.01,0.0727,82.66850069,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"538",538,934,"DryoctMDB9","murphyB-dry_00051",0.012096506,6.01,0.0727,82.66850069,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"539",539,935,"DryoctMDB9","murphyB-dry_00052",0.012096506,6.01,0.0727,82.66850069,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"540",540,937,"DryoctMDB9","murphyB-dry_00054",0.012096506,6.01,0.0727,82.66850069,"octopetala","Murphy Dome B",NA,"DO","DO_mdb","DO_mdb","No","DO_mdb",NA
+"541",541,1004,"DryoctWDA1","wda-dry_00001",0.010023256,4.3,0.0431,99.76798144,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"542",542,1005,"DryoctWDA1","wda-dry_00002",0.010023256,4.3,0.0431,99.76798144,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"543",543,1006,"DryoctWDA1","wda-dry_00003",0.010023256,4.3,0.0431,99.76798144,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"544",544,1008,"DryoctWDA1","wda-dry_00005",0.010023256,4.3,0.0431,99.76798144,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"545",545,1058,"DryoctWDA10","wda-dry_00055",0.010326087,9.2,0.095,96.84210526,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"546",546,1059,"DryoctWDA10","wda-dry_00056",0.010326087,9.2,0.095,96.84210526,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"547",547,1061,"DryoctWDA10","wda-dry_00058",0.010326087,9.2,0.095,96.84210526,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"548",548,1063,"DryoctWDA10","wda-dry_00060",0.010326087,9.2,0.095,96.84210526,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"549",549,1065,"DryoctWDA11","wda-dry_00062",0.011603053,7.86,0.0912,86.18421053,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"550",550,1067,"DryoctWDA11","wda-dry_00064",0.011603053,7.86,0.0912,86.18421053,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"551",551,1068,"DryoctWDA11","wda-dry_00065",0.011603053,7.86,0.0912,86.18421053,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"552",552,1069,"DryoctWDA11","wda-dry_00066",0.011603053,7.86,0.0912,86.18421053,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"553",553,1070,"DryoctWDA12","wda-dry_00067",0.010883459,5.32,0.0579,91.88255613,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"554",554,1071,"DryoctWDA12","wda-dry_00068",0.010883459,5.32,0.0579,91.88255613,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"555",555,1073,"DryoctWDA12","wda-dry_00070",0.010883459,5.32,0.0579,91.88255613,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"556",556,1075,"DryoctWDA12","wda-dry_00072",0.010883459,5.32,0.0579,91.88255613,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"557",557,1076,"DryoctWDA13","wda-dry_00073",0.010013351,7.49,0.075,99.86666667,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"558",558,1077,"DryoctWDA13","wda-dry_00074",0.010013351,7.49,0.075,99.86666667,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"559",559,1078,"DryoctWDA13","wda-dry_00075",0.010013351,7.49,0.075,99.86666667,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"560",560,1081,"DryoctWDA13","wda-dry_00078",0.010013351,7.49,0.075,99.86666667,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"561",561,1084,"DryoctWDA14","wda-dry_00081",0.009247507,11.03,0.102,108.1372549,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"562",562,1085,"DryoctWDA14","wda-dry_00082",0.009247507,11.03,0.102,108.1372549,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"563",563,1086,"DryoctWDA14","wda-dry_00083",0.009247507,11.03,0.102,108.1372549,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"564",564,1087,"DryoctWDA14","wda-dry_00084",0.009247507,11.03,0.102,108.1372549,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"565",565,1088,"DryoctWDA15","wda-dry_00085",0.009793205,6.77,0.0663,102.1116139,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"566",566,1089,"DryoctWDA15","wda-dry_00086",0.009793205,6.77,0.0663,102.1116139,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"567",567,1091,"DryoctWDA15","wda-dry_00088",0.009793205,6.77,0.0663,102.1116139,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"568",568,1092,"DryoctWDA15","wda-dry_00089",0.009793205,6.77,0.0663,102.1116139,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"569",569,1094,"DryoctWDA16","wda-dry_00091",0.010048309,6.21,0.0624,99.51923077,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"570",570,1095,"DryoctWDA16","wda-dry_00092",0.010048309,6.21,0.0624,99.51923077,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"571",571,1097,"DryoctWDA16","wda-dry_00094",0.010048309,6.21,0.0624,99.51923077,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"572",572,1099,"DryoctWDA16","wda-dry_00096",0.010048309,6.21,0.0624,99.51923077,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"573",573,1100,"DryoctWDA17","wda-dry_00097",0.010273973,9.49,0.0975,97.33333333,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"574",574,1101,"DryoctWDA17","wda-dry_00098",0.010273973,9.49,0.0975,97.33333333,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"575",575,1102,"DryoctWDA17","wda-dry_00099",0.010273973,9.49,0.0975,97.33333333,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"576",576,1104,"DryoctWDA17","wda-dry_00101",0.010273973,9.49,0.0975,97.33333333,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"577",577,1106,"DryoctWDA18","wda-dry_00103",0.010632235,11.23,0.1194,94.05360134,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"578",578,1107,"DryoctWDA18","wda-dry_00104",0.010632235,11.23,0.1194,94.05360134,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"579",579,1108,"DryoctWDA18","wda-dry_00105",0.010632235,11.23,0.1194,94.05360134,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"580",580,1111,"DryoctWDA18","wda-dry_00108",0.010632235,11.23,0.1194,94.05360134,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"581",581,1113,"DryoctWDA19","wda-dry_00110",0.019755245,2.86,0.0565,50.61946903,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"582",582,1114,"DryoctWDA19","wda-dry_00111",0.019755245,2.86,0.0565,50.61946903,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"583",583,1115,"DryoctWDA19","wda-dry_00112",0.019755245,2.86,0.0565,50.61946903,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"584",584,1116,"DryoctWDA19","wda-dry_00113",0.019755245,2.86,0.0565,50.61946903,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"585",585,1010,"DryoctWDA2","wda-dry_00007",0.01047619,6.93,0.0726,95.45454545,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"586",586,1012,"DryoctWDA2","wda-dry_00009",0.01047619,6.93,0.0726,95.45454545,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"587",587,1013,"DryoctWDA2","wda-dry_00010",0.01047619,6.93,0.0726,95.45454545,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"588",588,1015,"DryoctWDA2","wda-dry_00012",0.01047619,6.93,0.0726,95.45454545,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"589",589,1118,"DryoctWDA20","wda-dry_00115",0.011789838,8.66,0.1021,84.81880509,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"590",590,1119,"DryoctWDA20","wda-dry_00116",0.011789838,8.66,0.1021,84.81880509,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"591",591,1121,"DryoctWDA20","wda-dry_00118",0.011789838,8.66,0.1021,84.81880509,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"592",592,1122,"DryoctWDA20","wda-dry_00119",0.011789838,8.66,0.1021,84.81880509,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"593",593,1016,"DryoctWDA3","wda-dry_00013",0.007806859,11.08,0.0865,128.0924855,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"594",594,1017,"DryoctWDA3","wda-dry_00014",0.007806859,11.08,0.0865,128.0924855,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"595",595,1020,"DryoctWDA3","wda-dry_00017",0.007806859,11.08,0.0865,128.0924855,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"596",596,1021,"DryoctWDA3","wda-dry_00018",0.007806859,11.08,0.0865,128.0924855,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"597",597,1023,"DryoctWDA4","wda-dry_00020",0.009634146,6.56,0.0632,103.7974684,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"598",598,1024,"DryoctWDA4","wda-dry_00021",0.009634146,6.56,0.0632,103.7974684,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"599",599,1025,"DryoctWDA4","wda-dry_00022",0.009634146,6.56,0.0632,103.7974684,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"600",600,1026,"DryoctWDA4","wda-dry_00023",0.009634146,6.56,0.0632,103.7974684,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"601",601,1030,"DryoctWDA5","wda-dry_00027",0.010498177,8.23,0.0864,95.25462963,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"602",602,1031,"DryoctWDA5","wda-dry_00028",0.010498177,8.23,0.0864,95.25462963,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"603",603,1032,"DryoctWDA5","wda-dry_00029",0.010498177,8.23,0.0864,95.25462963,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"604",604,1033,"DryoctWDA5","wda-dry_00030",0.010498177,8.23,0.0864,95.25462963,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"605",605,1034,"DryoctWDA6","wda-dry_00031",0.009673913,11.04,0.1068,103.3707865,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"606",606,1035,"DryoctWDA6","wda-dry_00032",0.009673913,11.04,0.1068,103.3707865,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"607",607,1038,"DryoctWDA6","wda-dry_00035",0.009673913,11.04,0.1068,103.3707865,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"608",608,1039,"DryoctWDA6","wda-dry_00036",0.009673913,11.04,0.1068,103.3707865,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"609",609,1040,"DryoctWDA7","wda-dry_00037",0.009192118,10.15,0.0933,108.7888532,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"610",610,1043,"DryoctWDA7","wda-dry_00040",0.009192118,10.15,0.0933,108.7888532,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"611",611,1044,"DryoctWDA7","wda-dry_00041",0.009192118,10.15,0.0933,108.7888532,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"612",612,1045,"DryoctWDA7","wda-dry_00042",0.009192118,10.15,0.0933,108.7888532,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"613",613,1047,"DryoctWDA8","wda-dry_00044",0.009806061,8.25,0.0809,101.9777503,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"614",614,1048,"DryoctWDA8","wda-dry_00045",0.009806061,8.25,0.0809,101.9777503,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"615",615,1050,"DryoctWDA8","wda-dry_00047",0.009806061,8.25,0.0809,101.9777503,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"616",616,1051,"DryoctWDA8","wda-dry_00048",0.009806061,8.25,0.0809,101.9777503,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"617",617,1052,"DryoctWDA9","wda-dry_00049",0.009665354,10.16,0.0982,103.4623218,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"618",618,1053,"DryoctWDA9","wda-dry_00050",0.009665354,10.16,0.0982,103.4623218,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"619",619,1055,"DryoctWDA9","wda-dry_00052",0.009665354,10.16,0.0982,103.4623218,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"620",620,1056,"DryoctWDA9","wda-dry_00053",0.009665354,10.16,0.0982,103.4623218,"octopetala","Wickersham Dome A",NA,"DO","DO_wd","DO_wda","No","DO_wda",NA
+"621",621,1,"DryoctBG1","BG_dryoct_00001",0.012637681,3.45,0.0436,79.12844037,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"622",622,3,"DryoctBG1","BG_dryoct_00003",0.012637681,3.45,0.0436,79.12844037,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"623",623,5,"DryoctBG1","BG_dryoct_00005",0.012637681,3.45,0.0436,79.12844037,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"624",624,6,"DryoctBG1","BG_dryoct_00006",0.012637681,3.45,0.0436,79.12844037,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"625",625,57,"DryoctBG10","BG_dryoct_00057",0.014502488,4.02,0.0583,68.95368782,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"626",626,58,"DryoctBG10","BG_dryoct_00058",0.014502488,4.02,0.0583,68.95368782,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"627",627,59,"DryoctBG10","BG_dryoct_00059",0.014502488,4.02,0.0583,68.95368782,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"628",628,60,"DryoctBG10","BG_dryoct_00060",0.014502488,4.02,0.0583,68.95368782,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"629",629,63,"DryoctBG11","BG_dryoct_00063",0.009273356,2.89,0.0268,107.8358209,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"630",630,64,"DryoctBG11","BG_dryoct_00064",0.009273356,2.89,0.0268,107.8358209,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"631",631,65,"DryoctBG11","BG_dryoct_00065",0.009273356,2.89,0.0268,107.8358209,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"632",632,66,"DryoctBG11","BG_dryoct_00066",0.009273356,2.89,0.0268,107.8358209,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"633",633,69,"DryoctBG12","BG_dryoct_00069",0.013313609,3.38,0.045,75.11111111,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"634",634,70,"DryoctBG12","BG_dryoct_00070",0.013313609,3.38,0.045,75.11111111,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"635",635,71,"DryoctBG12","BG_dryoct_00071",0.013313609,3.38,0.045,75.11111111,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"636",636,72,"DryoctBG12","BG_dryoct_00072",0.013313609,3.38,0.045,75.11111111,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"637",637,73,"DryoctBG13","BG_dryoct_00073",0.013040153,5.23,0.0682,76.68621701,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"638",638,74,"DryoctBG13","BG_dryoct_00074",0.013040153,5.23,0.0682,76.68621701,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"639",639,75,"DryoctBG13","BG_dryoct_00075",0.013040153,5.23,0.0682,76.68621701,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"640",640,77,"DryoctBG13","BG_dryoct_00077",0.013040153,5.23,0.0682,76.68621701,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"641",641,79,"DryoctBG14","BG_dryoct_00079",0.012657143,3.5,0.0443,79.00677201,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"642",642,80,"DryoctBG14","BG_dryoct_00080",0.012657143,3.5,0.0443,79.00677201,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"643",643,81,"DryoctBG14","BG_dryoct_00081",0.012657143,3.5,0.0443,79.00677201,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"644",644,83,"DryoctBG14","BG_dryoct_00083",0.012657143,3.5,0.0443,79.00677201,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"645",645,86,"DryoctBG15","BG_dryoct_00086",0.011367673,5.63,0.064,87.96875,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"646",646,88,"DryoctBG15","BG_dryoct_00088",0.011367673,5.63,0.064,87.96875,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"647",647,89,"DryoctBG15","BG_dryoct_00089",0.011367673,5.63,0.064,87.96875,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"648",648,90,"DryoctBG15","BG_dryoct_00090",0.011367673,5.63,0.064,87.96875,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"649",649,92,"DryoctBG16","BG_dryoct_00092",0.013228621,5.73,0.0758,75.59366755,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"650",650,94,"DryoctBG16","BG_dryoct_00094",0.013228621,5.73,0.0758,75.59366755,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"651",651,95,"DryoctBG16","BG_dryoct_00095",0.013228621,5.73,0.0758,75.59366755,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"652",652,96,"DryoctBG16","BG_dryoct_00096",0.013228621,5.73,0.0758,75.59366755,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"653",653,99,"DryoctBG17","BG_dryoct_00099",0.011309013,4.66,0.0527,88.42504744,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"654",654,100,"DryoctBG17","BG_dryoct_00100",0.011309013,4.66,0.0527,88.42504744,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"655",655,101,"DryoctBG17","BG_dryoct_00101",0.011309013,4.66,0.0527,88.42504744,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"656",656,102,"DryoctBG17","BG_dryoct_00102",0.011309013,4.66,0.0527,88.42504744,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"657",657,103,"DryoctBG18","BG_dryoct_00103",0.009172932,7.98,0.0732,109.0163934,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"658",658,104,"DryoctBG18","BG_dryoct_00104",0.009172932,7.98,0.0732,109.0163934,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"659",659,106,"DryoctBG18","BG_dryoct_00106",0.009172932,7.98,0.0732,109.0163934,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"660",660,107,"DryoctBG18","BG_dryoct_00107",0.009172932,7.98,0.0732,109.0163934,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"661",661,109,"DryoctBG19","BG_dryoct_00109",0.00995365,8.63,0.0859,100.4656577,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"662",662,110,"DryoctBG19","BG_dryoct_00110",0.00995365,8.63,0.0859,100.4656577,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"663",663,112,"DryoctBG19","BG_dryoct_00112",0.00995365,8.63,0.0859,100.4656577,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"664",664,114,"DryoctBG19","BG_dryoct_00114",0.00995365,8.63,0.0859,100.4656577,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"665",665,8,"DryoctBG2","BG_dryoct_00008",0.010978261,4.6,0.0505,91.08910891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"666",666,9,"DryoctBG2","BG_dryoct_00009",0.010978261,4.6,0.0505,91.08910891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"667",667,11,"DryoctBG2","BG_dryoct_00011",0.010978261,4.6,0.0505,91.08910891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"668",668,12,"DryoctBG2","BG_dryoct_00012",0.010978261,4.6,0.0505,91.08910891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"669",669,117,"DryoctBG20","BG_dryoct_00117",0.009328622,11.32,0.1056,107.1969697,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"670",670,118,"DryoctBG20","BG_dryoct_00118",0.009328622,11.32,0.1056,107.1969697,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"671",671,119,"DryoctBG20","BG_dryoct_00119",0.009328622,11.32,0.1056,107.1969697,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"672",672,120,"DryoctBG20","BG_dryoct_00120",0.009328622,11.32,0.1056,107.1969697,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"673",673,14,"DryoctBG3","BG_dryoct_00014",0.010362438,6.07,0.0629,96.50238474,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"674",674,15,"DryoctBG3","BG_dryoct_00015",0.010362438,6.07,0.0629,96.50238474,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"675",675,16,"DryoctBG3","BG_dryoct_00016",0.010362438,6.07,0.0629,96.50238474,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"676",676,17,"DryoctBG3","BG_dryoct_00017",0.010362438,6.07,0.0629,96.50238474,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"677",677,19,"DryoctBG4","BG_dryoct_00019",0.010593472,3.37,0.0357,94.3977591,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"678",678,22,"DryoctBG4","BG_dryoct_00022",0.010593472,3.37,0.0357,94.3977591,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"679",679,23,"DryoctBG4","BG_dryoct_00023",0.010593472,3.37,0.0357,94.3977591,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"680",680,24,"DryoctBG4","BG_dryoct_00024",0.010593472,3.37,0.0357,94.3977591,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"681",681,25,"DryoctBG5","BG_dryoct_00025",0.010878788,3.3,0.0359,91.92200557,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"682",682,28,"DryoctBG5","BG_dryoct_00028",0.010878788,3.3,0.0359,91.92200557,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"683",683,29,"DryoctBG5","BG_dryoct_00029",0.010878788,3.3,0.0359,91.92200557,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"684",684,30,"DryoctBG5","BG_dryoct_00030",0.010878788,3.3,0.0359,91.92200557,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"685",685,31,"DryoctBG6","BG_dryoct_00031",0.010857843,4.08,0.0443,92.0993228,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"686",686,32,"DryoctBG6","BG_dryoct_00032",0.010857843,4.08,0.0443,92.0993228,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"687",687,34,"DryoctBG6","BG_dryoct_00034",0.010857843,4.08,0.0443,92.0993228,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"688",688,36,"DryoctBG6","BG_dryoct_00036",0.010857843,4.08,0.0443,92.0993228,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"689",689,37,"DryoctBG7","BG_dryoct_00037",0.010764045,4.45,0.0479,92.90187891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"690",690,38,"DryoctBG7","BG_dryoct_00038",0.010764045,4.45,0.0479,92.90187891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"691",691,40,"DryoctBG7","BG_dryoct_00040",0.010764045,4.45,0.0479,92.90187891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"692",692,42,"DryoctBG7","BG_dryoct_00042",0.010764045,4.45,0.0479,92.90187891,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"693",693,43,"DryoctBG8","BG_dryoct_00043",0.010600858,4.66,0.0494,94.33198381,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"694",694,44,"DryoctBG8","BG_dryoct_00044",0.010600858,4.66,0.0494,94.33198381,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"695",695,45,"DryoctBG8","BG_dryoct_00045",0.010600858,4.66,0.0494,94.33198381,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"696",696,47,"DryoctBG8","BG_dryoct_00047",0.010600858,4.66,0.0494,94.33198381,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"697",697,49,"DryoctBG9","BG_dryoct_00049",0.011185345,4.64,0.0519,89.4026975,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"698",698,51,"DryoctBG9","BG_dryoct_00051",0.011185345,4.64,0.0519,89.4026975,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"699",699,52,"DryoctBG9","BG_dryoct_00052",0.011185345,4.64,0.0519,89.4026975,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA
+"700",700,54,"DryoctBG9","BG_dryoct_00054",0.011185345,4.64,0.0519,89.4026975,"octopetala","Bison Gulch",NA,"DO","DO_bgc","DO_bgc","No","DO_bg",NA

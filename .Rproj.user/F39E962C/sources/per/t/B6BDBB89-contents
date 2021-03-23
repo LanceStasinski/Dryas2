@@ -9,17 +9,17 @@ library(dplyr)
 library(randomForest)
 library(cluster)
 
-
+setwd("~/GitHub/Dryas2")
 ################################################################################
 #Data setup 
 ################################################################################
 
 #data
-spec_all = readRDS("clean_all.rds")
+spec_all = readRDS("Data/clean_all.rds")
 
 #add new population delineations
 s.m = as_spectra(as.matrix(spec_all))
-meta(s.m) = read.csv('metadata_2.csv', stringsAsFactors = F)
+meta(s.m) = read.csv('Data/metadata_2.csv', stringsAsFactors = F)
 spec_all = s.m
 
 #remove any NaN values

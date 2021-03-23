@@ -19,6 +19,7 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
+saveRDS(spec_all, file = "C:/Users/istas/OneDrive/Documents/GitHub/Dryas2/Data/clean_all.rds")
 
 #remove any NaN values - mostly pertains to populations
 spec_all = spec_all[!meta(spec_all)$sp_loc == "NaN",]

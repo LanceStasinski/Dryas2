@@ -1,17 +1,16 @@
 {
-    "id": "1FE57A13",
-    "path": "~/Dryas Research/Dryas 2.0/Beta PLS.R",
-    "project_path": null,
+    "id": "BBB37494",
+    "path": "~/GitHub/Dryas2/spectra_plots.R",
+    "project_path": "spectra_plots.R",
     "type": "r_source",
-    "hash": "0",
+    "hash": "4048568943",
     "contents": "",
     "dirty": false,
-    "created": 1610392459789.0,
+    "created": 1609956572333.0,
     "source_on_save": false,
-    "relative_order": 5,
+    "relative_order": 2,
     "properties": {
-        "tempName": "Untitled1",
-        "cursorPosition": "193,0",
+        "cursorPosition": "117,0",
         "scrollLine": "0"
     },
     "folds": "",
@@ -19,7 +18,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1616082526841,
+    "last_content_update": 1616082526826,
     "read_only": false,
     "read_only_alternatives": []
 }

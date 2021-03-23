@@ -44,6 +44,14 @@ spec_df$sp_loc = spec_all.df$sp_loc
 ################################################################################
 #Unsupervised Random Forest 
 ################################################################################
+
+s.kappa <- c()
+p.kappa <- c()
+l.kappa <- c()
+sl.kappa <- c()
+
+
+for(i in 1:100){
 #model
 rf = randomForest(x = spec_df[,-c(202,203,204,205)], ntree= 2000, proximity = T)
 
@@ -56,42 +64,66 @@ pam2 = pam(prox, 2)
 pred.sp = cbind(pam2$clustering, spec_df$Species_ID)
 sp.t = table(pred.sp[,2],pred.sp[,1])
 colnames(sp.t) = rownames(sp.t)
-sp.cm = confusionMatrix(sp.t)
-saveRDS(sp.cm, "rf_confusion_matrix_output/species_cm.rds")
-sp.k = sp.cm$overall[2]
+s.cm = confusionMatrix(sp.t)
+s.kap = assign(paste0("s.kap",i), s.cm$overall[2])
+s.kappa <- append(s.kappa, get('s.kap'))
 
 #population
 pam6 = pam(prox, 6)
 pred.pop = cbind(pam6$clustering, spec_df$GenePop_ID)
 pop.t = table(pred.pop[,2],pred.pop[,1])
 colnames(pop.t) = rownames(pop.t)
-pop.cm = confusionMatrix(pop.t)
-saveRDS(pop.cm, "rf_confusion_matrix_output/pop_cm.rds")
-pop.k = pop.cm$overall[2]
+p.cm = confusionMatrix(pop.t)
+p.kap = assign(paste0("p.kap",i), p.cm$overall[2])
+p.kappa <- append(p.kappa, get('p.kap'))
 
 #location
 pam6 = pam(prox, 6)
 pred.loc = cbind(pam6$clustering, spec_df$Location)
 loc.t = table(pred.loc[,2],pred.loc[,1])
 colnames(loc.t) = rownames(loc.t)
-loc.cm = confusionMatrix(loc.t)
-saveRDS(loc.cm, "rf_confusion_matrix_output/location_cm.rds")
-loc.k = loc.cm$overall[2]
+l.cm = confusionMatrix(loc.t)
+l.kap = assign(paste0("l.kap",i), l.cm$overall[2])
+l.kappa <- append(l.kappa, get('l.kap'))
 
 #species+location
 pam9 = pam(prox, 9)
 pred.sploc = cbind(pam9$clustering, spec_df$sp_loc)
 sploc.t = table(pred.sploc[,2],pred.sploc[,1])
 colnames(sploc.t) = rownames(sploc.t)
-sploc.cm = confusionMatrix(sploc.t)
-saveRDS(sploc.cm, "rf_confusion_matrix_output/species_location.rds")
-sploc.k = sploc.cm$overall[2]
+sl.cm = confusionMatrix(sploc.t)
+sl.kap = assign(paste0("sl.kap",i), sl.cm$overall[2])
+sl.kappa <- append(sl.kappa, get('sl.kap'))
 
-#kappa scores
-sp.k
-pop.k
-loc.k
-sploc.k
+}
+
+#Results
+df = data.frame(row.names = c("Species", "Population", "Location", "Species+Loc"))
+
+s.mean = mean(s.kappa)
+p.mean = mean(p.kappa)
+l.mean = mean(l.kappa)
+sl.mean = mean(sl.kappa)
+k.mean = c(s.mean, p.mean, l.mean, sl.mean)
+df = cbind(df, k.mean)
+
+s.sd = sd(s.kappa)
+p.sd = sd(p.kappa)
+l.sd = sd(l.kappa)
+sl.sd = sd(sl.kappa)
+k.sd = c(s.sd, p.sd, l.sd, sl.sd)
+df = cbind(df, k.sd)
+
+colnames(df) = c("Kappa Mean", "Kappa SD")
+write.csv(df, file="rf_confusion_matrix_output/kappa_stats.csv")
+
+
+
+
+
+
+
+
 
 
 

@@ -10,7 +10,7 @@ library(ggplot2)
 library(ggpubr)
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
-leaf = read.csv('morphology.csv', stringsAsFactors = F)
+leaf = read.csv('morphology_2.csv', stringsAsFactors = F)
 values = c("parent",'parent','hybrid')
 leaf$Species = as.factor(leaf$Species)
 leaf$taxa <- values[leaf$Species]
@@ -101,12 +101,14 @@ rownames(hyb.c) <- c('Glands', 'Scales', 'Length', 'Tomentum')
 bp = ggplot(leaf, aes(x = Species, y = Length))+ ylab('Length (mm)')+
         geom_boxplot() +
         ggtitle('Leaf Length')+
+        scale_x_discrete(labels=c('DAK', 'DAJ', 'DX'))+
         theme(plot.title = element_text(hjust = .5))
 
 #Midvein total
 midvein = ggplot(leaf,
                aes(x = factor(Species,
-                              levels = c('DA', 'DO', 'DX')),
+                              levels = c('DA', 'DO', 'DX'),
+                              labels = c('DAK', 'DAJ', 'DX')),
                    fill = factor(Midvein,
                                  levels = c(0,1,2,3),
                                  labels = c('Neither', 'Glands', 'Scales',
@@ -141,7 +143,7 @@ gland = ggplot(leaf,
 #Midvein Scales
 scale = ggplot(leaf,
        aes(x = factor(Species,
-                      levels = c('DA', 'DO', 'DX')),
+                      levels = c('DAK', 'DAJ', 'DX')),
            fill = factor(Rusty.Scales,
                          levels = c(0,1),
                          labels = c('Absent', 'Present')))) +
@@ -158,7 +160,7 @@ scale = ggplot(leaf,
 #has both scales and glands
 scale_gland = ggplot(leaf,
                aes(x = factor(Species,
-                              levels = c('DA', 'DO', 'DX')),
+                              levels = c('DAK', 'DAJ', 'DX')),
                    fill = factor(Scales.and.glands,
                                  levels = c(0,1),
                                  labels = c('Not concurrent', 'Concurrent')))) +
@@ -175,7 +177,8 @@ scale_gland = ggplot(leaf,
 #tomentum
 tom = ggplot(leaf,
        aes(x = factor(Species,
-                      levels = c('DA', 'DO', 'DX')),
+                      levels = c('DA', 'DO', 'DX'),
+                      labels = c('DAK', 'DAJ', 'DX')),
            fill = factor(Adaxial.tomentum,
                          levels = c(1,2,3),
                          labels = c('Sparse', 'Moderate', 'Dense')))) +
@@ -189,7 +192,7 @@ tom = ggplot(leaf,
         ggtitle('Adaxial Tomentum')+
         theme(plot.title = element_text(hjust = .5))
 
-ggarrange(bp, gland, scale, tom, ncol = 2, nrow = 2)
+ggarrange(bp, midvein, tom, ncol = 2, nrow = 2)
 
 #corrplots
 par(mfrow = c(1,2))

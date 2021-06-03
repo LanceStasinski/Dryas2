@@ -9,14 +9,15 @@ library(spectrolab)
 library(matrixStats)
 library(tidyverse)
 library(rlist)
-
-setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
+library(parallel)
+library(foreach)
+library(doParallel)
 
 ################################################################################
 #Set up
 ################################################################################
 #spectra
-spec_all= readRDS("Clean-up/Clean_spectra/clean_all.rds")
+spec_all= readRDS("Data/clean_all_6scans.rds")
 
 #remove NAs
 spec_all = spec_all[!meta(spec_all)$DA == "NaN",]
@@ -31,19 +32,29 @@ colnames(spec_df)[colnames(spec_df) == 'spectra.df$DA'] <- 'DA'
 ################################################################################
 #Training and testing sets - all
 ################################################################################
+numCores = detectCores()
+registerDoParallel(numCores)
 
-#10-fold cross validation repeated 5 times
-plsFit = PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = 80,
-                                  modele = 'pls-beta', K = 10, NK = 5,
-                                  verbose = T, random = T)
+#parallelized plsBeta regression
+plsFit = foreach (i = 1:2) %dopar% {
+  library(plsRbeta)
+  m = plsRbeta::PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = 60,
+                           modele = 'pls-beta', K = 10, NK = 1,
+                           verbose = T, random = T)
+}
+saveRDS(plsFit, 'Models/plsBeta/plsFit.rds')
 
-saveRDS(plsFit, '6scans_beta_pls.rds')
-plsFit = read_rds('6scans_beta_pls.rds')
+#generate pls info statistics
+pls_info_list = list()
+for(i in 1:5) {
+ pls_info = plsRbeta::kfolds2CVinfos_beta(plsFit[[i]])
+ info = assign(paste0("pls_info", i), pls_info)
+ pls_info_list = list.append(pls_info_list, get('info'))
+}
+saveRDS(plsFit.info, 'Models/plsBeta/pls_info_list.rds')
 
-#Acquire statistics from each repeat
-plsFit.info = kfolds2CVinfos_beta(plsFit)
-saveRDS(plsFit.info, 'first_layer_beta_pls_info.rds')
-plsFit.info = read_rds('first_layer_beta_pls_info.rds')
+  
+
 
 #Convert info to data frame, calculate RMSE from RSS
 for(i in 1:5){

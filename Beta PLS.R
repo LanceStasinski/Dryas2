@@ -18,13 +18,12 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 #spectra
 spec_all= readRDS("Clean-up/Clean_spectra/clean_all.rds")
 
-#remove NAs and resample to every ten nm
+#remove NAs
 spec_all = spec_all[!meta(spec_all)$DA == "NaN",]
-spectra = spectrolab::resample(spec_all, seq(400, 2400, by = 10))
 
 #prepare data for PLS
-spectra.df = as.data.frame(spectra)
-spectra.m = as.matrix(spectra)
+spectra.df = as.data.frame(spec_all)
+spectra.m = as.matrix(spec_all)
 spec_df = as.data.frame(spectra.m)
 spec_df = cbind(spec_df, spectra.df$DA)
 colnames(spec_df)[colnames(spec_df) == 'spectra.df$DA'] <- 'DA'
@@ -34,17 +33,17 @@ colnames(spec_df)[colnames(spec_df) == 'spectra.df$DA'] <- 'DA'
 ################################################################################
 
 #10-fold cross validation repeated 5 times
-plsFit = PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = ncomp,
+plsFit = PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = 80,
                                   modele = 'pls-beta', K = 10, NK = 5,
                                   verbose = T, random = T)
 
-saveRDS(plsFit, '10fold_r5_80comp_randompart.rds')
-plsFit = read_rds('10fold_r5_80comp_randompart.rds')
+saveRDS(plsFit, '6scans_beta_pls.rds')
+plsFit = read_rds('6scans_beta_pls.rds')
 
 #Acquire statistics from each repeat
 plsFit.info = kfolds2CVinfos_beta(plsFit)
-saveRDS(plsFit.info, 'pls_beta_info_10fold_5r_80comp_randompart.rds')
-plsFit.info = read_rds('pls_beta_info_10fold_5r_80comp_randompart.rds')
+saveRDS(plsFit.info, 'first_layer_beta_pls_info.rds')
+plsFit.info = read_rds('first_layer_beta_pls_info.rds')
 
 #Convert info to data frame, calculate RMSE from RSS
 for(i in 1:5){

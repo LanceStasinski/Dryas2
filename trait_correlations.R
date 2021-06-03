@@ -34,9 +34,12 @@ rownames(hyb.c) <- c('Glands', 'Scales', 'Length', 'Tomentum')
 cols = colorRampPalette(c('#2166ac', '#d73027'))
 
 par(mfrow = c(1,2))
-corrplot::corrplot(p.c, method = "number", type = "lower", diag = F, cl.cex = 1, addCoef.col = 'black',
-         tl.col = 'black', cl.length = 5, col = cols(15))
-mtext('Parent Leaves', side = 2, line = -1, at = 2, cex = 1.25)
-corrplot::corrplot(hyb.c, method = "number", type = 'lower', diag = F, cl.cex = 1, addCoef.col = 'black',
-         tl.col = 'black', cl.length = 5, col = cols(15))
-mtext('Hybrid Leaves', side = 2, line = -1, at = 2, cex = 1.25)
+corrplot::corrplot(p.c, method = "number", type = "lower", diag = F, cl.cex = 1,
+                   addCoef.col = 'black', tl.col = 'black', cl.length = 5,
+                   col = cols(15), number.cex = 1.25)
+mtext('Parent Leaves', side = 2, line = -1, at = 2, cex = 1.5)
+corrplot::corrplot(hyb.c, method = "number", type = 'lower', diag = F,
+                   cl.cex = 1, addCoef.col = 'black',
+                   tl.col = 'black', cl.length = 5, col = cols(15),
+                   number.cex = 1.25)
+mtext('Hybrid Leaves', side = 2, line = -1, at = 2, cex = 1.5)

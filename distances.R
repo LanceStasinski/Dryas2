@@ -11,13 +11,12 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 #spectra
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
 spec_all = spec_all[!meta(spec_all)$Species_ID == "DX",]
-spec_all = normalize(spec_all)
-spec.mean = aggregate(spec_all,
-                      by = meta(spec_all)$Name, 
-                      mean, try_keep_txt(mean))
+#spec.mean = aggregate(spec_all,
+                      #by = meta(spec_all)$Name, 
+                      #mean, try_keep_txt(mean))
 
 
-spec.mean = as.matrix(spec.mean)
+spec.mean = as.matrix(spec_all)
 
 #change row names
 meta_new = read.csv("mean_meta_new.csv", stringsAsFactors = F)

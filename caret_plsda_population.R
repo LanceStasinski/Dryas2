@@ -18,24 +18,19 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 ################################################################################
 
 #data
-spec_all = readRDS("Clean-up/Clean_spectra/clean_all.rds")
-
+spec_all = readRDS("Clean-up/Clean_spectra/clean_all_6scans.rds")
 
 #Code for new populations
-s.m = as_spectra(as.matrix(spec_all))
-meta(s.m) = read.csv('metadata_2.csv', stringsAsFactors = F)
-spec_all = s.m
+#s.m = as_spectra(as.matrix(spec_all))
+#meta(s.m) = read.csv('metadata_3.csv', stringsAsFactors = F)
+#spec_all = s.m
 
 #remove any NaN values - mostly pertains to populations
 spec_all = spec_all[!meta(spec_all)$GenePop_ID == "NaN",]
 
-spec_all.m = as.matrix(spec_all)
+spec_mat = as.matrix(spec_all)
 spec_all.df = as.data.frame(spec_all)
 
-#Resample by every 10 nm
-spec_small = resample(spec_all, seq(400, 2400, by = 10))
-spec_mat_s = as.matrix(spec_small)
-spec_mat = spec_mat_s
 
 #combine relavant meta data to matrix
 spec_df = as.data.frame(spec_mat)
@@ -48,24 +43,24 @@ colnames(spec_df)[colnames(spec_df) == "spec_all.df$GenePop_ID"] <- "GenePop_ID"
 ################################################################################
 
 #Set number of components to be used
-ncomp = 42
+ncomp = 45
 
 #create vectors, lists, and matrices to store metrics and loadings
 accuracy <- c()
 kappa <- c()
-k.fit <- matrix(nrow = ncomp)
+a.fit <- matrix(nrow = ncomp)
 cm.list <- list()
-da_et.vip = matrix(nrow=201)
-da_wdb.vip = matrix(nrow=201)
-do_bg.vip = matrix(nrow=201)
-do_et.vip = matrix(nrow=201)
-do_md.vip = matrix(nrow=201)
-do_wd.vip = matrix(nrow=201)
+da_et.vip = matrix(nrow=2001)
+da_wdb.vip = matrix(nrow=2001)
+do_bg.vip = matrix(nrow=2001)
+do_et.vip = matrix(nrow=2001)
+do_md.vip = matrix(nrow=2001)
+do_wd.vip = matrix(nrow=2001)
 
 #start of PLSDA code
 for(i in 1:100){
   
-  #create data partition: 70% of data for training, 30% for testing
+  #create data partition: 80% of data for training, 20% for testing
   inTrain <- caret::createDataPartition(
     y = spec_df$GenePop_ID,
     p = .8,
@@ -112,9 +107,9 @@ for(i in 1:100){
   do_wd = assign(paste0('do_wd', i), vip$importance$DO_wd)
   do_wd.vip <- cbind(do_wd.vip, get('do_wd'))
   
-  #kappa objects for determining n components
-  k = assign(paste0('k', i), as.matrix(plsFit$results$Kappa))
-  k.fit <- cbind(k.fit, get('k'))
+  #accuracy objects for determining n components
+  a = assign(paste0('a', i), as.matrix(plsFit$results$Accuracy))
+  a.fit <- cbind(a.fit, get('a'))
   
   #test model using the testing data partition (30% of data)
   plsClasses <- predict(plsFit, newdata = testing)
@@ -147,25 +142,26 @@ mean.kap
 sd.kap
 
 ################################################################################
-#Kappa values for choosing the optimal number of components to use
+#accuracy values for choosing the optimal number of components to use
 ################################################################################
 
-k.total = k.fit[,-1]
-kavg = as.matrix(rowMeans(k.total))
-ksd = as.matrix(rowSds(k.total))
+a.total = a.fit[,-1]
+a.avg = as.matrix(rowMeans(a.total))
+a.sd = as.matrix(rowSds(a.total))
 
-klower = kavg - ksd
-khigher = kavg + ksd
+a.lower = a.avg - a.sd
+a.higher = a.avg + a.sd
 
 #Graph to visually choose optimal number of components
 x = 1:60
-par(mfrow = c(1,1), mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
-plot(x, kavg, type = 'p', pch = 16, cex = .75, ylab = 'Kappa', 
-     xlab = 'Component', xlim = c(1,60), main = 'Kappa for GenePop_ID')
-arrows(x, klower, x, khigher,length=0.05, angle=90, code=3)
-abline(v = 43, col = 'blue')
-abline(h = max(klower), col = "Red")
-legend('bottomright', legend = c('Mean', 'Maximum kappa','Best component'), 
+par(mar = c(5.1, 4.1, 4.1, 2.1), oma = c(5.1, 4.1, 4.1, 2.1))
+plot(x, a.avg, type = 'p', pch = 16, cex = .75, ylab = 'Accuracy', 
+     xlab = 'Component', xlim = c(1,50), main = 'Accuracy for Species_ID', 
+     ylim = c(0,1))
+arrows(x, a.lower, x, a.higher,length=0.05, angle=90, code=3)
+abline(v = 18, col = 'blue')
+abline(h = max(a.lower), col = "Red")
+legend('bottomright', legend = c('Mean', 'Maximum accuracy','Best component'), 
        pch = c(16, NA, NA), lty = c(NA, 1, 1), col = c('black', 'red', 'blue'))
 
 ################################################################################
@@ -189,7 +185,7 @@ cm.sd = t(cm.sd)
 cm.sd = cm.sd/rowSums(cm.avg)
 rownames(cm.sd) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
 colnames(cm.sd) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
-write.csv(cm.sd, file = 'Figures/cm_final/standard deviations/GenePop_ID_sd_upsample2_small2.csv')
+write.csv(cm.sd, file = 'Figures/cm_final/6_scans/standard deviations/GenePop_ID_sd.csv')
 
 #format matrix for plotting
 cm.total = as.data.frame(cm.total)
@@ -199,15 +195,10 @@ rownames(cm.total) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
 colnames(cm.total) <- c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
 
 #save confusion matrix
-write.csv(cm.total, "Figures/cm_final/cm_GenePop_ID_upsample2_small2.csv")
+write.csv(cm.total, "Figures/cm_final/6_scans/GenePop_ID.csv")
 
 
 #plot confusion matrix
-cm.total = read.csv("Figures/cm_final/cm_GenePop_ID_upsample2_small2.csv", stringsAsFactors = F)
-cm.total = as.matrix(cm.total[,-1])
-rownames(cm.total) = c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
-colnames(cm.total) = c('ESTM', 'WDB', 'BG', 'ESTM', 'MD', 'WD')
-
 cols = colorRampPalette(c('#f5f5f5', '#fe9929'))
 
 par(mar = c(1,2,2,1), oma = c(1,1,3,1))
@@ -235,7 +226,7 @@ mtext("Prediction", side = 3, cex = 2.5, at = 2, line = 3)
 ################################################################################
 vip_to_spec = function(x){
   t.vip = t(x)
-  colnames(t.vip) <- seq(400,2400, by = 10)
+  colnames(t.vip) <- seq(400,2400, by = 1)
   s.vip = as_spectra(t.vip)
 }
 da_et.vip = da_et.vip[,-1]
@@ -260,57 +251,46 @@ do_wd.vip.spec = vip_to_spec(do_wd.vip)
 par(mfrow = c(2,3))
 plot(mean(da_et.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = "Variable Importance", 
-     xlab = NA, main = 'DA-ET')
+     xlab = NA, main = 'DAK-ET')
 plot_quantile(da_et.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(da_et.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
+
 
 
 plot(mean(da_wdb.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
-     xlab = NA, main = 'DA-WDB')
+     xlab = NA, main = 'DAK-WDB')
 plot_quantile(da_wdb.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(da_wdb.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 
 
 plot(mean(do_bg.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
-     xlab = NA, main = 'DO-BG')
+     xlab = NA, main = 'DAJ-BG')
 plot_quantile(do_bg.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(do_bg.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 
 
 
 plot(mean(do_et.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = "Variable Importance", 
-     xlab = 'Wavelength (nm)', main = 'DO-ET')
+     xlab = 'Wavelength (nm)', main = 'DAJ-ET')
 plot_quantile(do_et.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(do_et.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 
 
 plot(mean(do_md.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA,
-     xlab = 'Wavelength (nm)', main = 'DO-MD')
+     xlab = 'Wavelength (nm)', main = 'DAJ-MD')
 plot_quantile(do_md.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(do_md.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 
 
 plot(mean(do_wd.vip.spec), lwd = 2, lty = 1, col = rgb(0,0,0,1), 
      cex.lab = 1.25, ylim = c(0, 100), ylab = NA, 
-     xlab = 'Wavelength (nm)', main = 'DO-WD')
+     xlab = 'Wavelength (nm)', main = 'DAJ-WD')
 plot_quantile(do_wd.vip.spec, total_prob = 0.95, col = rgb(0,0,0, 0.25), 
               border = FALSE, add = TRUE)
-plot_regions(do_wd.vip.spec, regions = default_spec_regions(),
-             add_label = T, add = TRUE)
 
 ################################################################################
 #Loadings plot

@@ -21,41 +21,7 @@ add_meta <- function(spectra_path, metadata_path){
   return(spectra_raw)
 }
 
-#The goal of the following functions is to keep the 4 spectral measurements that
-#are closest to the mean reflectance values for each individual plant. The 
-#sample design involved stacking leaves 3 times and taking 2 reflectance 
-#measurements per stack interval. Therefore, the first stack tended to have much
-#of the black background showing, and the third stack probably had more light
-#reflected from the leaves than observed in nature (think about how stacking a
-#leaf would simulate scanning a thicker leaf). The idea here is that restricting
-#measurements to the 3 closest to the mean should provide more data to work with
-#compared to just taking the mean while also removing high and low reflectance 
-#measurements caused by sample design. 
 
-#subtract the mean reflectance from measured reflectance (i.e. calculate 
-#distance from the mean)
-center_scale = function(spectra){
-  scale(spectra, scale = FALSE)
-}
-
-#rank spectra by distance from the mean
-dist.rank = function(spectra){
-  rank(rowSums(abs(center_scale(spectra))))
-}  
-
-#keep the 4 spectra per individual plant that are closest to the mean
-keep = function(spectra){
-  a = dist.rank(spectra)
-  x1 = subset(spectra, a < 5)
-}
-
-#split the spectra objects to individual plants, apply above functions, and 
-#recombine them.
-trim.spectra = function(spectra){
-  spec.list = lapply(split(spectra, meta(spectra)$Name), keep)
-  clean_spec = Reduce(combine, spec.list)
-  return(clean_spec)
-}
 
 ################################################################################
 #Primary functions
@@ -67,8 +33,7 @@ thebigclean <- function(spectra_path, metadata_path){
   meta.spectra = add_meta(spectra_path, metadata_path)
   spectra_cut = meta.spectra[, 400:2400]
   spec1 = spectra_cut[!rowSums(spectra_cut > 1),]
-  spec2 = trim.spectra(spec1)
-  clean_spectra = smooth(spec2)
+  clean_spectra = smooth(spec1)
   return(clean_spectra)
 }
 
@@ -142,16 +107,32 @@ wdb_clean = thebigclean(wdb_path, wdb_meta)
 ################################################################################
 #combine
 ################################################################################
-
-clean_big3 = Reduce(combine, list(tm_clean, es_clean, wdb_clean))
-vn_big3 = normalize(clean_big3)
-
 #clean_all is the object used for most analyses
 clean_all = Reduce(combine, list(tm_clean, es_clean, wdb_clean, mdb_clean, 
                                  wda_clean, bg_clean))
-saveRDS(clean_all, "Clean-up/Clean_spectra/clean_all.rds")
+#write.csv(meta(clean_all), 'meta_6.csv')
+#correct populations in excel
+meta = read.csv('meta_6.csv', stringsAsFactors = F)
+meta(clean_all) = meta
+saveRDS(clean_all, "Clean-up/Clean_spectra/clean_all_6scans.rds")
 
-all_vn = normalize(clean_all)
+#code for averaging spectra by layers
+l1 = clean_all[meta(clean_all)$layer == 1,]
+l1.avg = aggregate(l1, by = meta(l1)$Name, mean, try_keep_txt(mean))
+
+l2 = clean_all[meta(clean_all)$layer == 2,]
+l2.avg = aggregate(l2, by = meta(l2)$Name, mean, try_keep_txt(mean))
+
+l3 = clean_all[meta(clean_all)$layer == 3,]
+l3.avg = aggregate(l3, by = meta(l3)$Name, mean, try_keep_txt(mean))
+
+clean_all2 = Reduce(combine, list(l1.avg, l2.avg, l3.avg))
+write.csv(meta(clean_all2), "meta_3lyr.csv")
+#fix populations in excel
+meta_new = read.csv("meta_3lyr.csv", stringsAsFactors = F)
+meta(clean_all2) = meta_new
+
+saveRDS(clean_all2, "Clean-up/Clean_spectra/clean_all_3lyr.rds")
 
 ################################################################################
 #separate by three primary sites

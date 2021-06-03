@@ -36,7 +36,7 @@ numCores = detectCores()
 registerDoParallel(numCores)
 
 #parallelized plsBeta regression
-plsFit = foreach (i = 1:2) %dopar% {
+plsFit = foreach (i = 1:5) %dopar% {
   library(plsRbeta)
   m = plsRbeta::PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = 60,
                            modele = 'pls-beta', K = 10, NK = 1,

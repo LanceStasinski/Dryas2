@@ -15,6 +15,11 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 #Alaska shapefile
 ################################################################################
 
+
+na = st_read('alaska bounds/PoliticalBoundaries_Shapefiles/NA_PoliticalDivisions/data/bound_l/boundary_l_v2.shp')
+crs = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+na2 = st_transform(na, crs)
+
 states = st_read('alaska bounds/cb_2018_us_state_500k.shp')
 alaska = states[states$NAME == "Alaska",]
 crs = "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
@@ -59,21 +64,25 @@ examp_df <- data.frame(x = seq(from = -144.0, to = -150.0, length.out = 1000),
 
 # get raster
 elevation_df <- get_elev_raster(examp_df, prj = crs, z = 8)
-
+slope = terrain(elevation_df, opt = 'slope')
+aspect = terrain(elevation_df, opt = 'aspect')
+hill = hillShade(slope, aspect)
 #map
 
-dem = tm_shape(elevation_df) + 
+dem = 
+  tm_shape(elevation_df) + 
   tm_raster(n=6, palette = 'YlGnBu', title = "Elevation (m)") +
+  tm_shape(hill) +
+  tm_raster(palette = gray(0:100 / 100), n = 100, legend.show = FALSE, alpha = 0.6) +
   tm_legend(outside = T) + 
-  tm_compass(type = 'arrow', position = c("left","bottom")) +
-  tm_scale_bar(breaks = c(0, 50, 100, 200), text.size = .75) +
+  tm_compass(type = '4star', position = c("right","top")) +
+  tm_scale_bar(breaks = c(0, 50, 100, 200), text.size = 1, position = c('left', 'bottom')) +
   tm_grid(alpha = .1) +
   tm_xlab("Longitude") +
   tm_ylab("Latitude")
 
 
 dem
-
 
 ################################################################################
 #Final Map

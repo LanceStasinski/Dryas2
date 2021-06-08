@@ -11,6 +11,7 @@ library(corrplot)
 library(matrixStats)
 library(naniar)
 library(rlist)
+
 setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 ################################################################################
@@ -19,9 +20,21 @@ setwd("C:/Users/istas/OneDrive/Documents/Dryas Research/Dryas 2.0")
 
 #data
 spec_all = readRDS("Clean-up/Clean_spectra/clean_all_6scans.rds")
+spec_all = normalize(spec_all)
 spec_all = spec_all[, 750:2400]
-spec_all = spec_all[, -seq(1400, 1500, by = 1)]
-spec_all = spec_all[, -seq(1890, 1990, by = 1)]
+spec_all = spec_all[, -seq(1300, 1460, by = 1)]
+spec_all = spec_all[, -seq(1750, 2030, by = 1)]
+spec_all = spec_all[, -seq(960, 980, by= 1)]
+spec_all = spec_all[, -seq(1170, 1190, by= 1)]
+spec_all = spec_all[, -seq(1235, 1255, by= 1)]
+spec_all = spec_all[, -seq(2040, 2060, by= 1)]
+spec_all = spec_all[, -seq(2135, 2155, by= 1)]
+spec_all = spec_all[, -seq(2163, 2173, by= 1)]
+
+
+
+
+
 
 #remove any NaN values - mostly pertains to populations
 spec_all = spec_all[!meta(spec_all)$Location == "NaN",]
@@ -40,19 +53,19 @@ colnames(spec_df)[colnames(spec_df) == "spec_all.df$Location"] <- "Location"
 ################################################################################
 
 #Set number of components to be used
-ncomp = 54
+ncomp = 60
 
 #create vectors, lists, and matrices to store metrics and loadings
 accuracy <- c()
 kappa <- c()
 a.fit <- matrix(nrow = ncomp)
 cm.list <- list()
-bg.vip = matrix(nrow=1449)
-es.vip = matrix(nrow=1449)
-md.vip = matrix(nrow=1449)
-tm.vip = matrix(nrow=1449)
-wda.vip = matrix(nrow=1449)
-wdb.vip = matrix(nrow=1449)
+bg.vip = matrix(nrow=1093)
+es.vip = matrix(nrow=1093)
+md.vip = matrix(nrow=1093)
+tm.vip = matrix(nrow=1093)
+wda.vip = matrix(nrow=1093)
+wdb.vip = matrix(nrow=1093)
 
 #start of PLSDA code
 for(i in 1:10){
@@ -71,7 +84,7 @@ for(i in 1:10){
   ctrl <- trainControl(
     method = "repeatedcv",
     number = 10,
-    sampling = 'up',
+    sampling = 'down',
     repeats = 3)
   
   #Fit model. Note max iterations set to 10000 to allow model convergence

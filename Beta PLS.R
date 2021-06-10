@@ -38,11 +38,17 @@ registerDoParallel(numCores)
 #parallelized plsBeta regression
 plsFit = foreach (i = 1:5) %dopar% {
   library(plsRbeta)
-  m = plsRbeta::PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = 60,
+  m = plsRbeta::PLS_beta_kfoldcv_formula(DA~., data = spec_df, nt = 50,
                            modele = 'pls-beta', K = 10, NK = 1,
                            verbose = T, random = T)
 }
-saveRDS(plsFit, 'Models/plsBeta/plsFit.rds')
+saveRDS(plsFit, 'Models/plsBeta/plsFit_final.rds')
+
+plsFit = readRDS('Models/plsBeta/plsFit.rds')
+
+pls_info = plsRbeta::kfolds2CVinfos_beta(plsFit[[1]])
+saveRDS(pls_info, 'Models/plsBeta/pls_info.rds')
+pls_info = readRDS('Models/plsBeta/pls_info.rds')
 
 #generate pls info statistics
 pls_info_list = list()
@@ -57,11 +63,10 @@ saveRDS(plsFit.info, 'Models/plsBeta/pls_info_list.rds')
 
 
 #Convert info to data frame, calculate RMSE from RSS
-for(i in 1:5){
-  info.df = as.data.frame(plsFit.info[[i]])
-  info.df$RMSE <- sqrt(info.df$RSS_Y/460)
-  assign(paste0('info.df_', i), info.df)
-}
+
+info.df = as.data.frame(pls_info)
+info.df$RMSE <- sqrt(info.df$RSS_Y/460)
+
 
 ################################################################################
 #Determine optimal number of components 
@@ -162,29 +167,92 @@ legend('topright', legend = c('Mean', 'Lowest BIC + 2','Best component'),
 ################################################################################
 #obtain predicted ancestry for each repeat and group from model object
 
-for(NK in 1:5){
+for(NK in 1:5) {
   results.list = list()
   for(k in 1:10){
-  matr = as.matrix(plsFit$results_kfolds[[NK]][[k]][,54])
-  result.matrix = assign(paste0('matr',k), matr)
-  results.list <- list.append(results.list, get('result.matrix'))
+    if (ncol(plsFit[[NK]]$results_kfolds[[1]][[k]]) < 50) next
+      
+    matr = as.matrix(plsFit[[NK]]$results_kfolds[[1]][[k]][,50])
+    result.matrix = assign(paste0('matr',k), matr)
+    results.list <- list.append(results.list, get('result.matrix'))
   }
   full.mat = Reduce(rbind, results.list)
-  full.mat = full.mat[row.names(spec_df),,drop = F]
   assign(paste0('full.mat_', NK), full.mat)
 }
 
+
+#finding the average prediction really only works when errors do not occur in 
+#PLS that result in termination of the iteration before it reaches the full 
+#component cap
 #average the predictions
 mean.predictions = as.data.frame((full.mat_1 + full.mat_2 + full.mat_3 +
                                   full.mat_4 + full.mat_5)/5)
 
-#Add pertinent metadata
+#plot mean and standard deviation of one repetition 
+mean.predictions = full.mat_4
+
+remove_spec = setdiff(spectra.df$sample_name, rownames(mean.predictions))
+spec_df2 = spectra.df[!spectra.df$sample_name %in% remove_spec, ]
+
+mean.predictions = as.data.frame(mean.predictions)
 colnames(mean.predictions) <- c("Predictions")
-mean.predictions$DA <- spectra.df$DA
-mean.predictions$Species_ID <- spectra.df$Species_ID
-mean.predictions$Name <- spectra.df$Name
+mean.predictions = mean.predictions[spec_df2$sample_name,, drop = F]
+
+mean.predictions$DA <- spec_df2$DA
+mean.predictions$Species_ID <- spec_df2$Species_ID
+mean.predictions$Name <- spec_df2$Name
+
+l = list(mean.predictions$Name)
+pred_mean = aggregate(mean.predictions$Predictions, by = l, FUN = mean)
+rownames(pred_mean) = pred_mean[,1]
+pred_mean = pred_mean[,-1]
+
+pred_sd = aggregate(mean.predictions$Predictions, by = l, FUN = sd)
+pred_sd2 = pred_sd[,-1]
+pred_stats = cbind(pred_mean, pred_sd2)
+colnames(pred_stats) = c('mean', 'sd')
+rownames(pred_stats) = pred_sd[,1]
+pred_stats = as.data.frame(pred_stats)
+pred_stats$lower = pred_stats$mean - pred_stats$sd
+pred_stats$higher = pred_stats$mean + pred_stats$sd
+
+DA = aggregate(DA~Name, data = mean.predictions, mean)
+DA = DA[,-1]
+pred_stats$DA = DA
+
+#plot
+#colors
+pred_stats$color = 'black'
+pred_stats$color[pred_stats$DA > .7] = "#00B0F6"
+pred_stats$color[pred_stats$DA < .3] = "#F8766D"
+
+dev.new(width = 6, height = 6, unit = 'in')
+par(mfrow = c(1,1))
+plot(pred_stats$DA, pred_stats$mean,
+     cex.lab = 1.5,
+     xlab = "Actual Dryas alaskensis ancestry",
+     ylab = "Predicted Dryas alaskensis ancestry",
+     pch = 16,
+     ylim = c(-0.1, 1.1),
+     xlim = c(-0.1, 1.1))
+lines(x = c(-2,2), y = c(-2,2), lty = 2)
+arrows(pred_stats$DA, pred_stats$lower,
+       pred_stats$DA, pred_stats$higher,
+       angle = 90,
+       length = 0.05,
+       code = 3,
+       col = pred_stats$color)
+points(pred_stats$DA, pred_stats$mean,
+       col = pred_stats$color,
+       pch = 16)
+legend("bottomright", inset = 0.01,
+       legend=c("D. ajanensis", "Hybrid", "D. alaskensis", "1:1 line"), 
+       text.font = c(3,1,3,1),
+       col=c("#F8766D", "black", "#00B0F6", "black"), pch = c(16,16,16,NA),
+       lty = c(NA,NA,NA,2), bg = 'white')
 
 
+#plot median prediction and full range of predictions
 #find median and range of predicted values
 l = list(mean.predictions$Name)
 med = aggregate(mean.predictions$Predictions, by = l, median)
@@ -203,18 +271,26 @@ DA$color[DA$DA < .3] = "#F8766D"
 #plot actual ancestry vs predicted ancestry
 dev.new(width = 6, height = 6, unit = 'in')
 par(mfrow = c(1,1))
-plot(DA$DA, DA$Predictions, cex.lab = 1.5,
+plot(DA$DA, DA$Predictions,
+     cex.lab = 1.5,
      xlab = "Actual Dryas alaskensis ancestry",
-     ylab = "Predicted Dryas alaskensi ancestry", pch = 16)
+     ylab = "Predicted Dryas alaskensis ancestry",
+     pch = 16)
 lines(x = c(-2, 2), y = c(-2, 2), lty=2)
-arrows(DA$DA, DA$min, DA$DA, DA$max,length=0.05, angle=90, code=0, col = DA$color)
+arrows(DA$DA, DA$min,
+       DA$DA, DA$max,
+       length=0.05,
+       angle=90, 
+       code=0, 
+       col = DA$color)
 points(DA$DA, DA$Predictions,
-       col = DA$color, pch = 16)
+       col = DA$color, 
+       pch = 16)
 legend("bottomright", inset = 0.01,
        legend=c("D. ajanensis", "Hybrid", "D. alaskensis", "1:1 line"), 
        text.font = c(3,1,3,1),
        col=c("#F8766D", "black", "#00B0F6", "black"), pch = c(16,16,16,NA),
-       lty = c(NA,NA,NA,2), bg = 'white')
+       lty = c(NA,NA,NA,2), bg = 'white', cex = .75)
 #extra
 c.rmse = caret::RMSE(mean.predictions$Predictions, mean.predictions$DA)
 c.r2 = caret::R2(mean.predictions$Predictions, mean.predictions$DA)

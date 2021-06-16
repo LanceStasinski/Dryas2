@@ -21,6 +21,7 @@ spec_all= readRDS("Data/clean_all_6scans.rds")
 
 #remove NAs
 spec_all = spec_all[!meta(spec_all)$DA == "NaN",]
+spec_all = resample(spec_all, seq(400, 2400, 10))
 
 #prepare data for PLS
 spectra.df = as.data.frame(spec_all)

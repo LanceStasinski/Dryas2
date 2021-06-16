@@ -29,7 +29,7 @@ spec_all = spec_all[, -seq(1170, 1190, by= 1)]
 spec_all = spec_all[, -seq(1235, 1255, by= 1)]
 spec_all = spec_all[, -seq(2040, 2060, by= 1)]
 spec_all = spec_all[, -seq(2135, 2155, by= 1)]
-spec_all = spec_all[, -seq(2163, 2173, by= 1)]
+spec_all = spec_all[, -seq(2153, 2173, by= 1)]
 
 
 

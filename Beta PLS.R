@@ -21,7 +21,7 @@ spec_all= readRDS("Data/clean_all_6scans.rds")
 
 #remove NAs
 spec_all = spec_all[!meta(spec_all)$DA == "NaN",]
-spec_all = resample(spec_all, seq(400, 2400, 10))
+spec_all = resample(spec_all, seq(400, 2400, 2))
 
 #prepare data for PLS
 spectra.df = as.data.frame(spec_all)
@@ -43,7 +43,7 @@ plsFit = foreach (i = 1:5) %dopar% {
                            modele = 'pls-beta', K = 10, NK = 1,
                            verbose = T, random = T)
 }
-saveRDS(plsFit, 'Models/plsBeta/plsFit_final.rds')
+saveRDS(plsFit, 'Models/plsBeta/plsFit_2nm.rds')
 
 plsFit = readRDS('Models/plsBeta/plsFit.rds')
 
